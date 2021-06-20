@@ -8,19 +8,22 @@ class Splash extends StatefulWidget {
   _SplashState createState() => _SplashState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashState extends State<Splash>  with TickerProviderStateMixin{
+
+  final SplashData splashData =new SplashData();
+
   @override
   void initState() {
-    _checkingData();
+    splashData.checkingData();
+    splashData.controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
+    splashData.checkController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
+    splashData.initAnimation();
     super.initState();
   }
 
-  _checkingData() async {
-    GlobalNotification.instance.setupNotification(widget.navigatorKey);
-    Future.delayed(Duration(seconds: 2),(){
-      Utils.manipulateSplashData(context);
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +32,45 @@ class _SplashState extends State<Splash> {
         alignment: Alignment.bottomCenter,
         color: MyColors.white,
         child: Center(
-          child: AnimationContainer(
-              index: 0,
-              vertical: true,
-              duration: Duration(milliseconds: 1500),
-              distance: MediaQuery.of(context).size.height * .3,
-              child: Hero(
-                tag: Res.logo,
-                child: Image.asset(
-                  Res.logo,
-                  width: 200,
-                  height: 150,
+          child: Container(
+            width: 200,
+            height: 180,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                AnimatedBuilder(
+                  animation: splashData.controller,
+                  builder: (BuildContext context, Widget? child) {
+                    return Opacity(
+                      opacity: splashData.logoFadeAnimation.value,
+                      child: Image.asset(
+                        Res.logo,
+                        width: splashData.logoSizeAnimation.value,
+                        height: splashData.logoSizeAnimation.value,
+                      ),
+                    );
+                  },
                 ),
-              )),
+                AnimatedBuilder(
+                  animation: splashData.checkController,
+                  builder: (BuildContext context, Widget? child) {
+                    return Positioned(
+                      bottom: 0,
+                      right: splashData.transitionAnimation.value,
+                      child: Opacity(
+                        opacity: splashData.checkFadeAnimation.value,
+                        child: Image.asset(
+                          Res.logoCheck,
+                          width: 140,
+                          height: 140,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
