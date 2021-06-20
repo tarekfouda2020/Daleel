@@ -32,8 +32,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             bloc: homeData.homeTabCubit,
             builder: (context, state) {
               return PageTransitionSwitcher(
-                duration: Duration(milliseconds: 1500),
-                reverse: true,
+                duration: Duration(milliseconds: 800),
                 transitionBuilder:
                     (child, primaryAnimation, secondaryAnimation) {
                   return FadeThroughTransition(

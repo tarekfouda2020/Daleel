@@ -20,11 +20,12 @@ class DefaultAppBar extends PreferredSize {
     return AppBar(
       title: MyText(
         title: "$title",
-        size: 12,
+        size: 14,
         color: MyColors.white,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: MyColors.primary,
+      brightness: Brightness.dark,
       elevation: 0,
       leading: leading ??
           IconButton(

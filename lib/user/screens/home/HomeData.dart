@@ -1,6 +1,5 @@
 part of 'HomeImports.dart';
 
-
 class HomeData {
 
   final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
@@ -14,17 +13,17 @@ class HomeData {
   late CurvedAnimation curve;
 
   List<Widget> tabsView=[
-    Container(color: Colors.red,),
+    HomeMain(),
     Container(color: Colors.green,),
     Container(color: Colors.blueAccent,),
     Container(color: Colors.black54,),
   ];
 
   List<BottomTabModel> tabs = [
-    BottomTabModel(iconData: Icons.favorite_border, title: "الحجوزات"),
-    BottomTabModel(iconData: Icons.shopping_bag, title: "الانشطة"),
-    BottomTabModel(iconData: Icons.notifications, title: "البيانات"),
-    BottomTabModel(iconData: Icons.settings, title: "المزيد"),
+    BottomTabModel(iconData: Res.reservation, title: "الحجوزات"),
+    BottomTabModel(iconData: Res.home, title: "الانشطة"),
+    BottomTabModel(iconData: Res.profile, title: "البيانات"),
+    BottomTabModel(iconData: Res.more, title: "المزيد"),
   ];
 
   void initBottomNavigation(TickerProvider ticker,BuildContext context) {

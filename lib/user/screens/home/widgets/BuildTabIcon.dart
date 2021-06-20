@@ -15,10 +15,11 @@ class BuildTabIcon extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          SvgPicture.asset(
             homeData.tabs[index].iconData,
-            size: 25,
             color: color,
+            width: 25,
+            height: 25,
           ),
           MyText(
             title: homeData.tabs[index].title,

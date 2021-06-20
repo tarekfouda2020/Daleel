@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomTabModel{
-  final IconData iconData;
+  final String iconData;
   final String title;
 
 
