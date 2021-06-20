@@ -9,23 +9,22 @@ import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i10;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i6;
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart'
-    as _i14;
-import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart'
     as _i13;
+import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart'
+    as _i12;
 import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart'
     as _i11;
 import 'package:base_flutter/general/screens/forget_password/ForgetPasswordImports.dart'
     as _i5;
-import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i15;
+import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i14;
 import 'package:base_flutter/general/screens/login/LoginImports.dart' as _i4;
 import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports.dart'
     as _i7;
 import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
-import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart'
-    as _i12;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
+import 'package:base_flutter/user/screens/home/HomeImports.dart' as _i15;
 import 'package:flutter/cupertino.dart' as _i16;
 import 'package:flutter/material.dart' as _i2;
 
@@ -46,6 +45,8 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i4.Login();
         },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1000,
         opaque: true,
         barrierDismissible: false),
     ForgetPasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
@@ -85,31 +86,33 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i11.ContactUs();
         }),
-    SelectUserRoute.name: (routeData) => _i1.CustomPage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i12.SelectUser();
-        },
-        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
-        durationInMilliseconds: 1500,
-        opaque: true,
-        barrierDismissible: false),
     ConfirmPasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i13.ConfirmPassword();
+          return _i12.ConfirmPassword();
         }),
     ChangePasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i14.ChangePassword();
+          return _i13.ChangePassword();
         }),
     ImageZoomRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ImageZoomRouteArgs>();
-          return _i15.ImageZoom(images: args.images);
-        })
+          return _i14.ImageZoom(images: args.images);
+        }),
+    HomeRoute.name: (routeData) => _i1.CustomPage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args =
+              data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+          return _i15.Home(tab: args.tab);
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1000,
+        opaque: true,
+        barrierDismissible: false)
   };
 
   @override
@@ -123,10 +126,10 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(TermsRoute.name, path: '/Terms'),
         _i1.RouteConfig(AboutRoute.name, path: '/About'),
         _i1.RouteConfig(ContactUsRoute.name, path: '/contact-us'),
-        _i1.RouteConfig(SelectUserRoute.name, path: '/select-user'),
         _i1.RouteConfig(ConfirmPasswordRoute.name, path: '/confirm-password'),
         _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password'),
-        _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom')
+        _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom'),
+        _i1.RouteConfig(HomeRoute.name, path: '/Home')
       ];
 }
 
@@ -210,12 +213,6 @@ class ContactUsRoute extends _i1.PageRouteInfo {
   static const String name = 'ContactUsRoute';
 }
 
-class SelectUserRoute extends _i1.PageRouteInfo {
-  const SelectUserRoute() : super(name, path: '/select-user');
-
-  static const String name = 'SelectUserRoute';
-}
-
 class ConfirmPasswordRoute extends _i1.PageRouteInfo {
   const ConfirmPasswordRoute() : super(name, path: '/confirm-password');
 
@@ -240,4 +237,17 @@ class ImageZoomRouteArgs {
   const ImageZoomRouteArgs({required this.images});
 
   final List<dynamic> images;
+}
+
+class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({int tab = 0})
+      : super(name, path: '/Home', args: HomeRouteArgs(tab: tab));
+
+  static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.tab = 0});
+
+  final int tab;
 }

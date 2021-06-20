@@ -5,7 +5,7 @@ part of 'RouterImports.dart';
   routes: <AutoRoute>[
     //general routes
     AdaptiveRoute(page: Splash, initial: true,),
-    CustomRoute(page: Login,),
+    CustomRoute(page: Login,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1000),
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ActiveAccount),
     AdaptiveRoute(page: ResetPassword),
@@ -13,10 +13,13 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Terms),
     AdaptiveRoute(page: About),
     AdaptiveRoute(page: ContactUs),
-    CustomRoute(page: SelectUser,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1500),
     AdaptiveRoute(page: ConfirmPassword),
     AdaptiveRoute(page: ChangePassword),
     AdaptiveRoute(page: ImageZoom),
+
+    // user pages
+    CustomRoute(page: Home,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1000),
+
 
   ],
 )

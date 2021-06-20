@@ -13,16 +13,17 @@ class BuildFormInputs extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           LabelTextField(
-            label: tr(context,"mail"),
-            controller: loginData.email,
+            label: tr(context,"phone"),
+            controller: loginData.phone,
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
-            type: TextInputType.emailAddress,
-            validate: (value) => value!.validateEmpty(context),
+            type: TextInputType.number,
+            validate: (value) => value!.validatePhone(context),
           ),
           LabelTextField(
             label: tr(context,"password"),
             controller: loginData.password,
+            margin: const EdgeInsets.symmetric(vertical: 5),
             validate: (value) => value!.validateEmpty(context),
             isPassword: true,
             action: TextInputAction.done,

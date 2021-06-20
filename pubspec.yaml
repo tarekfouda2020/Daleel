@@ -57,12 +57,16 @@ dependencies:
   share: ^2.0.4
   flutter_rounded_date_picker: ^2.0.2
   material_design_icons_flutter: ^4.0.5955
-  map_launcher: ^2.0.0
+  map_launcher: ^2.1.0
   json_serializable: ^4.1.3
   json_annotation: ^4.0.1
   dio2: ^5.0.0-nullsafety
   flutter_html: ^2.1.0
   pin_code_fields: ^7.2.0
+  animations: ^2.0.0
+  animated_bottom_navigation_bar: ^0.3.2
+
+
 
 
 

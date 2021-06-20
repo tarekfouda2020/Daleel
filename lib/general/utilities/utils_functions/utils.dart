@@ -15,7 +15,7 @@ class Utils {
       setCurrentUserData(data,context);
     } else {
       changeLanguage("ar",context);
-      context.router.push(SelectUserRoute());
+      context.router.push(LoginRoute());
     }
 
   }
