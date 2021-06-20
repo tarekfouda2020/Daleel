@@ -14,12 +14,12 @@ class _SplashState extends State<Splash>  with TickerProviderStateMixin{
 
   @override
   void initState() {
-    splashData.checkingData();
+    GlobalNotification.instance.setupNotification(widget.navigatorKey);
     splashData.controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
     splashData.checkController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
-    splashData.initAnimation();
+    splashData.initAnimation(context);
     super.initState();
   }
 

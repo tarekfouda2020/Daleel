@@ -10,22 +10,18 @@ class SplashData{
   late  Animation<double> transitionAnimation;
 
 
-  initAnimation(){
+  initAnimation(BuildContext context){
     logoSizeAnimation =  Tween<double>(begin: 0,end: 160).animate(controller);
     logoFadeAnimation =  Tween<double>(begin: 0,end: 1).animate(controller);
     checkFadeAnimation =  Tween<double>(begin: 0,end: 1).animate(checkController);
     transitionAnimation =  Tween<double>(begin: 50,end: 9).animate(checkFadeAnimation);
 
     controller.forward().whenComplete((){
-      checkController.forward();
+      checkController.forward().whenComplete(() {
+        Utils.manipulateSplashData(context);
+      });
     });
   }
 
-  checkingData() async {
-    // GlobalNotification.instance.setupNotification(widget.navigatorKey);
-    // Future.delayed(Duration(seconds: 2),(){
-    //   Utils.manipulateSplashData(context);
-    // });
-  }
 
 }
