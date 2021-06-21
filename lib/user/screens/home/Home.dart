@@ -27,7 +27,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         initialIndex: 4,
         child: Scaffold(
           key: homeData.scaffold,
-          extendBody: true,
           body: BlocBuilder<GenericBloc<int>, GenericState<int>>(
             bloc: homeData.homeTabCubit,
             builder: (context, state) {

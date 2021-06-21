@@ -13,7 +13,7 @@ class _HomeMainState extends State<HomeMain> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "الحجوزات"),
+        child: DefaultAppBar(title: "الحجوزات",back: false),
         preferredSize: Size.fromHeight(60),
       ),
       body: Column(

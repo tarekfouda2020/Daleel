@@ -14,7 +14,7 @@ class HomeData {
 
   List<Widget> tabsView=[
     HomeMain(),
-    Container(color: Colors.green,),
+    Activities(),
     Container(color: Colors.blueAccent,),
     Container(color: Colors.black54,),
   ];
