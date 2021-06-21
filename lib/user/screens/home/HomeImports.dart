@@ -9,6 +9,7 @@ import 'widgets/HomeWidgetsImports.dart';
 import 'tabs/home_main/HomeMainImports.dart';
 import 'tabs/activities/ActivitiesImports.dart';
 import 'tabs/information/InformationImports.dart';
+import 'tabs/settings/SettingsImports.dart';
 
 
 

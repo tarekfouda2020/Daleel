@@ -1,5 +1,6 @@
 part of 'HomeImports.dart';
 
+
 class HomeData {
 
   final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
@@ -16,7 +17,7 @@ class HomeData {
     HomeMain(),
     Activities(),
     Information(),
-    Container(color: Colors.black54,),
+    Settings(),
   ];
 
   List<BottomTabModel> tabs = [
