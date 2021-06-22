@@ -5,36 +5,44 @@ class AddActivity extends StatefulWidget {
   _AddActivityState createState() => _AddActivityState();
 }
 
-class _AddActivityState extends State<AddActivity>{
-
+class _AddActivityState extends State<AddActivity> {
   final AddActivityData addActivityData = new AddActivityData();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "اضافة نشاط",),
+        child: DefaultAppBar(
+          title: "اضافة نشاط",
+          leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              size: 25,
+              color: MyColors.white,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
         preferredSize: Size.fromHeight(60),
       ),
-
       body: Column(
         children: [
-          BuildStepperView(activityData: addActivityData,),
+          BuildStepperView(
+            activityData: addActivityData,
+          ),
           Flexible(
             child: PageView(
               controller: addActivityData.pageController,
               children: [
                 FirstPage(addActivityData: addActivityData),
                 SecondPage(addActivityData: addActivityData),
-                SecondPage(addActivityData: addActivityData),
-                SecondPage(addActivityData: addActivityData),
+                ThirdPage(addActivityData: addActivityData),
+                FourthPage(addActivityData: addActivityData),
               ],
             ),
           ),
         ],
       ),
-
     );
   }
 }
-

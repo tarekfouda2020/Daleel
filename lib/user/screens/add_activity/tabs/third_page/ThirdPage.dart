@@ -1,34 +1,35 @@
-part of 'SecondPageImports.dart';
+part of 'ThirdPageImports.dart';
 
-
-class SecondPage extends StatefulWidget {
+class ThirdPage extends StatefulWidget {
   final AddActivityData addActivityData;
 
-  const SecondPage({required this.addActivityData});
+  const ThirdPage({required this.addActivityData});
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _ThirdPageState createState() => _ThirdPageState();
 }
 
-class _SecondPageState extends State<SecondPage>{
+class _ThirdPageState extends State<ThirdPage>{
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: MyColors.primary,
+      color: Colors.green,
       child: ListView(
         children: [
           DefaultButton(
             title: "Next",
-            color: Colors.red,
+            color: Colors.blue,
             onTap: () =>widget.addActivityData.goToNextPage(),
           ),
           DefaultButton(
             title: "Prev",
-            color: Colors.red,
+            color: Colors.blue,
             onTap: () =>widget.addActivityData.goToPreviousPage(),
           ),
         ],
       ),
     );
   }
+
 }
 
