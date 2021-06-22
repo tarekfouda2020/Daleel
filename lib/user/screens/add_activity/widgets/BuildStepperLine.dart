@@ -2,7 +2,7 @@ part of 'AddActivityWidgetsImports.dart';
 
 class BuildStepperLine extends StatelessWidget {
   final int step;
-  final int current;
+  final GenericState<int> current;
 
   const BuildStepperLine({required this.step, required this.current});
 
@@ -13,12 +13,11 @@ class BuildStepperLine extends StatelessWidget {
       height: 10,
       color: MyColors.greyWhite,
       alignment: Alignment.centerRight,
-      child: Visibility(
-        visible: current >= step,
+      child: Offstage(
+        offstage: current is GenericInitialState,
         child: TweenAnimationBuilder(
-          // curve: Curves.easeIn,
-          tween: Tween<double>(begin: 0, end: 50),
-          duration: Duration(seconds: 1),
+          tween: current.data >= step? Tween<double>(begin: 0, end: 50) : Tween<double>(begin: 50, end: 0),
+          duration: Duration(milliseconds: 800),
           builder: (context, value, child) {
             return SizedBox(
               width: double.parse(value.toString()),

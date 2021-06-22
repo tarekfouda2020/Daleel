@@ -7,7 +7,7 @@ class AddActivity extends StatefulWidget {
 
 class _AddActivityState extends State<AddActivity>{
 
-   AddActivityData addActivityData = new AddActivityData();
+  final AddActivityData addActivityData = new AddActivityData();
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,13 @@ class _AddActivityState extends State<AddActivity>{
         children: [
           BuildStepperView(activityData: addActivityData,),
           Flexible(
-            child: ListView(
+            child: PageView(
+              controller: addActivityData.pageController,
               children: [
-
+                FirstPage(addActivityData: addActivityData),
+                SecondPage(addActivityData: addActivityData),
+                SecondPage(addActivityData: addActivityData),
+                SecondPage(addActivityData: addActivityData),
               ],
             ),
           ),
