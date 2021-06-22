@@ -6,7 +6,7 @@ class HomeMain extends StatefulWidget {
 }
 
 class _HomeMainState extends State<HomeMain> {
-  HomeMainData homeMainData = new HomeMainData();
+  final HomeMainData homeMainData = new HomeMainData();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class _HomeMainState extends State<HomeMain> {
       ),
       body: Column(
         children: [
-          BuildFilterView(),
+          BuildFilterView(homeMainData: homeMainData),
           Flexible(
             child: ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: 15),

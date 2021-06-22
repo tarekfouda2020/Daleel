@@ -1,6 +1,10 @@
 part of 'HomeMainWidgetsImports.dart';
 
+
 class BuildFilterView extends StatelessWidget {
+  final HomeMainData homeMainData;
+
+  const BuildFilterView({required this.homeMainData});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,19 +33,22 @@ class BuildFilterView extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  Res.filter,
-                  color: MyColors.grey,
-                  width: 15,
-                  height: 15,
-                  alignment: Alignment.center,
-                ),
-                SizedBox(width: 10),
-                MyText(title: "فلتر الحجوزات", color: Colors.black54, size: 8,fontWeight: FontWeight.w600,)
-              ],
+            child: InkWell(
+              onTap: ()=> homeMainData.showFilterDialog(context,homeMainData),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    Res.filter,
+                    color: MyColors.grey,
+                    width: 15,
+                    height: 15,
+                    alignment: Alignment.center,
+                  ),
+                  SizedBox(width: 10),
+                  MyText(title: "فلتر الحجوزات", color: Colors.black54, size: 8,fontWeight: FontWeight.w600,)
+                ],
+              ),
             ),
           ),
         ],
