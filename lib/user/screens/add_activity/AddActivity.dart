@@ -17,9 +17,16 @@ class _AddActivityState extends State<AddActivity>{
         preferredSize: Size.fromHeight(60),
       ),
 
-      body: ListView(
+      body: Column(
         children: [
+          BuildStepperView(activityData: addActivityData,),
+          Flexible(
+            child: ListView(
+              children: [
 
+              ],
+            ),
+          ),
         ],
       ),
 
