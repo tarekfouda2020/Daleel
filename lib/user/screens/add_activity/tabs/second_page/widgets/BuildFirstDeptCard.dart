@@ -41,12 +41,14 @@ class BuildFirstDeptCard extends StatelessWidget {
                     label: "اكتب وصف مختصر بالعربي",
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
+                    fillColor: MyColors.white,
                     validate: (value)=> value!.noValidate(),
                   ),
                   RichTextFiled(
                     label: "اكتب وصف مختصر بالانجليزي",
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
+                    fillColor: MyColors.white,
                     validate: (value)=> value!.noValidate(),
                   ),
                   Row(

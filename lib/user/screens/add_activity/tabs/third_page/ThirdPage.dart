@@ -10,23 +10,36 @@ class ThirdPage extends StatefulWidget {
 
 class _ThirdPageState extends State<ThirdPage>{
 
+  final ThirdPageData pageData = new ThirdPageData();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: ListView(
-        children: [
-          DefaultButton(
-            title: "Next",
-            color: Colors.blue,
-            onTap: () =>widget.addActivityData.goToNextPage(),
-          ),
-          DefaultButton(
-            title: "Prev",
-            color: Colors.blue,
-            onTap: () =>widget.addActivityData.goToPreviousPage(),
-          ),
-        ],
+    return GestureDetector(
+      onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: MyColors.greyWhite)
+        ),
+        child: Column(
+          children: [
+            Flexible(
+              child: ListView(
+                children: [
+                  BuildHeaderColor(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: MyText(title: "المعلومات الاضافية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                  ),
+                  BuildFormView(pageData: pageData)
+
+                ],
+              ),
+            ),
+            BuildActionsView(addActivityData: widget.addActivityData)
+          ],
+        ),
       ),
     );
   }

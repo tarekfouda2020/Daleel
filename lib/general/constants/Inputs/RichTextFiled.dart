@@ -46,7 +46,7 @@ class RichTextFiled extends StatelessWidget {
         readOnly: readOnly,
         validator: (value) => validate(value),
         style: CustomInputTextStyle(lang: lang),
-        decoration: CustomInputDecoration(lang: lang,label: label,filledColor: MyColors.white),
+        decoration: CustomInputDecoration(lang: lang,label: label,filledColor: fillColor),
       ),
     );
   }
