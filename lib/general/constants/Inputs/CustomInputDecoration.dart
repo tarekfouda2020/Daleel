@@ -87,7 +87,7 @@ class CustomInputDecoration extends InputDecoration {
 
   @override
   // TODO: implement fillColor
-  Color get fillColor => MyColors.white;
+  Color get fillColor => MyColors.fillColor;
 
   @override
   // TODO: implement alignLabelWithHint

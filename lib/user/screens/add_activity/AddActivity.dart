@@ -31,14 +31,17 @@ class _AddActivityState extends State<AddActivity> {
             activityData: addActivityData,
           ),
           Flexible(
-            child: PageView(
-              controller: addActivityData.pageController,
-              children: [
-                FirstPage(addActivityData: addActivityData),
-                SecondPage(addActivityData: addActivityData),
-                ThirdPage(addActivityData: addActivityData),
-                FourthPage(addActivityData: addActivityData),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: PageView(
+                controller: addActivityData.pageController,
+                children: [
+                  FirstPage(addActivityData: addActivityData),
+                  SecondPage(addActivityData: addActivityData),
+                  ThirdPage(addActivityData: addActivityData),
+                  FourthPage(addActivityData: addActivityData),
+                ],
+              ),
             ),
           ),
         ],
