@@ -22,24 +22,30 @@ class _FirstPageState extends State<FirstPage> {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: MyColors.greyWhite)
         ),
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: [
-            BuildHeaderColor(),
-            BuildTypesView(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+            Flexible(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  BuildHeaderColor(),
+                  BuildTypesView(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                  ),
+                  BuildImagesView(
+                    onTap: (){},
+                    title: "رفع الصور",
+                  ),
+                  BuildImagesView(
+                    onTap: (){},
+                    title: "رفع صور ٣٦٠ درجة",
+                  ),
+                  BuildFormView(pageData: pageData),
+                ],
+              ),
             ),
-            BuildImagesView(
-              onTap: (){},
-              title: "رفع الصور",
-            ),
-            BuildImagesView(
-              onTap: (){},
-              title: "رفع صور ٣٦٠ درجة",
-            ),
-            BuildFormView(pageData: pageData),
             BuildActionView(
               pageData: pageData,
               addActivityData: widget.addActivityData,

@@ -35,6 +35,7 @@ class _AddActivityState extends State<AddActivity> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: PageView(
                 controller: addActivityData.pageController,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   FirstPage(addActivityData: addActivityData),
                   SecondPage(addActivityData: addActivityData),
