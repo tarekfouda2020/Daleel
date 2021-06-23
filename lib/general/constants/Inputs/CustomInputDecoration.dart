@@ -11,6 +11,7 @@ class CustomInputDecoration extends InputDecoration {
   final Color? enableColor;
   final Color? focusColor;
   final double? borderRaduis;
+  final Color? filledColor;
   final EdgeInsets? padding;
 
   CustomInputDecoration({
@@ -18,6 +19,7 @@ class CustomInputDecoration extends InputDecoration {
     this.hint,
     this.label,
     this.prefixIcon,
+    this.filledColor,
     this.suffixIcon,
     this.enableColor,
     this.focusColor,
@@ -87,7 +89,7 @@ class CustomInputDecoration extends InputDecoration {
 
   @override
   // TODO: implement fillColor
-  Color get fillColor => MyColors.fillColor;
+  Color get fillColor => filledColor??MyColors.fillColor;
 
   @override
   // TODO: implement alignLabelWithHint

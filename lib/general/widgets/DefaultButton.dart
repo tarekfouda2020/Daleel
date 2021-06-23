@@ -29,8 +29,9 @@ class DefaultButton extends StatelessWidget{
 
         child: MyText(
           title: "$title",
-          size: 11,
+          size: 14,
           color: textColor??MyColors.white,
+          fontWeight: FontWeight.w500,
         ),
         style: ElevatedButton.styleFrom(
           primary: color??MyColors.primary,
