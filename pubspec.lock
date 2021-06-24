@@ -260,6 +260,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0-nullsafety"
+  dotted_border:
+    dependency: "direct main"
+    description:
+      name: dotted_border
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   equatable:
     dependency: "direct main"
     description:
@@ -650,7 +657,7 @@ packages:
       name: map_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   matcher:
     dependency: transitive
     description:

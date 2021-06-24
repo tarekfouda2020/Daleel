@@ -40,7 +40,7 @@ class _EditActivityState extends State<EditActivity>{
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   FirstPage(activityData: activityData),
-                  SecondPage(activityData: activityData),
+                  Packages(activityData: activityData),
                   ThirdPage(activityData: activityData),
                   FourthPage(activityData: activityData),
                 ],

@@ -64,7 +64,7 @@ class BuildActivityItem extends StatelessWidget {
                     children: [
                       BuildActivityAction(
                         title: "تعديل",
-                        onTap: (){},
+                        onTap: ()=> AutoRouter.of(context).push(EditActivityRoute()),
                         iconData: Icons.edit,
                       ),
                       SizedBox(width: 20),

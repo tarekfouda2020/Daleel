@@ -7,6 +7,7 @@ import 'tabs/first_page/FirstPageImports.dart';
 import 'tabs/fourth_page/FourthPageImports.dart';
 import 'tabs/second_page/SecondPageImports.dart';
 import 'tabs/third_page/ThirdPageImports.dart';
+import 'tabs/packages/PackagesImports.dart';
 
 part 'EditActivity.dart';
 part 'EditActivityData.dart';

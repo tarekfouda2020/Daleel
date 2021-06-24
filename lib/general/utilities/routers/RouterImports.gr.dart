@@ -24,8 +24,10 @@ import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
+import 'package:base_flutter/user/screens/edit_activity/EditActivityImports.dart'
+    as _i16;
 import 'package:base_flutter/user/screens/home/HomeImports.dart' as _i15;
-import 'package:flutter/cupertino.dart' as _i16;
+import 'package:flutter/cupertino.dart' as _i17;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -112,7 +114,12 @@ class AppRouter extends _i1.RootStackRouter {
         transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1000,
         opaque: true,
-        barrierDismissible: false)
+        barrierDismissible: false),
+    EditActivityRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i16.EditActivity();
+        })
   };
 
   @override
@@ -129,12 +136,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ConfirmPasswordRoute.name, path: '/confirm-password'),
         _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password'),
         _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom'),
-        _i1.RouteConfig(HomeRoute.name, path: '/Home')
+        _i1.RouteConfig(HomeRoute.name, path: '/Home'),
+        _i1.RouteConfig(EditActivityRoute.name, path: '/edit-activity')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i16.GlobalKey<_i16.NavigatorState> navigatorKey})
+  SplashRoute({required _i17.GlobalKey<_i17.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -144,7 +152,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i16.GlobalKey<_i16.NavigatorState> navigatorKey;
+  final _i17.GlobalKey<_i17.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -250,4 +258,10 @@ class HomeRouteArgs {
   const HomeRouteArgs({this.tab = 0});
 
   final int tab;
+}
+
+class EditActivityRoute extends _i1.PageRouteInfo {
+  const EditActivityRoute() : super(name, path: '/edit-activity');
+
+  static const String name = 'EditActivityRoute';
 }

@@ -29,7 +29,7 @@ class _FirstPageState extends State<FirstPage> {
                 padding: EdgeInsets.zero,
                 children: [
                   BuildHeaderColor(),
-                  BuildTypesView(),
+                  // BuildTypesView(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
