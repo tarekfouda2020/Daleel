@@ -5,7 +5,7 @@ class BuildPackagesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
       decoration: BoxDecoration(
         color: MyColors.fillColor,
         borderRadius: BorderRadius.only(
@@ -14,7 +14,11 @@ class BuildPackagesList extends StatelessWidget {
         )
       ),
       child: Column(
-        children: List.generate(2, (index) =>  BuildPackageItem()),
+        children: [
+          BuildPackageItem(),
+          BuildPackageItem(),
+          BuildAddPackageAction(),
+        ],
       ),
     );
   }

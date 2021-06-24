@@ -12,3 +12,4 @@ part 'BuildTypeAction.dart';
 part 'BuildTypesView.dart';
 part 'BuildPackagesList.dart';
 part 'BuildPackageItem.dart';
+part 'BuildAddPackageAction.dart';
