@@ -1,4 +1,4 @@
-package sa.aait.aspbranch.nullbaseF;
+package sa.daleel.co.provider;
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;
