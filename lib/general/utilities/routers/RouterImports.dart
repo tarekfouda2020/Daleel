@@ -12,6 +12,7 @@ import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
 import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart';
 import 'package:base_flutter/general/screens/splash/SplashImports.dart';
 import 'package:base_flutter/general/screens/terms/TermsImports.dart';
+import 'package:base_flutter/user/screens/add_package/AddPackageImports.dart';
 import 'package:base_flutter/user/screens/edit_activity/EditActivityImports.dart';
 import 'package:base_flutter/user/screens/home/HomeImports.dart';
 import 'package:flutter/cupertino.dart';

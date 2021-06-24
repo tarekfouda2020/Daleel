@@ -24,10 +24,12 @@ import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
+import 'package:base_flutter/user/screens/add_package/AddPackageImports.dart'
+    as _i17;
 import 'package:base_flutter/user/screens/edit_activity/EditActivityImports.dart'
     as _i16;
 import 'package:base_flutter/user/screens/home/HomeImports.dart' as _i15;
-import 'package:flutter/cupertino.dart' as _i17;
+import 'package:flutter/cupertino.dart' as _i18;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -119,7 +121,17 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i16.EditActivity();
-        })
+        }),
+    AddPackageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i17.AddPackage();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.slideBottom,
+        durationInMilliseconds: 800,
+        reverseDurationInMilliseconds: 800,
+        opaque: true,
+        barrierDismissible: false)
   };
 
   @override
@@ -137,12 +149,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password'),
         _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom'),
         _i1.RouteConfig(HomeRoute.name, path: '/Home'),
-        _i1.RouteConfig(EditActivityRoute.name, path: '/edit-activity')
+        _i1.RouteConfig(EditActivityRoute.name, path: '/edit-activity'),
+        _i1.RouteConfig(AddPackageRoute.name, path: '/add-package')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i17.GlobalKey<_i17.NavigatorState> navigatorKey})
+  SplashRoute({required _i18.GlobalKey<_i18.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -152,7 +165,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i17.GlobalKey<_i17.NavigatorState> navigatorKey;
+  final _i18.GlobalKey<_i18.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -264,4 +277,10 @@ class EditActivityRoute extends _i1.PageRouteInfo {
   const EditActivityRoute() : super(name, path: '/edit-activity');
 
   static const String name = 'EditActivityRoute';
+}
+
+class AddPackageRoute extends _i1.PageRouteInfo {
+  const AddPackageRoute() : super(name, path: '/add-package');
+
+  static const String name = 'AddPackageRoute';
 }

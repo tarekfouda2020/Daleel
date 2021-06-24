@@ -1,11 +1,16 @@
 part of 'RouterImports.dart';
 
-
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     //general routes
-    AdaptiveRoute(page: Splash, initial: true,),
-    CustomRoute(page: Login,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1000),
+    AdaptiveRoute(
+      page: Splash,
+      initial: true,
+    ),
+    CustomRoute(
+        page: Login,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1000),
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ActiveAccount),
     AdaptiveRoute(page: ResetPassword),
@@ -18,11 +23,18 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: ImageZoom),
 
     // user pages
-    CustomRoute(page: Home,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1000),
+    CustomRoute(
+      page: Home,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      durationInMilliseconds: 1000,
+    ),
     AdaptiveRoute(page: EditActivity),
-
-
-
+    CustomRoute(
+      page: AddPackage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 800,
+      reverseDurationInMilliseconds: 800,
+    ),
   ],
 )
 class $AppRouter {}

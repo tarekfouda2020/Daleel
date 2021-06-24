@@ -9,6 +9,7 @@ class LabelTextField extends StatefulWidget {
   final TextEditingController controller;
   final String? label;
   final String? hint;
+  final Color? filledColor;
   final EdgeInsets? margin;
   final bool isPassword;
   final TextInputType? type;
@@ -19,17 +20,18 @@ class LabelTextField extends StatefulWidget {
   final Color? borderColor;
 
   LabelTextField(
-      { this.label,
-        required this.controller,
-        this.hint,
-        this.onChange,
-        this.margin,
-        this.isPassword = false,
-        this.action,
-        this.onSubmit,
-        this.type,
-        this.borderColor,
-        required this.validate});
+      {this.label,
+      required this.controller,
+      this.hint,
+      this.onChange,
+      this.filledColor,
+      this.margin,
+      this.isPassword = false,
+      this.action,
+      this.onSubmit,
+      this.type,
+      this.borderColor,
+      required this.validate});
 
   @override
   _LabelTextFieldState createState() => _LabelTextFieldState();
@@ -58,7 +60,13 @@ class _LabelTextFieldState extends State<LabelTextField> {
           textInputAction: widget.action ?? TextInputAction.next,
           validator: (value) => widget.validate(value),
           style: CustomInputTextStyle(lang: lang),
-          decoration: CustomInputDecoration(lang: lang,label: widget.label,enableColor: widget.borderColor,hint: widget.hint),
+          decoration: CustomInputDecoration(
+            lang: lang,
+            label: widget.label,
+            enableColor: widget.borderColor,
+            hint: widget.hint,
+            filledColor: widget.filledColor
+          ),
         ),
       ),
     );
