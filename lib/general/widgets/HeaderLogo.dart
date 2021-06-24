@@ -7,9 +7,9 @@ class HeaderLogo extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 50),
       child: Image(
-        height: 120,
+        height: 140,
         width: 140,
-        image: AssetImage(Res.logo),
+        image: AssetImage(Res.logoMark),
         fit: BoxFit.contain,
       ),
     );
