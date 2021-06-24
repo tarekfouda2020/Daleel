@@ -44,7 +44,7 @@ class _SplashState extends State<Splash>  with TickerProviderStateMixin{
                     return Opacity(
                       opacity: splashData.logoFadeAnimation.value,
                       child: Image.asset(
-                        Res.logo,
+                        Res.logoMark,
                         width: splashData.logoSizeAnimation.value,
                         height: splashData.logoSizeAnimation.value,
                       ),
