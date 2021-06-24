@@ -19,6 +19,8 @@ part of 'RouterImports.dart';
 
     // user pages
     CustomRoute(page: Home,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1000),
+    AdaptiveRoute(page: EditActivity),
+
 
 
   ],
