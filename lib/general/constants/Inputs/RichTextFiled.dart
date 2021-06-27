@@ -2,7 +2,6 @@ import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'CustomInputDecoration.dart';
@@ -20,10 +19,12 @@ class RichTextFiled extends StatelessWidget {
   final bool readOnly;
   final TextInputAction? action;
   final Function(String value)? submit;
+  final Color? borderColor;
 
   RichTextFiled(
       {this.label,
       this.hint,
+      this.borderColor,
       this.controller,
       this.margin = const EdgeInsets.all(0),
       this.type = TextInputType.text,
@@ -53,6 +54,7 @@ class RichTextFiled extends StatelessWidget {
           label: label,
           filledColor: fillColor,
           hint: hint,
+          enableColor: borderColor??MyColors.greyWhite
         ),
       ),
     );

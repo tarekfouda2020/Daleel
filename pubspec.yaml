@@ -101,9 +101,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/facebook.png
     - assets/images/filter.svg
     - assets/images/home.png
     - assets/images/icon.png
+    - assets/images/instagram.png
+    - assets/images/ksa.png
     - assets/images/logo.png
     - assets/images/logoCheck.png
     - assets/images/logoMark.png
@@ -114,6 +117,9 @@ flutter:
     - assets/images/reservation.png
     - assets/images/search.svg
     - assets/images/splash.png
+    - assets/images/telegram.png
+    - assets/images/twitter.png
+    - assets/images/usa.png
     - assets/lang/ar.json
     - assets/lang/en.json
   # An image asset can refer to one or more resolution-specific "variants", see

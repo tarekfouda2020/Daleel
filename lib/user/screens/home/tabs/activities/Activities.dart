@@ -20,6 +20,7 @@ class _ActivitiesState extends State<Activities>{
 
       body: CupertinoScrollbar(
         child: ListView.builder(
+          padding: EdgeInsets.only(bottom: 100),
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return BuildActivityItem();
@@ -29,6 +30,7 @@ class _ActivitiesState extends State<Activities>{
       ),
 
       floatingActionButton: BuildFloatAction(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
     );
   }

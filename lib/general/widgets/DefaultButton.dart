@@ -6,7 +6,7 @@ import 'package:base_flutter/general/widgets/MyText.dart';
 class DefaultButton extends StatelessWidget{
 
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   final Color? textColor;
   final Color? color;
   final Color? borderColor;
