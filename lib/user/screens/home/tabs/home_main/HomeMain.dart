@@ -20,12 +20,19 @@ class _HomeMainState extends State<HomeMain> {
         children: [
           BuildFilterView(homeMainData: homeMainData),
           Flexible(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return BuildOrderItem();
-              },
+            child: CupertinoScrollbar(
+              child: PagedListView<int, OrderModel>(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                pagingController: homeMainData.pagingController,
+                builderDelegate: PagedChildBuilderDelegate<OrderModel>(
+                    noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
+                      title: "لا يوجد طلبات",
+                      message:"انتظر الحصول علي طلبات قريبا",
+                    ),
+                    itemBuilder: (context, item, index) {
+                      return BuildOrderItem();
+                    }),
+              ),
             ),
           ),
         ],
