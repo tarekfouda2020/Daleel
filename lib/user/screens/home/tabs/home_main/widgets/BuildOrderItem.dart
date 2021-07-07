@@ -16,7 +16,8 @@ class BuildOrderItem extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: MyColors.grey, width: .5),
-            color: MyColors.secondary),
+            color: model.currentStatus=="paid"? MyColors.secondary : MyColors.redColor,
+        ),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
           decoration: BoxDecoration(
@@ -58,7 +59,7 @@ class BuildOrderItem extends StatelessWidget {
                 children: [
                   MyText(
                     title: "العربون  ${mainData.calculateDeposit(model.property)}",
-                    color: MyColors.grey,
+                    color: model.currentStatus=="paid"? MyColors.grey : MyColors.redColor,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
@@ -74,7 +75,7 @@ class BuildOrderItem extends StatelessWidget {
                   ),
                   MyText(
                     title: "السعر   ${model.property.price}",
-                    color: MyColors.secondary,
+                    color: model.currentStatus=="paid"? MyColors.grey : MyColors.secondary,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
