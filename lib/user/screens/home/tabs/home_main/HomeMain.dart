@@ -8,6 +8,16 @@ class HomeMain extends StatefulWidget {
 class _HomeMainState extends State<HomeMain> {
   final HomeMainData homeMainData = new HomeMainData();
 
+
+  @override
+  void initState() {
+    homeMainData.fetchPage(0, context, refresh: false);
+    homeMainData.pagingController.addPageRequestListener((pageKey) {
+      homeMainData.fetchPage(pageKey, context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +35,7 @@ class _HomeMainState extends State<HomeMain> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 pagingController: homeMainData.pagingController,
                 builderDelegate: PagedChildBuilderDelegate<OrderModel>(
+                    firstPageProgressIndicatorBuilder: (context)=>LoadingDialog.showLoadingView(),
                     noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
                       title: "لا يوجد طلبات",
                       message:"انتظر الحصول علي طلبات قريبا",

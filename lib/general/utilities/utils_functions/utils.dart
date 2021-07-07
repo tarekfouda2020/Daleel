@@ -18,7 +18,8 @@ class Utils {
 
   }
 
-  static void  setCurrentUserData(UserModel model,BuildContext context)async{
+  static void setCurrentUserData(UserModel model,BuildContext context)async{
+    context.read<UserCubit>().onUpdateUserData(model);
     AutoRouter.of(context).push(HomeRoute());
   }
 
