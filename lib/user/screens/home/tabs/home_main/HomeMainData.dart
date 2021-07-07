@@ -1,24 +1,40 @@
 part of 'HomeMainImports.dart';
 
 class HomeMainData {
-
   GenericBloc<FilterModel?> filterCubit = new GenericBloc(null);
 
   final PagingController<int, OrderModel> pagingController =
-  PagingController(firstPageKey: 0);
+      PagingController(firstPageKey: 0);
   final int pageSize = 10;
+  FilterModel? numFilter;
 
-  List<FilterModel> allFilters=[
-    FilterModel(key: "property_name",name: "اسم النشاط",value: TextEditingController()),
-    FilterModel(key: "customer_mobile",name: "جوال العميل",value: TextEditingController()),
-    FilterModel(key: "customer_name",name: "اسم العميل",value: TextEditingController()),
-    FilterModel(key: "to", key2: "form",name: "التاريخ",value: TextEditingController(),value2: TextEditingController()),
-    FilterModel(key: "transaction",name: "السعر",value: TextEditingController()),
+  List<FilterModel> allFilters = [
+    FilterModel(
+        key: "property_name",
+        name: "اسم النشاط",
+        value: TextEditingController()),
+    FilterModel(
+        key: "customer_mobile",
+        name: "جوال العميل",
+        value: TextEditingController()),
+    FilterModel(
+        key: "customer_name",
+        name: "اسم العميل",
+        value: TextEditingController()),
+    FilterModel(
+        key: "to",
+        key2: "form",
+        name: "التاريخ",
+        value: TextEditingController(),
+        value2: TextEditingController()),
+    FilterModel(
+        key: "transaction", name: "السعر", value: TextEditingController()),
   ];
 
-  Future<void> fetchPage(int pageKey, BuildContext context, {bool refresh = true}) async {
+  Future<void> fetchPage(int pageKey, BuildContext context,
+      {bool refresh = true}) async {
     List<OrderModel> _orders = await UserRepository(context)
-        .getOrders(pageKey, filterCubit.state.data ,refresh);
+        .getOrders(pageKey, filterCubit.state.data ?? numFilter, refresh);
     if (pageKey == 0) {
       pagingController.itemList = [];
     }
@@ -31,11 +47,16 @@ class HomeMainData {
     }
   }
 
-  showFilterDialog(BuildContext context,HomeMainData homeMainData) {
+  showFilterDialog(BuildContext context, HomeMainData homeMainData) {
+    filterCubit.onUpdateData(null);
+    allFilters.forEach((element) {
+      element.value.text="";
+      element.value2?.text="";
+    });
     showModal(
       context: context,
       configuration: FadeScaleTransitionConfiguration(),
-      builder: (_){
+      builder: (_) {
         return AlertDialog(
           backgroundColor: Colors.white,
           content: BuildSearchForm(homeMainData: homeMainData),
@@ -44,8 +65,8 @@ class HomeMainData {
     );
   }
 
-  filterOrderByFilter(BuildContext context){
-    if (filterCubit.state.data==null) {
+  filterOrderByFilter(BuildContext context) {
+    if (filterCubit.state.data == null) {
       LoadingDialog.showSimpleToast("حد نوع البحث");
       return;
     }
@@ -57,18 +78,59 @@ class HomeMainData {
     pagingController.refresh();
   }
 
-  num calculateDeposit(PropertyOrderModel model){
-    num percent = model.category.downPaymentPercentage/100;
-    if (model.offerPrice==0) {
-      return model.price*percent;
+  onNumberSearch(String value, BuildContext context) {
+    if (value.trim().isEmpty) {
+      numFilter = null;
+      pagingController.refresh();
+      return;
     }
-    return model.offerPrice*percent;
+    filterCubit.onUpdateData(null);
+    numFilter = FilterModel(
+        key: "booking_number",
+        name: "",
+        value: TextEditingController(text: value));
+    pagingController.refresh();
   }
 
-  num calculateRestPrice(PropertyOrderModel model){
-    return model.price-calculateDeposit(model);
+  num calculateDeposit(PropertyOrderModel model) {
+    num percent = model.category.downPaymentPercentage / 100;
+    if (model.offerPrice == 0) {
+      return model.price * percent;
+    }
+    return model.offerPrice * percent;
   }
 
+  num calculateRestPrice(PropertyOrderModel model) {
+    return model.price - calculateDeposit(model);
+  }
+
+  setToDate(BuildContext context) {
+    AdaptivePicker.datePicker(
+      context: context,
+      title: "حدد التاريخ",
+      minDate: DateTime(2000),
+      onConfirm: (date){
+        if (date!=null) {
+          filterCubit.state.data!.value2!.text=DateFormat("dd-MM-yyy").format(date);
+          filterCubit.onUpdateData(filterCubit.state.data);
+        }
+      },
+    );
+  }
+
+  setFromDate(BuildContext context) {
+    AdaptivePicker.datePicker(
+      context: context,
+      title: "حدد التاريخ",
+      minDate: DateTime(2000),
+      onConfirm: (date){
+        if (date!=null) {
+          filterCubit.state.data!.value.text=DateFormat("dd-MM-yyy").format(date);
+          filterCubit.onUpdateData(filterCubit.state.data);
+        }
+      },
+    );
+  }
 
 
 

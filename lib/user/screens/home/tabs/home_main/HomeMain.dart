@@ -25,31 +25,34 @@ class _HomeMainState extends State<HomeMain> {
         child: DefaultAppBar(title: "الحجوزات", back: false),
         preferredSize: Size.fromHeight(60),
       ),
-      body: Column(
-        children: [
-          BuildFilterView(homeMainData: homeMainData),
-          Flexible(
-            child: CupertinoScrollbar(
-              child: PagedListView<int, OrderModel>(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                pagingController: homeMainData.pagingController,
-                builderDelegate: PagedChildBuilderDelegate<OrderModel>(
-                    firstPageProgressIndicatorBuilder: (context) =>
-                        LoadingDialog.showLoadingView(),
-                    noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                          title: "لا يوجد طلبات",
-                          message: "انتظر الحصول علي طلبات قريبا",
-                        ),
-                    itemBuilder: (context, item, index) {
-                      return BuildOrderItem(
-                        model: item,
-                        mainData: homeMainData,
-                      );
-                    }),
+      body: GestureDetector(
+        onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+        child: Column(
+          children: [
+            BuildFilterView(homeMainData: homeMainData),
+            Flexible(
+              child: CupertinoScrollbar(
+                child: PagedListView<int, OrderModel>(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  pagingController: homeMainData.pagingController,
+                  builderDelegate: PagedChildBuilderDelegate<OrderModel>(
+                      firstPageProgressIndicatorBuilder: (context) =>
+                          LoadingDialog.showLoadingView(),
+                      noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
+                            title: "لا يوجد طلبات",
+                            message: "انتظر الحصول علي طلبات قريبا",
+                          ),
+                      itemBuilder: (context, item, index) {
+                        return BuildOrderItem(
+                          model: item,
+                          mainData: homeMainData,
+                        );
+                      }),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

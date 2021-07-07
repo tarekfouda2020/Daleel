@@ -18,18 +18,24 @@ class BuildFilterView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  Res.search,
-                  color: MyColors.grey,
-                  width: 20,
-                  height: 20,
-                ),
-                SizedBox(width: 10),
-                MyText(title: "ابحث برقم الحجز", color: Colors.black54, size: 8,fontWeight: FontWeight.w600,)
-              ],
+            child: IconTextFiled(
+              hint: "ابحث برقم الحجز",
+              filledColor: Colors.transparent,
+              enableColor: Colors.transparent,
+              prefixIcon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    Res.search,
+                    color: MyColors.grey,
+                    width: 20,
+                    height: 20,
+                  ),
+                ],
+              ),
+              validate: (value)=>value!.noValidate(),
+              submit: (value)=>homeMainData.onNumberSearch(value, context),
             ),
           ),
           Expanded(

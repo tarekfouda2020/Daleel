@@ -6,14 +6,16 @@ import 'CustomInputDecoration.dart';
 import 'CustomInputTextStyle.dart';
 
 class IconTextFiled extends StatelessWidget {
-  final TextEditingController controller;
-  final String label;
+  final TextEditingController? controller;
+  final String? label;
+  final String? hint;
   final EdgeInsets? margin;
   final TextInputType? type;
   final Widget? suffixIcon;
   final bool isPassword;
   final Widget? prefixIcon;
   final String? prefixText;
+  final Color? enableColor;
   final Function(String? value) validate;
   final Color? filledColor;
   final TextInputAction? action;
@@ -21,19 +23,21 @@ class IconTextFiled extends StatelessWidget {
   final Function(String)? onChange;
 
   IconTextFiled(
-      {required this.label,
-        required this.controller,
-        this.margin,
-        this.type,
-        this.action,
-        this.submit,
-        this.prefixText,
-        this.suffixIcon,
-        this.isPassword = false,
-        this.prefixIcon,
-        this.filledColor,
-        required this.validate,
-        this.onChange});
+      {this.label,
+      this.controller,
+      this.margin,
+      this.hint,
+      this.type,
+      this.enableColor,
+      this.action,
+      this.submit,
+      this.prefixText,
+      this.suffixIcon,
+      this.isPassword = false,
+      this.prefixIcon,
+      this.filledColor,
+      required this.validate,
+      this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +60,15 @@ class IconTextFiled extends StatelessWidget {
           onChanged: onChange,
           validator: (value) => validate(value),
           style: CustomInputTextStyle(lang: lang),
-          decoration: CustomInputDecoration(lang: lang,label: label,prefixIcon: prefixIcon,suffixIcon: suffixIcon,),
+          decoration: CustomInputDecoration(
+            lang: lang,
+            label: label,
+            hint: hint,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            filledColor: filledColor,
+            enableColor: enableColor,
+          ),
         ),
       ),
     );
