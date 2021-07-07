@@ -11,8 +11,6 @@ class LoginData {
 
   void userLogin(BuildContext context) async {
     FocusScope.of(context).requestFocus(FocusNode());
-    AutoRouter.of(context).push(HomeRoute());
-    return;
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
       String phoneEn = Utils.convertDigitsToLatin(phone.text);

@@ -5,8 +5,6 @@ class Utils {
 
   static Future<void> manipulateSplashData( BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await GeneralRepository(context).getHomeConstData();
-
     var strUser = prefs.get("user");
     if (strUser != null) {
       UserModel data = UserModel.fromJson(json.decode("$strUser"));
@@ -21,8 +19,7 @@ class Utils {
   }
 
   static void  setCurrentUserData(UserModel model,BuildContext context)async{
-    // context.read<UserCubit>().onUpdateUserData(model);
-    // ExtendedNavigator.of(context).push(Routes.home,arguments: HomeArguments(parentCount: parentCount));
+    AutoRouter.of(context).push(HomeRoute());
   }
 
   static Future<void> saveUserData(UserModel model)async{
@@ -52,59 +49,6 @@ class Utils {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
-
-
-  // static CustomerModel getCustomerData({@required BuildContext context}){
-  //   var provider = Provider.of<UserStore>(context,listen: false);
-  //   return provider.model.customer;
-  // }
-
-  // static DelegateModel getDelegateData({@required BuildContext context}){
-  //   var provider = Provider.of<UserProvider>(context,listen: false);
-  //   return provider.model.delegate;
-  // }
-
-  // static int getCurrentUserType({@required BuildContext context}){
-  //   var provider = Provider.of<UserStore>(context,listen: false);
-  //   return provider.model.type;
-  // }
-  //
-  // static String getCurrentUserLang({@required BuildContext context}){
-  //   var provider = Provider.of<UserStore>(context,listen: false);
-  //   return provider.model.lang;
-  // }
-  //
-  // static String getCurrentUserToken({@required BuildContext context}){
-  //   var provider = Provider.of<UserStore>(context,listen: false);
-  //   return provider.model.token;
-  // }
-  //
-  // static void setCurrentUserType({@required BuildContext context,@required int type}){
-  //   var provider = Provider.of<UserStore>(context,listen: false);
-  //   SavedDataModel model=provider.model;
-  //   model.type=type;
-  //   provider.setUserModel(model);
-  // }
-
-  // static void setCurrentUserLang({@required BuildContext context,@required String lang}){
-  //   var provider =Provider.of<UserStore>(context,listen: false);
-  //   SavedDataModel model=provider.model;
-  //   model.lang=lang;
-  //   provider.setUserModel(model);
-  //   saveUserData(provider.model);
-  //   changeLanguage(lang,context);
-  // }
-
-  static String getCurrentUserId({required BuildContext context}){
-    var provider = context.watch<UserCubit>().state.model;
-    return provider.id;
-  }
-
-
-  // static void setSelectUser({@required int type, @required BuildContext context}) async {
-  //   setCurrentUserType(context: context,type: type);
-  //   ExtendedNavigator(router: AppRouter(), name: Routes.login);
-  // }
 
   static void launchURL({required String url}) async {
     if (!url.toString().startsWith("https")) {

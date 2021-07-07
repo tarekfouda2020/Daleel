@@ -12,13 +12,20 @@ class BuildFormInputs extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelTextField(
+          IconTextFiled(
             label: tr(context,"phone"),
             controller: loginData.phone,
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
             type: TextInputType.number,
-            validate: (value) => value!.validatePhone(context),
+            suffixIcon: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MyText(title: "+966", color: MyColors.black, size: 14,fontWeight: FontWeight.w600,),
+              ],
+            ),
+            validate: (value) => value!.validateEmpty(context),
           ),
           LabelTextField(
             label: tr(context,"password"),

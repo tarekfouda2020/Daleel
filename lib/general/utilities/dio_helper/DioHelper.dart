@@ -5,8 +5,7 @@ class DioHelper {
   late DioCacheManager _manager;
   BuildContext context;
   final bool forceRefresh;
-  final baseUrl = "https://hiraj.ip4s.com";
-  final String _branch = "6";
+  final baseUrl = "https://api.dileel.com/";
 
   DioHelper({this.forceRefresh = true,required this.context}){
     _dio = Dio(
@@ -24,23 +23,20 @@ class DioHelper {
     return _manager;
   }
 
-  Options _buildCacheOptions(Map<String, dynamic> body, {bool subKey = true}) {
+  Options _buildCacheOptions(String url, {bool subKey = true}) {
     return buildCacheOptions(
       Duration(hours: 1),
       maxStale: Duration(days: 1),
       forceRefresh: forceRefresh,
-      subKey: subKey ? json.encode(body) : "",
+      subKey: subKey ? url : "",
       options: Options(extra: {}),
     );
   }
 
-  Future<dynamic> get({required String url, required Map<String, dynamic> body}) async {
-    body.addAll({"branchId": _branch});
-    _printRequestBody(body);
+  Future<dynamic> get({required String url}) async {
     _dio.options.headers = await _getHeader();
     try {
-      var response = await _dio.post("$baseUrl$url",
-          data: FormData.fromMap(body), options: _buildCacheOptions(body));
+      var response = await _dio.get("$baseUrl$url", options: _buildCacheOptions(url));
       print("response ${response.statusCode}");
       var data = response.data;
       if (data["key"] == 1) {
@@ -60,22 +56,20 @@ class DioHelper {
 
   Future<dynamic> post({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
-    body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
     try {
       var response =
-          await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
+          await _dio.post("$baseUrl$url", data: body);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      LoadingDialog.showToastNotification(response.data["msg"].toString());
-      if (response.data["key"] == 1) return response.data;
+       return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
       if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
         logout();
       } else {
-        LoadingDialog.showToastNotification(tr(context, "chickNet"));
+        LoadingDialog.showToastNotification(e.response?.data?["message"]??tr(context, "chickNet"));
       }
     }
 
@@ -85,7 +79,6 @@ class DioHelper {
   Future<dynamic> uploadFile(
       {required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
-    body.addAll({"branchId": _branch});
     _printRequestBody(body);
     FormData formData = FormData.fromMap(body);
     body.forEach((key, value) async {
@@ -174,8 +167,7 @@ class DioHelper {
     //create multipart request for POST or PATCH method
 
     try {
-      var response = await _dio.post("$baseUrl$url",
-          data: formData, options: _buildCacheOptions(body, subKey: false));
+      var response = await _dio.post("$baseUrl$url", data: formData);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
       if (response.data["key"] == 1) return response.data;

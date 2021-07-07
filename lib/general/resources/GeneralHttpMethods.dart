@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/GlobalState.dart';
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
+import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -22,30 +24,36 @@ class GeneralHttpMethods {
     String? _token = await messaging.getToken();
     String _lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
-      "phone": "$phone",
-      "password": "$pass",
-      "lang": "$_lang",
-      "deviceId": "$_token",
-      "deviceType": Platform.isIOS ? "ios" : "android",
+      "mobile": "+966$phone",
+      // "password": "$pass",
+      // "lang": "$_lang",
+      // "deviceId": "$_token",
+      "type": "property_owner",
     };
-    var _data = await DioHelper(context: context).post(url: "/api/v1/login",body: body,showLoader: false);
+    var _data = await DioHelper(context: context).post(url: "login",body: body,showLoader: false);
 
     if (_data != null) {
-      int status = _data["status"];
-      if (status == 1) {
-        await Utils.setDeviceId("$_token");
-        UserModel user = UserModel.fromJson(_data["data"]);
-        int type = _data["data"]["type"];
-        user.type = type == 1 ? "user" : "company";
-        user.token = _data["token"];
-        user.lang = _lang;
-        GlobalState.instance.set("token", user.token);
-        await Utils.saveUserData(user);
-        Utils.setCurrentUserData(user, context);
-      } else if (status == 2) {
-        // ExtendedNavigator.of(context).push(Routes.activeAccount,
-        //     arguments: ActiveAccountArguments(userId: _data["data"]["id"]));
-      }
+      await Utils.setDeviceId("$_token");
+      UserModel user = UserModel(lang: _lang);
+      user.id = _data["id"];
+      user.token = _data["mobile_token"];
+      user.lang = _lang;
+      GlobalState.instance.set("token", user.token);
+      await Utils.saveUserData(user);
+      Utils.setCurrentUserData(user, context);
+      // int status = _data["status"];
+      // if (status == 1) {
+      //   await Utils.setDeviceId("$_token");
+      //   UserModel user = UserModel.fromJson(_data["data"]);
+      //   user.id = _data["id"];
+      //   user.token = _data["mobile_token"];
+      //   user.lang = _lang;
+      //   GlobalState.instance.set("token", user.token);
+      //   await Utils.saveUserData(user);
+      //   Utils.setCurrentUserData(user, context);
+      // } else if (status == 2) {
+      //   AutoRouter.of(context).push(ActiveAccountRoute(userId: _data["id"]));
+      // }
       return true;
     } else {
       return false;
@@ -53,10 +61,7 @@ class GeneralHttpMethods {
   }
 
   Future<void> getHomeConstData()async{
-    Map<String,dynamic> body={
-      "lang":context.read<LangCubit>().state.locale.languageCode,
-    };
-    var _data= await DioHelper(context: context,forceRefresh: false).get(url: "/api/v1/ListAllCat",body: body,);
+    var _data= await DioHelper(context: context,forceRefresh: false).get(url: "/api/v1/ListAllCat");
     if(_data!=null){
       return _data;
     }
@@ -87,7 +92,7 @@ class GeneralHttpMethods {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
     var _data =
-    await DioHelper(context: context).get(url: "/api/v1/AboutApp", body:body);
+    await DioHelper(context: context).get(url: "/api/v1/AboutApp");
     if (_data != null) {
       return _data["data"]["about_app"];
     } else {
@@ -100,7 +105,7 @@ class GeneralHttpMethods {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
     var _data =
-    await DioHelper(context: context).get(url: "/api/v1/AboutApp", body:body);
+    await DioHelper(context: context).get(url: "/api/v1/AboutApp");
     if (_data != null) {
       return _data["data"]["condetions"];
     } else {
@@ -112,7 +117,7 @@ class GeneralHttpMethods {
     Map<String, dynamic> body = {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
-    var _data = await DioHelper(context: context).get(url: "/api/v1/FrequentlyAskedQuestions", body:body);
+    var _data = await DioHelper(context: context).get(url: "/api/v1/FrequentlyAskedQuestions");
     if (_data != null) {
       return List<QuestionModel>.from(
           _data["data"].map((e) => QuestionModel.fromJson(e)));
@@ -159,7 +164,7 @@ class GeneralHttpMethods {
       "newPassword": "$pass",
       "lang": lang,
     };
-    var _data = await DioHelper(context: context).get(url: "/api/v1/ChangePasswordByCode", body:body);
+    var _data = await DioHelper(context: context).get(url: "/api/v1/ChangePasswordByCode");
     if (_data != null) {
       return true;
     } else {
@@ -188,7 +193,7 @@ class GeneralHttpMethods {
     Map<String, dynamic> body = {
       "phone": "$phone",
     };
-    var _data = await DioHelper(context: context).get(url: "/api/v1/CheckActive", body:body);
+    var _data = await DioHelper(context: context).get(url: "/api/v1/CheckActive");
     print("data is $_data");
     if (_data != null) {
       final userCubit = context.read<UserCubit>().state.model;

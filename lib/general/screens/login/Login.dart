@@ -15,17 +15,15 @@ class _LoginState extends State<Login> {
         onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          physics: BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
           children: [
             HeaderLogo(),
             BuildText(),
+            SizedBox(height: 50),
             BuildFormInputs(loginData: loginData),
-            BuildForgetText(),
+            // BuildForgetText(),
             BuildLoginButton(loginData: loginData),
-            BuildNewRegister(),
-            BuildRegisterButton(),
+            // BuildNewRegister(),
+            // BuildRegisterButton(),
           ],
         ),
       ),

@@ -6,19 +6,17 @@ part 'UserModel.g.dart';
 class UserModel {
 
 
-  @JsonKey(name: "userName")
-  String userName;
   @JsonKey(name: "id")
-  String id;
+  String? id;
   @JsonKey(name: "token")
-  String token;
+  String? token;
   @JsonKey(name: "lang")
   String lang;
   @JsonKey(name: "type")
-  String type;
+  String? type;
 
 
-  UserModel({required this.userName,required this.id,required this.token,required this.lang,required this.type});
+  UserModel({this.id,this.token,required this.lang,this.type});
 
 
 

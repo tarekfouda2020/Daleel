@@ -13,7 +13,7 @@ class BuildLoginButton extends StatelessWidget {
       onTap: () => loginData.userLogin(context),
       color: MyColors.primary,
       textColor: MyColors.white,
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 40),
     );
   }
 }

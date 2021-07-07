@@ -9,6 +9,15 @@ class _ActivitiesState extends State<Activities>{
 
    ActivitiesData activitiesData = new ActivitiesData();
 
+   @override
+   void initState() {
+     activitiesData.fetchPage(0, context, refresh: false);
+     activitiesData.pagingController.addPageRequestListener((pageKey) {
+       activitiesData.fetchPage(pageKey, context);
+     });
+     super.initState();
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +28,17 @@ class _ActivitiesState extends State<Activities>{
       ),
 
       body: CupertinoScrollbar(
-        child: ListView.builder(
-          padding: EdgeInsets.only(bottom: 100),
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return BuildActivityItem();
-          },
-
+        child: PagedListView<int, PropertyModel>(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          pagingController: activitiesData.pagingController,
+          builderDelegate: PagedChildBuilderDelegate<PropertyModel>(
+              noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
+                title: "لا يوجد انشطة",
+                message:"اضف نشطاتك للحصول علي طلبات",
+              ),
+              itemBuilder: (context, item, index) {
+                return BuildActivityItem();
+              }),
         ),
       ),
 
