@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
+import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,14 @@ class UserHttpMethods {
     }
   }
 
-  Future<List<OrderModel>> getOrders(int page, bool refresh) async {
+  Future<List<OrderModel>> getOrders(int page, FilterModel? filter, bool refresh) async {
     var user = context.read<UserCubit>().state.model;
-    var params = "?page=$page&limit=10&name=&pagination=true";
+    String filterParam = "";
+    if (filter!=null) {
+       filterParam =filter.key=="to"? "&${filter.key}=${filter.value.text}&${filter.key2}=${filter.value2?.text}"
+          :"&${filter.key}=${filter.value.text}";
+    }
+    var params = "?page=$page&limit=10&name=&pagination=true$filterParam";
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
       url: "owners/${user.id}/bookings$params",
     );

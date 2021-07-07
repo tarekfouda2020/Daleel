@@ -2,21 +2,23 @@ part of 'HomeMainImports.dart';
 
 class HomeMainData {
 
-  GenericBloc<DropdownModel?> filterCubit = new GenericBloc(null);
-
-  TextEditingController activity = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController name = TextEditingController();
-  TextEditingController date = TextEditingController();
-  TextEditingController price = TextEditingController();
+  GenericBloc<FilterModel?> filterCubit = new GenericBloc(null);
 
   final PagingController<int, OrderModel> pagingController =
   PagingController(firstPageKey: 0);
   final int pageSize = 10;
 
+  List<FilterModel> allFilters=[
+    FilterModel(key: "property_name",name: "اسم النشاط",value: TextEditingController()),
+    FilterModel(key: "customer_mobile",name: "جوال العميل",value: TextEditingController()),
+    FilterModel(key: "customer_name",name: "اسم العميل",value: TextEditingController()),
+    FilterModel(key: "to", key2: "form",name: "التاريخ",value: TextEditingController(),value2: TextEditingController()),
+    FilterModel(key: "transaction",name: "السعر",value: TextEditingController()),
+  ];
+
   Future<void> fetchPage(int pageKey, BuildContext context, {bool refresh = true}) async {
     List<OrderModel> _orders = await UserRepository(context)
-        .getOrders(pageKey, refresh);
+        .getOrders(pageKey, filterCubit.state.data ,refresh);
     if (pageKey == 0) {
       pagingController.itemList = [];
     }
@@ -28,14 +30,6 @@ class HomeMainData {
       pagingController.appendPage(_orders, nextPageKey);
     }
   }
-
-  List<DropdownModel> data = [
-    DropdownModel(id: 1,name: "اسم النشاط"),
-    DropdownModel(id: 2,name: "جوال العميل"),
-    DropdownModel(id: 3,name: "اسم العميل"),
-    DropdownModel(id: 4,name: "التاريخ"),
-    DropdownModel(id: 5,name: "السعر"),
-  ];
 
   showFilterDialog(BuildContext context,HomeMainData homeMainData) {
     showModal(
@@ -49,6 +43,33 @@ class HomeMainData {
       },
     );
   }
+
+  filterOrderByFilter(BuildContext context){
+    if (filterCubit.state.data==null) {
+      LoadingDialog.showSimpleToast("حد نوع البحث");
+      return;
+    }
+    if (filterCubit.state.data!.value.text.isEmpty) {
+      LoadingDialog.showSimpleToast("ادخل قيمة البحث");
+      return;
+    }
+    Navigator.of(context).pop();
+    pagingController.refresh();
+  }
+
+  num calculateDeposit(PropertyOrderModel model){
+    num percent = model.category.downPaymentPercentage/100;
+    if (model.offerPrice==0) {
+      return model.price*percent;
+    }
+    return model.offerPrice*percent;
+  }
+
+  num calculateRestPrice(PropertyOrderModel model){
+    return model.price-calculateDeposit(model);
+  }
+
+
 
 
 }

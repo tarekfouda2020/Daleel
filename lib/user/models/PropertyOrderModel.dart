@@ -21,12 +21,14 @@ class PropertyOrderModel {
     required this.personPrices,
     required this.city,
     required this.ownerMobile,
+    required this.offerPrice,
   });
 
   String id;
   String name;
   List<String> images;
-  int price;
+  num price;
+  num offerPrice;
   PropertyOwner owner;
   bool isOffer;
   OrderLocationModel location;
@@ -41,6 +43,7 @@ class PropertyOrderModel {
     name: json["name"],
     images: List<String>.from(json["images"].map((x) => x)),
     price: json["price"],
+    offerPrice: json["offer_price"]??0,
     owner: PropertyOwner.fromMap(json["owner"]),
     isOffer: json["is_offer"],
     location: OrderLocationModel.fromMap(json["location"]),

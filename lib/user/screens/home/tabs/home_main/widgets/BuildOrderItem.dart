@@ -1,6 +1,11 @@
 part of 'HomeMainWidgetsImports.dart';
 
 class BuildOrderItem extends StatelessWidget {
+  final OrderModel model;
+  final HomeMainData mainData;
+
+  const BuildOrderItem({required this.model, required this.mainData});
+
   @override
   Widget build(BuildContext context) {
     return AnimationContainer(
@@ -26,7 +31,7 @@ class BuildOrderItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyText(
-                      title: "D26L2# - فراس مصطفى",
+                      title: "${model.bookingNumber}# -${model.user.name}",
                       color: MyColors.grey,
                       size: 10,
                       fontWeight: FontWeight.w600,
@@ -34,14 +39,14 @@ class BuildOrderItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 3),
                       child: MyText(
-                        title: "استراحة الشاذلية (قسم النساء)",
+                        title: "${model.property.name} (${model.property.category.name})",
                         color: MyColors.grey,
                         size: 10,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     MyText(
-                      title: "السبت - 6 فبراير - 2020",
+                      title: DateFormat(DateFormat.YEAR_ABBR_MONTH_WEEKDAY_DAY,'ar').format(model.date),
                       color: MyColors.grey,
                       size: 10,
                       fontWeight: FontWeight.w600,
@@ -52,13 +57,13 @@ class BuildOrderItem extends StatelessWidget {
               Column(
                 children: [
                   MyText(
-                    title: "العربون  200",
+                    title: "العربون  ${mainData.calculateDeposit(model.property)}",
                     color: MyColors.grey,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
                   MyText(
-                    title: "المتبقي  200",
+                    title: "المتبقي  ${mainData.calculateRestPrice(model.property)}",
                     color: MyColors.grey,
                     size: 10,
                     fontWeight: FontWeight.w600,
@@ -68,7 +73,7 @@ class BuildOrderItem extends StatelessWidget {
                     child: Divider(color: MyColors.grey,height: 5,),
                   ),
                   MyText(
-                    title: "السعر   500",
+                    title: "السعر   ${model.property.price}",
                     color: MyColors.secondary,
                     size: 10,
                     fontWeight: FontWeight.w600,

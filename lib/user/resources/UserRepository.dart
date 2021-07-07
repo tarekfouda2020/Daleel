@@ -1,4 +1,5 @@
 
+import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
 import 'package:base_flutter/user/resources/UserHttpMethods.dart';
@@ -15,7 +16,7 @@ class UserRepository{
   Future<List<PropertyModel>> getAllProperties(int page, bool refresh)=>
       _httpMethods.getAllProperties(page, refresh);
 
-  Future<List<OrderModel>> getOrders(int page, bool refresh)=>
-      _httpMethods.getOrders(page, refresh);
+  Future<List<OrderModel>> getOrders(int page, FilterModel? filter, bool refresh)=>
+      _httpMethods.getOrders(page, filter, refresh);
 
 }

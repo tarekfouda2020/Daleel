@@ -8,7 +8,6 @@ class HomeMain extends StatefulWidget {
 class _HomeMainState extends State<HomeMain> {
   final HomeMainData homeMainData = new HomeMainData();
 
-
   @override
   void initState() {
     homeMainData.fetchPage(0, context, refresh: false);
@@ -23,7 +22,7 @@ class _HomeMainState extends State<HomeMain> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "الحجوزات",back: false),
+        child: DefaultAppBar(title: "الحجوزات", back: false),
         preferredSize: Size.fromHeight(60),
       ),
       body: Column(
@@ -35,13 +34,17 @@ class _HomeMainState extends State<HomeMain> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 pagingController: homeMainData.pagingController,
                 builderDelegate: PagedChildBuilderDelegate<OrderModel>(
-                    firstPageProgressIndicatorBuilder: (context)=>LoadingDialog.showLoadingView(),
+                    firstPageProgressIndicatorBuilder: (context) =>
+                        LoadingDialog.showLoadingView(),
                     noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                      title: "لا يوجد طلبات",
-                      message:"انتظر الحصول علي طلبات قريبا",
-                    ),
+                          title: "لا يوجد طلبات",
+                          message: "انتظر الحصول علي طلبات قريبا",
+                        ),
                     itemBuilder: (context, item, index) {
-                      return BuildOrderItem();
+                      return BuildOrderItem(
+                        model: item,
+                        mainData: homeMainData,
+                      );
                     }),
               ),
             ),
