@@ -40,7 +40,7 @@ class GeneralHttpMethods {
     String? _token = await messaging.getToken();
     String _lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
-      "mobile_token": code,
+      "mobile_token": int.parse(code),
       "user": id,
     };
     var _data = await DioHelper(context: context).post(url: "verify",body: body,showLoader: false);

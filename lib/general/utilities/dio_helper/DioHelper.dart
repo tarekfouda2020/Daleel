@@ -39,11 +39,7 @@ class DioHelper {
       var response = await _dio.get("$baseUrl$url", options: _buildCacheOptions(url));
       print("response ${response.statusCode}");
       var data = response.data;
-      if (data["key"] == 1) {
-        return data;
-      } else {
-        LoadingDialog.showToastNotification(data["msg"].toString());
-      }
+      return data;
     } on DioError catch (e) {
       if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
         logout();
@@ -66,7 +62,7 @@ class DioHelper {
        return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 301|| e.response?.statusCode == 302) {
         logout();
       } else {
         LoadingDialog.showToastNotification(e.response?.data?["message"]??tr(context, "chickNet"));
@@ -195,7 +191,7 @@ class DioHelper {
     String token = GlobalState.instance.get("token");
     return {
       'Accept': 'application/json',
-      'Authorization': 'Bearer $token',
+      'Authorization': '$token',
     };
   }
 

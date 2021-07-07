@@ -17,8 +17,8 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           children: [
             HeaderLogo(),
+            SizedBox(height: 30),
             BuildText(),
-            SizedBox(height: 50),
             BuildFormInputs(loginData: loginData),
             // BuildForgetText(),
             BuildLoginButton(loginData: loginData),
@@ -30,3 +30,4 @@ class _LoginState extends State<Login> {
     );
   }
 }
+//749169

@@ -15,7 +15,7 @@ class BuildFormInputs extends StatelessWidget {
           IconTextFiled(
             label: tr(context,"phone"),
             controller: loginData.phone,
-            margin: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.symmetric(vertical: 30),
             action: TextInputAction.next,
             type: TextInputType.number,
             suffixIcon: Column(
@@ -27,15 +27,15 @@ class BuildFormInputs extends StatelessWidget {
             ),
             validate: (value) => value!.validateEmpty(context),
           ),
-          LabelTextField(
-            label: tr(context,"password"),
-            controller: loginData.password,
-            margin: const EdgeInsets.symmetric(vertical: 5),
-            validate: (value) => value!.validateEmpty(context),
-            isPassword: true,
-            action: TextInputAction.done,
-            onSubmit: () => loginData.userLogin(context),
-          ),
+          // LabelTextField(
+          //   label: tr(context,"password"),
+          //   controller: loginData.password,
+          //   margin: const EdgeInsets.symmetric(vertical: 5),
+          //   validate: (value) => value!.validateEmpty(context),
+          //   isPassword: true,
+          //   action: TextInputAction.done,
+          //   onSubmit: () => loginData.userLogin(context),
+          // ),
         ],
       ),
     );

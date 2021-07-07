@@ -12,7 +12,7 @@ class BuildFormInputs extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: PinCodeTextField(
-          length: 4,
+          length: 6,
           appContext: context,
           onChanged: (String value) {},
           backgroundColor: Colors.transparent,

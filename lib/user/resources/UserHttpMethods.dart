@@ -17,7 +17,7 @@ class UserHttpMethods {
       url: "propertyOwner/${user.id}/properties$params",
     );
     if (data!=null) {
-      return List<PropertyModel>.from(data[""].map((e) => PropertyModel.fromMap(e)));
+      return List<PropertyModel>.from(data["properties"].map((e) => PropertyModel.fromMap(e)));
     }else{
       return [];
     }
@@ -30,7 +30,7 @@ class UserHttpMethods {
       url: "owners/${user.id}/bookings$params",
     );
     if (data!=null) {
-      return List<OrderModel>.from(data[""].map((e) => OrderModel.fromMap(e)));
+      return List<OrderModel>.from(data["bookings"].map((e) => OrderModel.fromMap(e)));
     }else{
       return [];
     }
