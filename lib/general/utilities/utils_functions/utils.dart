@@ -7,9 +7,9 @@ class Utils {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var strUser = prefs.get("user");
     if (strUser != null) {
-      UserModel data = UserModel.fromJson(json.decode("$strUser"));
+      UserModel data = UserModel.fromMap(json.decode("$strUser"));
       GlobalState.instance.set("token", data.token);
-      changeLanguage(data.lang,context);
+      changeLanguage(data.lang??"ar",context);
       setCurrentUserData(data,context);
     } else {
       changeLanguage("ar",context);
@@ -25,7 +25,7 @@ class Utils {
 
   static Future<void> saveUserData(UserModel model)async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("user", json.encode(model.toJson()));
+    prefs.setString("user", json.encode(model.toMap()));
   }
 
   static void changeLanguage(String lang,BuildContext context){

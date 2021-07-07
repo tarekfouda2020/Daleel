@@ -22,15 +22,10 @@ class BuildButtonList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MyText(
-              title:tr(context,"noReceiveCode"),
-              size: 13,
-              color: MyColors.grey,
-            ),
             InkWell(
-              onTap: () => activeAccountData.onResendCode(context, userId),
+              onTap: () => AutoRouter.of(context).pop(),
               child: MyText(
-                  title:tr(context,"sendCode"),
+                  title: "رجوع",
                   size: 13,
                   color: MyColors.primary,
                   decoration: TextDecoration.underline),

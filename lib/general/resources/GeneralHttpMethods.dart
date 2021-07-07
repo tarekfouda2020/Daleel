@@ -21,39 +21,36 @@ class GeneralHttpMethods {
   GeneralHttpMethods(this.context);
 
   Future<bool> userLogin(String phone, String pass) async {
-    String? _token = await messaging.getToken();
     String _lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "mobile": "+966$phone",
-      // "password": "$pass",
-      // "lang": "$_lang",
-      // "deviceId": "$_token",
       "type": "property_owner",
     };
     var _data = await DioHelper(context: context).post(url: "login",body: body,showLoader: false);
 
     if (_data != null) {
-      await Utils.setDeviceId("$_token");
-      UserModel user = UserModel(lang: _lang);
-      user.id = _data["id"];
-      user.token = _data["mobile_token"];
-      user.lang = _lang;
+      AutoRouter.of(context).push(ActiveAccountRoute(userId: _data["id"]));
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> verifyUser(String code, String id) async {
+    String? _token = await messaging.getToken();
+    String _lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "mobile_token": code,
+      "user": id,
+    };
+    var _data = await DioHelper(context: context).post(url: "verify",body: body,showLoader: false);
+
+    if (_data != null) {
+      UserModel user = UserModel.fromMap(_data);
+      await Utils.setDeviceId(user.token!);
       GlobalState.instance.set("token", user.token);
       await Utils.saveUserData(user);
       Utils.setCurrentUserData(user, context);
-      // int status = _data["status"];
-      // if (status == 1) {
-      //   await Utils.setDeviceId("$_token");
-      //   UserModel user = UserModel.fromJson(_data["data"]);
-      //   user.id = _data["id"];
-      //   user.token = _data["mobile_token"];
-      //   user.lang = _lang;
-      //   GlobalState.instance.set("token", user.token);
-      //   await Utils.saveUserData(user);
-      //   Utils.setCurrentUserData(user, context);
-      // } else if (status == 2) {
-      //   AutoRouter.of(context).push(ActiveAccountRoute(userId: _data["id"]));
-      // }
       return true;
     } else {
       return false;
@@ -197,9 +194,8 @@ class GeneralHttpMethods {
     print("data is $_data");
     if (_data != null) {
       final userCubit = context.read<UserCubit>().state.model;
-      UserModel user = UserModel.fromJson(_data["data"]);
+      UserModel user = UserModel.fromMap(_data["data"]);
       int type = _data["userData"]["type"];
-      user.type = type == 1 ? "user" : "company";
       user.token = userCubit.token;
       user.lang = userCubit.lang;
       return user;

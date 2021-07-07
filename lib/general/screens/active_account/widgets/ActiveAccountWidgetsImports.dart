@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
 import 'package:base_flutter/general/widgets/LoadingButton.dart';
 import 'package:flutter/material.dart';
