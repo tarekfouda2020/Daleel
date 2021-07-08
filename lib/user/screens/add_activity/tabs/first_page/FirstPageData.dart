@@ -3,11 +3,34 @@ part of 'FirstPageImports.dart';
 class FirstPageData{
 
   final GlobalKey<FormState> formKey = new GlobalKey();
+  final GenericBloc<String> selectCatCubit = new GenericBloc("");
+  final GenericBloc<List<File>> normalImagesCubit = new GenericBloc([]);
 
   final TextEditingController nameAr = new TextEditingController();
   final TextEditingController nameEn = new TextEditingController();
-  final TextEditingController number = new TextEditingController();
-  final TextEditingController city = new TextEditingController();
 
+  CityModel? cityModel;
+
+  onCityChange(CityModel? model){
+    cityModel = model;
+  }
+
+  getNormalImages()async{
+    var images = await Utils.getImages();
+    normalImagesCubit.state.data.addAll(images);
+    normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
+  }
+
+  setActivityData(AddActivityData activityData,BuildContext context){
+    if (formKey.currentState!.validate()) {
+      var selected = context.read<CatsCubit>().state.cats
+          .where((e) => e.id==selectCatCubit.state.data).first;
+      activityData.activityModel.categoryModel=selected;
+      activityData.activityModel.nameAr=nameAr.text;
+      activityData.activityModel.nameEn=nameEn.text;
+      activityData.activityModel.city=cityModel?.id;
+      activityData.goToNextPage();
+    }
+  }
 
 }

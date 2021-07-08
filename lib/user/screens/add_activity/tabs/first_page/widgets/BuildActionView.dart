@@ -9,8 +9,8 @@ class BuildActionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultButton(
       title: "التالي",
-      margin: EdgeInsets.only(right: 20,left: 20,bottom: 30,top: 10),
-      onTap: ()=> addActivityData.goToNextPage(),
+      margin: EdgeInsets.only(right: 20,left: 20,bottom: 30,top: 5),
+      onTap: ()=> pageData.setActivityData(addActivityData,context),
       color: MyColors.secondary,
     );
   }

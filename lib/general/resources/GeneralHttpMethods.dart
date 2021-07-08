@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/general/blocks/cats_cubit/cats_cubit.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/GlobalState.dart';
@@ -8,6 +9,7 @@ import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
+import 'package:base_flutter/user/models/CategoryModel.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,6 +65,19 @@ class GeneralHttpMethods {
       return _data;
     }
     return null;
+  }
+
+  Future<List<CategoryModel>> getCategories() async {
+    String lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {"lang": lang};
+    var _data = await DioHelper(context: context,forceRefresh: false).get(url: "categories");
+    if (_data != null) {
+      var cats = List<CategoryModel>.from(_data.map((e) => CategoryModel.fromMap(e)));
+      context.read<CatsCubit>().onUpdateCats(cats);
+      return cats;
+    } else {
+      return [];
+    }
   }
 
   Future<bool> sendCode(String code, String userId) async {

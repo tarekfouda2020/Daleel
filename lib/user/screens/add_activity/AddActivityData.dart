@@ -3,6 +3,7 @@ part of 'AddActivityImports.dart';
 class AddActivityData{
 
   final PageController pageController =new PageController();
+  AddActivityModel activityModel = new AddActivityModel();
 
   final GenericBloc<int> stepperCubit = new GenericBloc(0);
 

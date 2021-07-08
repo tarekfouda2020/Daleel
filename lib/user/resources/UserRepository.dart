@@ -1,4 +1,5 @@
 
+import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
@@ -18,5 +19,8 @@ class UserRepository{
 
   Future<List<OrderModel>> getOrders(int page, FilterModel? filter, bool refresh)=>
       _httpMethods.getOrders(page, filter, refresh);
+
+  Future<List<CityModel>> getCities(bool refresh)=>
+      _httpMethods.getCities(refresh);
 
 }

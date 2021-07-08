@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
+import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
@@ -37,6 +38,16 @@ class UserHttpMethods {
     );
     if (data!=null) {
       return List<OrderModel>.from(data["bookings"].map((e) => OrderModel.fromMap(e)));
+    }else{
+      return [];
+    }
+  }
+
+
+  Future<List<CityModel>> getCities(bool refresh) async {
+    var data = await DioHelper(context: context, forceRefresh: refresh).get(url: "cities",);
+    if (data!=null) {
+      return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
     }else{
       return [];
     }

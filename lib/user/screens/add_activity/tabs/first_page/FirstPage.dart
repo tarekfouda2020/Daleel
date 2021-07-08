@@ -12,6 +12,14 @@ class _FirstPageState extends State<FirstPage> {
 
   final FirstPageData pageData = new FirstPageData();
 
+
+  @override
+  void initState() {
+    var cat = context.read<CatsCubit>().state.cats.first;
+    pageData.selectCatCubit.onUpdateData(cat.id);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,15 +37,17 @@ class _FirstPageState extends State<FirstPage> {
                 padding: EdgeInsets.zero,
                 children: [
                   BuildHeaderColor(),
-                  BuildTypesView(),
+                  BuildTypesView(pageData: pageData),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                   ),
                   BuildImagesView(
-                    onTap: (){},
+                    onTap: () => pageData.getNormalImages(),
                     title: "رفع الصور",
+                    subtitle: "من ٢ الي ٥ صور",
                   ),
+                  BuildNormalImages(pageData: pageData,),
                   BuildImagesView(
                     onTap: (){},
                     title: "رفع صور ٣٦٠ درجة",

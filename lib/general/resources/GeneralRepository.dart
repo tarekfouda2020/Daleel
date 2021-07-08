@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/UserModel.dart';
+import 'package:base_flutter/user/models/CategoryModel.dart';
 import 'package:flutter/material.dart';
 
 import 'GeneralHttpMethods.dart';
@@ -15,6 +16,8 @@ class GeneralRepository {
   Future<bool> setUserLogin(String phone, String pass)=> _generalHttpMethods.userLogin(phone, pass);
 
   Future<bool> verifyUser(String code, String id)=> _generalHttpMethods.verifyUser(code, id);
+
+  Future<List<CategoryModel>> getCategories()=> _generalHttpMethods.getCategories();
 
   Future<void> getHomeConstData()=>_generalHttpMethods.getHomeConstData();
 

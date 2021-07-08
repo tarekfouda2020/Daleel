@@ -1,3 +1,9 @@
+enum CategoriesTypes{
+  firstCat,
+  secondCat,
+  thirdCat,
+}
+
 class CategoryModel {
   CategoryModel({
     required this.id,
@@ -10,7 +16,7 @@ class CategoryModel {
     required this.sorting,
     required this.createdAt,
     required this.updatedAt,
-    required this.v,
+    required this.type,
   });
 
   String id;
@@ -23,7 +29,7 @@ class CategoryModel {
   int sorting;
   DateTime createdAt;
   DateTime updatedAt;
-  int v;
+  CategoriesTypes type;
 
   factory CategoryModel.fromMap(Map<String, dynamic> json) => CategoryModel(
     id: json["_id"],
@@ -36,7 +42,7 @@ class CategoryModel {
     sorting: json["sorting"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    v: json["__v"],
+    type: getTypeValue(json["tag"]),
   );
 
   Map<String, dynamic> toMap() => {
@@ -50,6 +56,26 @@ class CategoryModel {
     "sorting": sorting,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
-    "__v": v,
+    "type": type,
   };
+
+
+  static CategoriesTypes getTypeValue(String value){
+    switch(value){
+      case "قاعات_افراح":
+        return CategoriesTypes.firstCat;
+      case "اجنحة_عرسان":
+        return CategoriesTypes.secondCat;
+      case "استراحات":
+        return CategoriesTypes.firstCat;
+      case "شاليهات":
+        return CategoriesTypes.firstCat;
+      case "ضيافة":
+        return CategoriesTypes.thirdCat;
+    }
+    return CategoriesTypes.thirdCat;
+  }
+
 }
+
+

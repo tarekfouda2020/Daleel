@@ -23,6 +23,9 @@ class MainData {
     BlocProvider<UserCubit>(
       create: (BuildContext context)=> UserCubit(),
     ),
+    BlocProvider<CatsCubit>(
+      create: (BuildContext context)=> CatsCubit(),
+    ),
   ];
 
 

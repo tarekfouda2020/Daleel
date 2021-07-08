@@ -17,6 +17,8 @@ class DropdownTextField<DataType> extends StatefulWidget {
   final EdgeInsets? margin;
   final double? fontSize;
   final double? labelSize;
+  final Color? borderColor;
+  final Color? filledColor;
   final dynamic validate;
   final dynamic onChange;
   final dynamic finData;
@@ -26,6 +28,8 @@ class DropdownTextField<DataType> extends StatefulWidget {
   DropdownTextField(
       {this.label,
         this.hint,
+        this.borderColor,
+        this.filledColor,
         this.margin,
         this.validate,
         this.downIconPadding,
@@ -53,7 +57,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
       child: DropdownSearch<DataType>(
         key: widget.dropKey,
         mode: Mode.BOTTOM_SHEET,
-        isFilteredOnline: true,
+        isFilteredOnline: false,
         maxHeight: 300,
         label: widget.label,
         items: widget.data,
@@ -99,11 +103,10 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         ),
         dropdownSearchDecoration: CustomInputDecoration(
             lang: lang,
+            enableColor: widget.borderColor,
             hint: widget.hint,
-            enableColor: Colors.black,
-            focusColor: MyColors.primary,
-            borderRaduis: 2,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 17)
+            filledColor: widget.filledColor,
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12)
         ),
       ),
     );
