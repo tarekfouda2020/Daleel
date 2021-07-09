@@ -22,7 +22,7 @@ class BuildActionsView extends StatelessWidget {
             title: "التالي",
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
-            onTap: ()=> activityData.goToNextPage(),
+            onTap: ()=> activityData.secondCatScreenData.savePackagesToModel(activityData),
           ),
         ],
       ),

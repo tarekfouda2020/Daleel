@@ -36,12 +36,14 @@ class MultiDropDownField<T> extends StatelessWidget {
       title: MyText(title: title, color: MyColors.black, size: 12),
       decoration: BoxDecoration(
           color: MyColors.fillColor,
-          borderRadius: BorderRadius.circular(8)
+          borderRadius: BorderRadius.circular(8),
       ),
       items: data.map((e) => MultiSelectItem<T>(e, e.toString()))
           .toList(),
       onConfirm: onConfirm,
       initialValue: selectedItems,
+      confirmText: Text("تآكيد",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
+      cancelText: Text("الغاء",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
       chipDisplay: MultiSelectChipDisplay(
         onTap: onItemClick,
       ),

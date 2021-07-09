@@ -23,8 +23,8 @@ class BuildPackagesCard extends StatelessWidget {
                 duration: Duration(milliseconds: 500),
                 transitionBuilder:
                     (child, primaryAnimation, secondaryAnimation) {
-                  return ScaleTransition(
-                    scale: primaryAnimation,
+                  return FadeTransition(
+                    opacity: primaryAnimation,
                     child: child,
                   );
                 },

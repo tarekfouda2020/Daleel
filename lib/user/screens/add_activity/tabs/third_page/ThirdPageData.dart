@@ -21,8 +21,10 @@ class ThirdPageData{
 
   setAddDataToModel(AddActivityData addActivityData){
     if (formKey.currentState!.validate()) {
-      addActivityData.activityModel.allSectionsPrice!["description"]=descEn.text;
-      addActivityData.activityModel.allSectionsPrice!["description_ar"]=descAr.text;
+      addActivityData.activityModel.allSectionsPrice?["description"]=descEn.text;
+      addActivityData.activityModel.allSectionsPrice?["description_ar"]=descAr.text;
+      addActivityData.activityModel.descAr = descAr.text;
+      addActivityData.activityModel.descEn = descEn.text;
       addActivityData.activityModel.termsEn = termsEn.text;
       addActivityData.activityModel.termsAr = termsAr.text;
       addActivityData.activityModel.subCategory = [subCategoryModel!.id];
