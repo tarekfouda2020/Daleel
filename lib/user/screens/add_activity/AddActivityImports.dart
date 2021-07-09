@@ -11,6 +11,8 @@ import 'tabs/third_page/ThirdPageImports.dart';
 import 'tabs/fourth_page/FourthPageImports.dart';
 import 'tabs/second_page/cats_screens/first_cat_screen/FirstCatScreenImports.dart';
 import 'tabs/second_page/cats_screens/second_cat_screen/SecondCatScreenImports.dart';
+import 'tabs/second_page/cats_screens/third_cat_screen/ThirdCatScreenImports.dart';
+
 
 part 'AddActivity.dart';
 part 'AddActivityData.dart';

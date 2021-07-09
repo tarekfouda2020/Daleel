@@ -7,7 +7,6 @@ class BuildFeaturesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLoading.dismiss();
     return BlocBuilder<GenericBloc<List<CityModel>>, GenericState<List<CityModel>>>(
       bloc: pageData.optionsCubit,
       builder: (context, state) {

@@ -17,7 +17,7 @@ class _SecondPageState extends State<SecondPage>{
       case CategoriesTypes.secondCat:
         return SecondCatScreen(activityData: widget.addActivityData);
       case CategoriesTypes.thirdCat:
-        return Container();
+        return ThirdCatScreen(addActivityData: widget.addActivityData);
       default :
         return FirstCatScreen(addActivityData: widget.addActivityData);
     }
