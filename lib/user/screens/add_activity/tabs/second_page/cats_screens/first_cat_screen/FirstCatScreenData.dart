@@ -29,9 +29,24 @@ class FirstCatScreenData{
       LoadingDialog.showSimpleToast("من فضلك قم باستكمال البيانات الالزامية");
       return;
     }
-    addActivityData.activityModel.allSectionsPrice=allSectionsPrice;
-    addActivityData.activityModel.firstSectionPrice=firstSectionPrice;
-    addActivityData.activityModel.secondSectionPrice=secondSectionPrice;
+    Map<String,dynamic> all={};
+    Map<String,dynamic> first={};
+    Map<String,dynamic> second={};
+    allSectionsPrice.allDeptFields.forEach((e) {
+      all[e.name]= e.name=="description"||e.name=="description_ar"||
+          e.name=="name"? e.value.text : double.parse(e.value.text);
+    });
+    firstSectionPrice.allDeptFields.forEach((e) {
+      first[e.name]=e.name=="description"||e.name=="description_ar"||
+          e.name=="name"? e.value.text : double.parse(e.value.text);
+    });
+    secondSectionPrice.allDeptFields.forEach((e) {
+      second[e.name]=e.name=="description"||e.name=="description_ar"||
+          e.name=="name"? e.value.text : double.parse(e.value.text);
+    });
+    addActivityData.activityModel.allSectionsPrice=all;
+    addActivityData.activityModel.firstSectionPrice=firstSectionPrice.saved?first:null;
+    addActivityData.activityModel.secondSectionPrice=secondSectionPrice.saved?second:null;
     addActivityData.goToNextPage();
   }
 

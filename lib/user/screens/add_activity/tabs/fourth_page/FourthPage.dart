@@ -26,6 +26,7 @@ class _FourthPageState extends State<FourthPage>{
     return GestureDetector(
       onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -39,15 +40,13 @@ class _FourthPageState extends State<FourthPage>{
                 BuildHeaderColor(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: MyText(title: "المميزات او الموقع", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                  child: MyText(title: "المميزات و الموقع", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                 ),
                 BuildFeaturesView(pageData: pageData),
               ],
             ),
           ),
-          Flexible(
-            child: BuildMapView(pageData: pageData,),
-          ),
+
           BuildActionsView(addActivityData: widget.addActivityData)
         ],
       ),

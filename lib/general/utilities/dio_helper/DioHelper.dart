@@ -72,8 +72,7 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> uploadFile(
-      {required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
+  Future<dynamic> uploadFile({required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     _printRequestBody(body);
     FormData formData = FormData.fromMap(body);
@@ -104,23 +103,17 @@ class DioHelper {
 
       }
     });
-
     _dio.options.headers = await _getHeader();
     //create multipart request for POST or PATCH method
-
     try {
       var response = await _dio.post("$baseUrl$url", data: formData);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      LoadingDialog.showToastNotification(response.data["msg"].toString());
-      if (response.data["key"] == 1) return response.data;
+      return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
-        logout();
-      } else {
-        LoadingDialog.showToastNotification(tr(context, "chickNet"));
-      }
+      LoadingDialog.showToastNotification(
+          "${e.response?.data["message"] ?? tr(context,"chickNet")}");
     }
 
     return null;

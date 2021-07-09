@@ -1,53 +1,50 @@
 part of 'UtilsImports.dart';
 
 class Utils {
-
-
-  static Future<void> manipulateSplashData( BuildContext context) async {
+  static Future<void> manipulateSplashData(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await GeneralRepository(context).getCategories();
     var strUser = prefs.get("user");
     if (strUser != null) {
       UserModel data = UserModel.fromMap(json.decode("$strUser"));
       GlobalState.instance.set("token", data.token);
-      changeLanguage(data.lang??"ar",context);
-      setCurrentUserData(data,context);
+      changeLanguage(data.lang ?? "ar", context);
+      setCurrentUserData(data, context);
     } else {
-      changeLanguage("ar",context);
+      changeLanguage("ar", context);
       context.router.push(LoginRoute());
     }
-
   }
 
-  static void setCurrentUserData(UserModel model,BuildContext context)async{
+  static void setCurrentUserData(UserModel model, BuildContext context) async {
     context.read<UserCubit>().onUpdateUserData(model);
     AutoRouter.of(context).push(HomeRoute());
   }
 
-  static Future<void> saveUserData(UserModel model)async{
+  static Future<void> saveUserData(UserModel model) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("user", json.encode(model.toMap()));
   }
 
-  static void changeLanguage(String lang,BuildContext context){
+  static void changeLanguage(String lang, BuildContext context) {
     context.read<LangCubit>().onUpdateLanguage(lang);
   }
 
-  static UserModel getSavedUser({required BuildContext context}){
+  static UserModel getSavedUser({required BuildContext context}) {
     return context.read<UserCubit>().state.model;
   }
 
-  static Future<String?> getDeviceId()async{
+  static Future<String?> getDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString("deviceId");
   }
 
-  static Future<void> setDeviceId(String token)async{
+  static Future<void> setDeviceId(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("deviceId",token);
+    prefs.setString("deviceId", token);
   }
 
-  static void clearSavedData()async{
+  static void clearSavedData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
@@ -107,18 +104,16 @@ class Utils {
 
   static void shareApp(url) {
     LoadingDialog.showLoadingDialog();
-    Share.share(url).whenComplete((){
+    Share.share(url).whenComplete(() {
       EasyLoading.dismiss();
     });
   }
 
   static Future<File?> getImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: false,
-        type: FileType.image
-    );
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowMultiple: false, type: FileType.image);
 
-    if(result != null) {
+    if (result != null) {
       List<File> files = result.paths.map((path) => File("$path")).toList();
       return files.first;
     } else {
@@ -126,13 +121,11 @@ class Utils {
     }
   }
 
-  static Future<List<File>> getImages()async{
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
-        type: FileType.image
-    );
+  static Future<List<File>> getImages() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowMultiple: true, type: FileType.image);
 
-    if(result != null) {
+    if (result != null) {
       List<File> files = result.paths.map((path) => File("$path")).toList();
       return files;
     } else {
@@ -141,12 +134,10 @@ class Utils {
   }
 
   static Future<File?> getVideo() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: false,
-        type: FileType.video
-    );
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowMultiple: false, type: FileType.video);
 
-    if(result != null) {
+    if (result != null) {
       List<File> files = result.paths.map((path) => File("$path")).toList();
       return files.first;
     } else {
@@ -154,18 +145,19 @@ class Utils {
     }
   }
 
-  static void copToClipboard({required String text,required GlobalKey<ScaffoldState> scaffold}){
-    if(text.trim().isEmpty){
+  static void copToClipboard(
+      {required String text, required GlobalKey<ScaffoldState> scaffold}) {
+    if (text.trim().isEmpty) {
       LoadingDialog.showToastNotification("لا يوجد بيانات للنسخ");
       return;
-    }else{
+    } else {
       Clipboard.setData(ClipboardData(text: "$text")).then((value) {
         LoadingDialog.showToastNotification("تم النسخ بنجاح");
       });
     }
   }
 
-  static Future<bool> askForPermission(Location location)async{
+  static Future<bool> askForPermission(Location location) async {
     var permission = await location.hasPermission();
     if (permission == PermissionStatus.deniedForever) {
       return false;
@@ -179,28 +171,60 @@ class Utils {
     return true;
   }
 
-  static Future<LocationData> getCurrentLocation()async{
+  static Future<LocationData> getCurrentLocation() async {
     final location = new Location();
-    bool permission =await askForPermission(location);
+    bool permission = await askForPermission(location);
     LocationData? current;
-    if(permission){
+    if (permission) {
       current = await location.getLocation();
     }
-     return current??LocationData.fromMap({"latitude":0,"longitude":0});
-
+    return current ?? LocationData.fromMap({"latitude": 0, "longitude": 0});
   }
 
-  static void navigateToMapWithDirection({required String lat,required String lng,required String title})async{
+  static Future<String> getAddress(LatLng latLng, BuildContext context) async {
+    final coordinates = new Coordinates(latLng.latitude, latLng.longitude);
+    List<Address> addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    print("${first.featureName} : ${first.addressLine}");
+    return first.addressLine;
+  }
+
+  static void navigateToLocationAddress(
+      BuildContext context, LocationCubit locCubit) async {
+    // FocusScope.of(context).requestFocus(FocusNode());
+    // LoadingDialog.showLoadingDialog();
+    // var current = await Utils.getCurrentLocation();
+    // LocationModel locationModel = locCubit.state.model;
+    // locationModel =
+    //     LocationModel("${current.latitude}", "${current.longitude}", "");
+    // double lat = double.parse(locationModel.lat);
+    // double lng = double.parse(locationModel.lng);
+    // String address = await getAddress(LatLng(lat, lng), context);
+    // locationModel.address = address;
+    // locCubit.onLocationUpdated(locationModel);
+    // EasyLoading.dismiss();
+    Navigator.of(context).push(
+      CupertinoPageRoute(
+        builder: (cxt) => BlocProvider.value(
+          value: locCubit,
+          child: LocationAddress(),
+        ),
+      ),
+    );
+  }
+
+  static void navigateToMapWithDirection(
+      {required String lat, required String lng, required String title}) async {
     final availableMaps = await MapLauncher.installedMaps;
     LocationData loc = await getCurrentLocation();
-    if (availableMaps.length>0) {
+    if (availableMaps.length > 0) {
       await availableMaps.first.showDirections(
         destinationTitle: title,
         origin: Coords(loc.latitude!, loc.longitude!),
         destination: Coords(double.parse(lat), double.parse(lng)),
       );
-    }
-    else{
+    } else {
       LoadingDialog.showSimpleToast("قم بتحميل خريطة جوجل");
     }
   }
@@ -209,7 +233,7 @@ class Utils {
     var sb = new StringBuffer();
     for (int i = 0; i < s.length; i++) {
       switch (s[i]) {
-      //Arabic digits
+        //Arabic digits
         case '\u0660':
           sb.write('0');
           break;
@@ -247,5 +271,4 @@ class Utils {
     }
     return sb.toString();
   }
-
 }

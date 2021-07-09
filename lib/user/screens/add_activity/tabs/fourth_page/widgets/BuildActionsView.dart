@@ -21,7 +21,7 @@ class BuildActionsView extends StatelessWidget {
             title: "حفظ",
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
-            onTap: ()=> AutoRouter.of(context).pop(),
+            onTap: ()=> addActivityData.fourthPageData.saveDataToModel(context, addActivityData),
           ),
         ],
       ),

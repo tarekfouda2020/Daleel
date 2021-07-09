@@ -112,6 +112,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/logoCheck.png
     - assets/images/logoMark.png
+    - assets/images/marker.png
     - assets/images/more.png
     - assets/images/nodata.png
     - assets/images/placeholder.png

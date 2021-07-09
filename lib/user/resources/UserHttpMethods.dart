@@ -1,6 +1,7 @@
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
+import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
@@ -80,6 +81,12 @@ class UserHttpMethods {
     }else{
       return [];
     }
+  }
+
+  Future<bool> addActivity(AddActivityModel model) async {
+    var data = await DioHelper(context: context)
+        .uploadFile(url: "properties",body: model.toJson());
+    return (data!=null);
   }
 
 

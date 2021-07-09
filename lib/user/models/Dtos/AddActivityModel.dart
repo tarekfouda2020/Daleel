@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:base_flutter/user/models/CategoryModel.dart';
+import 'package:base_flutter/user/models/CityModel.dart';
 import 'AddDeptModel.dart';
 
 class AddActivityModel{
@@ -10,26 +11,37 @@ class AddActivityModel{
   String? nameAr;
   String? nameEn;
   String? city;
-  AddDeptModel? allSectionsPrice;
-  AddDeptModel? firstSectionPrice;
-  AddDeptModel? secondSectionPrice;
+  Map<String,dynamic>? allSectionsPrice;
+  Map<String,dynamic>?  firstSectionPrice;
+  Map<String,dynamic>?  secondSectionPrice;
   String? termsAr;
   String? termsEn;
+  List<double>? location;
+  List<String>? subCategory;
+  List<String>? occasions;
+  List<CityModel>? options;
 
 
   Map<String, dynamic> toJson()=>{
     "category":categoryModel?.id,
+    "city":city,
     "images":categoryModel?.image,
     "name":nameEn,
-    "allSectionsPrice":allSectionsPrice?.allDeptFields.map((e) => e.toJson()),
-    "firstSectionPrice": firstSectionPrice!.saved? firstSectionPrice?.allDeptFields.map((e) => e.toJson()):null,
-    "secondSectionPrice":secondSectionPrice!.saved? secondSectionPrice?.allDeptFields.map((e) => e.toJson()):null,
+    "price": 0,
+    "capacity":allSectionsPrice?["capacity"],
+    "allSectionsPrice":allSectionsPrice,
+    "firstSectionPrice": firstSectionPrice,
+    "secondSectionPrice":secondSectionPrice,
     "terms_and_conditions":termsEn,
-    "description": allSectionsPrice?.allDeptFields[9].value.text,
+    "description": allSectionsPrice?["description"],
+    "location":location,
+    "sub_category": subCategory,
+    "occasions": occasions,
+    "options": options?.map((e) => {"id":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
     "translation": {
       "ar": {
         "name": nameAr,
-        "description": allSectionsPrice?.allDeptFields[10].value.text,
+        "description": allSectionsPrice?["description_ar"],
         "terms_and_conditions": termsAr
       }
     },

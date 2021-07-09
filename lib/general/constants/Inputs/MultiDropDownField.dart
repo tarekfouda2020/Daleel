@@ -32,7 +32,7 @@ class MultiDropDownField<T> extends StatelessWidget {
       initialChildSize: 0.4,
       listType: MultiSelectListType.LIST,
       searchable: true,
-      buttonText: Text(label,style: CustomInputTextStyle(lang: lang),),
+      buttonText: Text(label,style: CustomInputTextStyle(lang: lang,textColor: MyColors.blackOpacity),),
       title: MyText(title: title, color: MyColors.black, size: 12),
       decoration: BoxDecoration(
           color: MyColors.fillColor,
