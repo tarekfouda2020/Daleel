@@ -24,6 +24,7 @@ import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
+import 'package:base_flutter/user/models/Dtos/PackagesTypeModel.dart' as _i19;
 import 'package:base_flutter/user/screens/add_package/AddPackageImports.dart'
     as _i17;
 import 'package:base_flutter/user/screens/edit_activity/EditActivityImports.dart'
@@ -124,12 +125,13 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     AddPackageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i17.AddPackage();
+        builder: (data) {
+          final args = data.argsAs<AddPackageRouteArgs>();
+          return _i17.AddPackage(type: args.type);
         },
         transitionsBuilder: _i1.TransitionsBuilders.slideBottom,
-        durationInMilliseconds: 800,
-        reverseDurationInMilliseconds: 800,
+        durationInMilliseconds: 600,
+        reverseDurationInMilliseconds: 600,
         opaque: true,
         barrierDismissible: false)
   };
@@ -279,8 +281,16 @@ class EditActivityRoute extends _i1.PageRouteInfo {
   static const String name = 'EditActivityRoute';
 }
 
-class AddPackageRoute extends _i1.PageRouteInfo {
-  const AddPackageRoute() : super(name, path: '/add-package');
+class AddPackageRoute extends _i1.PageRouteInfo<AddPackageRouteArgs> {
+  AddPackageRoute({required _i19.PackageType type})
+      : super(name,
+            path: '/add-package', args: AddPackageRouteArgs(type: type));
 
   static const String name = 'AddPackageRoute';
+}
+
+class AddPackageRouteArgs {
+  const AddPackageRouteArgs({required this.type});
+
+  final _i19.PackageType type;
 }

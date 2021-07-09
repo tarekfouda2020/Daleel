@@ -6,9 +6,22 @@ class AddpackagePersonModel{
   int? numberOfPersons;
   int? minimumCount;
   int? maximumCount;
-  int? pricePerPerson;
+  double? pricePerPerson;
   double? packagePrice;
-  double? numberOfBookingsPerDay;
+  int? numberOfBookingsPerDay;
+
+  AddpackagePersonModel({
+    this.nameEn,
+    this.nameAr,
+    this.descEn,
+    this.descAr,
+    this.numberOfPersons,
+    this.minimumCount,
+    this.maximumCount,
+    this.pricePerPerson,
+    this.packagePrice,
+    this.numberOfBookingsPerDay,
+  });
 
   Map<String,dynamic> toJson()=>{
     "name":nameEn,

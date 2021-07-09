@@ -19,7 +19,7 @@ class BuildPersonsList extends StatelessWidget {
       child: Column(
         children: [
           ...data.map((e) => BuildPersonItem(model: e)).toList(),
-          BuildAddPackageAction(),
+          BuildAddPackageAction(type: PackageType.person,),
         ],
       ),
     );

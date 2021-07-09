@@ -19,7 +19,7 @@ class BuildPackagesList extends StatelessWidget {
       child: Column(
         children: [
           ...data.map((e) => BuildPackageItem(model: e)).toList(),
-          BuildAddPackageAction(),
+          BuildAddPackageAction(type: PackageType.package,),
         ],
       ),
     );

@@ -1,6 +1,9 @@
 part of 'AddPackageImports.dart';
 
 class AddPackage extends StatefulWidget {
+  final PackageType type;
+
+  const AddPackage({required this.type});
   @override
   _AddPackageState createState() => _AddPackageState();
 }
@@ -34,6 +37,7 @@ class _AddPackageState extends State<AddPackage> {
                 padding: EdgeInsets.only(top: 10),
                 children: [
                   BuildFormView(
+                    type: widget.type,
                     packageData: packageData,
                   ),
                 ],

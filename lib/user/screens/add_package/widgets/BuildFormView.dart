@@ -2,8 +2,9 @@ part of 'AddPackageWidgetImports.dart';
 
 class BuildFormView extends StatelessWidget {
   final AddPackageData packageData;
+  final PackageType type;
 
-  const BuildFormView({required this.packageData});
+  const BuildFormView({required this.packageData, required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -73,31 +74,117 @@ class BuildFormView extends StatelessWidget {
               max: 3,
               validate: (value)=> value!.validateEmpty(context),
             ),
-            MyText(
-              title: "عدد الافراد",
-              color: MyColors.blackOpacity,
-              size: 12,
-              fontWeight: FontWeight.w600,
+            Visibility(
+              visible: type==PackageType.package,
+              child: Column(
+                children: [
+                  MyText(
+                    title: "عدد الافراد",
+                    color: MyColors.blackOpacity,
+                    size: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  LabelTextField(
+                    controller: packageData.number,
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    hint: "ادخل عدد الافراد",
+                    type: TextInputType.number,
+                    filledColor: MyColors.white,
+                    validate: (value)=> value!.validateEmpty(context),
+                  ),
+                ],
+              ),
+              replacement: Column(
+                children: [
+                  MyText(
+                    title: "الحد الادني للافراد",
+                    color: MyColors.blackOpacity,
+                    size: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  LabelTextField(
+                    controller: packageData.minNum,
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    hint: "ادخل الحد الادني",
+                    type: TextInputType.number,
+                    filledColor: MyColors.white,
+                    validate: (value)=> value!.validateEmpty(context),
+                  ),
+                ],
+              ),
             ),
-            LabelTextField(
-              controller: packageData.number,
-              margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل عدد الافراد",
-              type: TextInputType.number,
-              filledColor: MyColors.white,
-              validate: (value)=> value!.validateEmpty(context),
+            Offstage(
+              offstage: type==PackageType.package,
+              child: Column(
+                children: [
+                  MyText(
+                    title: "الحد الاقصي للافراد",
+                    color: MyColors.blackOpacity,
+                    size: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  LabelTextField(
+                    controller: packageData.maxNum,
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    hint: "ادخل الاقصي الادني",
+                    type: TextInputType.number,
+                    filledColor: MyColors.white,
+                    validate: (value)=> value!.validateEmpty(context),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 10),
+            Visibility(
+              visible: type==PackageType.package,
+              child: Column(
+                children: [
+                  MyText(
+                    title: "سعر الباكدج",
+                    color: MyColors.blackOpacity,
+                    size: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  LabelTextField(
+                    controller: packageData.price,
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    hint: "ادخل سعر الباكيدج",
+                    type: TextInputType.number,
+                    filledColor: MyColors.white,
+                    validate: (value)=> value!.validateEmpty(context),
+                  ),
+                ],
+              ),
+              replacement: Column(
+                children: [
+                  MyText(
+                    title: "السعر للفرد",
+                    color: MyColors.blackOpacity,
+                    size: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  LabelTextField(
+                    controller: packageData.pricePerPerson,
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    hint: "ادخل سعر الفرد",
+                    type: TextInputType.number,
+                    filledColor: MyColors.white,
+                    validate: (value)=> value!.validateEmpty(context),
+                  ),
+                ],
+              ),
+            ),
+
             MyText(
-              title: "سعر الباكدج",
+              title: "عدد الحجوزات في اليوم",
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
             ),
             LabelTextField(
-              controller: packageData.price,
+              controller: packageData.numberOfReservations,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل سعر الباكيدج",
+              hint: "ادخل عدد الحجوزات",
               type: TextInputType.number,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),

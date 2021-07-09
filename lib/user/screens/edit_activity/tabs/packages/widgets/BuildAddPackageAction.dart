@@ -5,7 +5,7 @@ class BuildAddPackageAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> AutoRouter.of(context).push(AddPackageRoute()),
+      onTap: ()=> AutoRouter.of(context).push(AddPackageRoute(type: PackageType.package)),
       child: Container(
         width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.only(top: 10),

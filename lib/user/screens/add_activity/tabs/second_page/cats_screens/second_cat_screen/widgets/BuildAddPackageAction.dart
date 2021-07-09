@@ -1,11 +1,13 @@
 part of 'PackagesWidgetImports.dart';
 
 class BuildAddPackageAction extends StatelessWidget {
+  final PackageType type;
 
+  const BuildAddPackageAction({required this.type});
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> AutoRouter.of(context).push(AddPackageRoute()),
+      onTap: ()=> AutoRouter.of(context).push(AddPackageRoute(type: type)),
       child: Container(
         width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.only(top: 10),
