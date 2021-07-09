@@ -1,9 +1,9 @@
 part of 'PackagesWidgetImports.dart';
 
-class BuildPackageItem extends StatelessWidget {
-  final AddPackageModel model;
+class BuildPersonItem extends StatelessWidget {
+  final AddpackagePersonModel model;
 
-  const BuildPackageItem({required this.model});
+  const BuildPersonItem({required this.model});
   @override
   Widget build(BuildContext context) {
     var lang = context.watch<LangCubit>().state.locale.languageCode;
@@ -25,13 +25,19 @@ class BuildPackageItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "عدد الافراد : ${model.numberOfPersons} فرد",
+              title: " الحد الادني : ${model.minimumCount}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "سعر الباكدج : ${model.packagePrice} ريال",
+              title: " الحد الاقصي : ${model.maximumCount}",
+              color: Colors.black54,
+              size: 10,
+              fontWeight: FontWeight.w600,
+            ),
+            MyText(
+              title: "السعر الفرد : ${model.pricePerPerson} ريال",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,

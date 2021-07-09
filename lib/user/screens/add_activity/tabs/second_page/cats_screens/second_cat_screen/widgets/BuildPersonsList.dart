@@ -1,9 +1,9 @@
 part of  'PackagesWidgetImports.dart';
 
-class BuildPackagesList extends StatelessWidget {
-  final List<AddPackageModel> data;
+class BuildPersonsList extends StatelessWidget {
+  final List<AddpackagePersonModel> data;
 
-  const BuildPackagesList({required this.data});
+  const BuildPersonsList({required this.data});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class BuildPackagesList extends StatelessWidget {
       ),
       child: Column(
         children: [
-          ...data.map((e) => BuildPackageItem(model: e)).toList(),
+          ...data.map((e) => BuildPersonItem(model: e)).toList(),
           BuildAddPackageAction(),
         ],
       ),

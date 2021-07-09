@@ -1,6 +1,7 @@
 part of 'AddActivityImports.dart';
 
 
+
 class AddActivityData{
 
   final PageController pageController =new PageController();
@@ -10,6 +11,7 @@ class AddActivityData{
 
   final FirstPageData firstPageData =new FirstPageData();
   final FirstCatScreenData firstCatScreenData =new FirstCatScreenData();
+  final SecondCatScreenData secondCatScreenData = new SecondCatScreenData();
   final ThirdPageData thirdPageData = new ThirdPageData();
   final FourthPageData fourthPageData = new FourthPageData();
 

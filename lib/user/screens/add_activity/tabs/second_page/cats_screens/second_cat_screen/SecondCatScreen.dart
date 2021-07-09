@@ -10,7 +10,14 @@ class SecondCatScreen extends StatefulWidget {
 
 class _SecondCatScreenState extends State<SecondCatScreen>{
 
-  final SecondCatScreenData screenData = new SecondCatScreenData();
+  late SecondCatScreenData screenData ;
+
+
+  @override
+  void initState() {
+    super.initState();
+    screenData=widget.activityData.secondCatScreenData;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,7 @@ class _SecondCatScreenState extends State<SecondCatScreen>{
             child: ListView(
               children: [
                 MyText(title: "السعر", color: MyColors.primary, size: 16,fontWeight: FontWeight.w600,),
-                BuildPackagesCard()
+                BuildPackagesCard(screenData: screenData)
               ],
             ),
           ),

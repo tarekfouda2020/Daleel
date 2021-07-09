@@ -32,8 +32,8 @@ part of 'RouterImports.dart';
     CustomRoute(
       page: AddPackage,
       transitionsBuilder: TransitionsBuilders.slideBottom,
-      durationInMilliseconds: 800,
-      reverseDurationInMilliseconds: 800,
+      durationInMilliseconds: 600,
+      reverseDurationInMilliseconds: 600,
     ),
   ],
 )
