@@ -30,4 +30,7 @@ class UserRepository{
   Future<List<CityModel>> getLocations(bool refresh)=>
       _httpMethods.getLocations(refresh);
 
+  Future<List<CityModel>> getOptions(String catId,bool refresh)=>
+      _httpMethods.getOptions(catId, refresh);
+
 }

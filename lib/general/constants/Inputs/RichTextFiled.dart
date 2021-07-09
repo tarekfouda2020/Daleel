@@ -47,6 +47,8 @@ class RichTextFiled extends StatelessWidget {
         onFieldSubmitted: submit,
         maxLines: max,
         readOnly: readOnly,
+        enableSuggestions: false,
+        autocorrect: false,
         validator: (value) => validate(value),
         style: CustomInputTextStyle(lang: lang),
         decoration: CustomInputDecoration(

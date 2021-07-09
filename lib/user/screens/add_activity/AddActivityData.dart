@@ -11,6 +11,7 @@ class AddActivityData{
   final FirstPageData firstPageData =new FirstPageData();
   final FirstCatScreenData firstCatScreenData =new FirstCatScreenData();
   final ThirdPageData thirdPageData = new ThirdPageData();
+  final FourthPageData fourthPageData = new FourthPageData();
 
 
   goToNextPage(){

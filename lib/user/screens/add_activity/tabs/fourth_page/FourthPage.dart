@@ -10,7 +10,16 @@ class FourthPage extends StatefulWidget {
 
 class _FourthPageState extends State<FourthPage>{
 
-  final FourthPageData pageData = new FourthPageData();
+  late FourthPageData pageData;
+
+
+  @override
+  void initState() {
+    pageData = widget.addActivityData.fourthPageData;
+    pageData.getOptions(context, widget.addActivityData.activityModel.categoryModel!.id,refresh: false);
+    pageData.getOptions(context, widget.addActivityData.activityModel.categoryModel!.id);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class _FourthPageState extends State<FourthPage>{
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: MyText(title: "المميزات او الموقع", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                 ),
-                BuildFeaturesView(),
+                BuildFeaturesView(pageData: pageData),
               ],
             ),
           ),

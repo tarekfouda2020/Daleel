@@ -66,6 +66,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         onChanged: widget.onChange,
         showSearchBox: true,
         showClearButton: true,
+
         selectedItem: widget.selectedItem,
         itemAsString: (dynamic u) => widget.useName ? u.name : u,
         showSelectedItem: widget.showSelectedItem,

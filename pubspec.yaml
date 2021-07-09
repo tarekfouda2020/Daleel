@@ -63,13 +63,13 @@ dependencies:
   dio2: ^5.0.0-nullsafety
   flutter_html: ^2.1.0
   pin_code_fields: ^7.2.0
-  animations: ^2.0.0
+  animations: ^2.0.1
   animated_bottom_navigation_bar: ^0.3.2
   flutter_svg: ^0.22.0
-  select_form_field: ^2.0.0
+  select_form_field: ^2.1.0
   dotted_border: ^2.0.0
   infinite_scroll_pagination: ^3.1.0
-
+  multi_select_flutter: ^4.0.0
 
 
 

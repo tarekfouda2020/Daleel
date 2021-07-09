@@ -62,6 +62,16 @@ class UserHttpMethods {
     }
   }
 
+  Future<List<CityModel>> getOptions(String catId,bool refresh) async {
+    var data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "categories/$catId/options?pagination=false",);
+    if (data!=null) {
+      return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
+    }else{
+      return [];
+    }
+  }
+
   Future<List<SubCategoryModel>> getSubCategories(String catId,bool refresh) async {
     var data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "categories/$catId/subCategories?pagination=false",);
