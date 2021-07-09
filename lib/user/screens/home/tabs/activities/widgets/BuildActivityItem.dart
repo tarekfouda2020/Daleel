@@ -1,6 +1,9 @@
 part of 'ActivitiesWidgetImports.dart';
 
 class BuildActivityItem extends StatelessWidget {
+  final PropertyModel model;
+
+  const BuildActivityItem({required this.model});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,33 +30,36 @@ class BuildActivityItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText(
-                      title: "استراحة الشاذلية",
+                      title: model.name,
                       color: MyColors.blackOpacity,
                       size: 10,
                       fontWeight: FontWeight.w500,
                     ),
-                    MyText(
-                      title: "الاقسام : 2",
-                      color: MyColors.blackOpacity,
-                      size: 10,
-                      fontWeight: FontWeight.w500,
+                    Offstage(
+                      offstage: CategoryModel.getTypeValue(model.category.tag)!=CategoriesTypes.firstCat,
+                      child: MyText(
+                        title: "الاقسام : ${(model.firstSectionPrice!=null?1:0)+(model.secondSectionPrice!=null?1:0)}",
+                        color: MyColors.blackOpacity,
+                        size: 10,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
                 MyText(
-                  title: "استراحات وشاليهات",
+                  title: model.category.name,
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: "جدة",
+                  title: model.city.name,
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: "١٢٠٠ ريال",
+                  title: "${model.price} ريال",
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,

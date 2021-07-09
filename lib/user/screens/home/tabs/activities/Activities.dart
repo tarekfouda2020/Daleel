@@ -28,17 +28,20 @@ class _ActivitiesState extends State<Activities>{
       ),
 
       body: CupertinoScrollbar(
-        child: PagedListView<int, PropertyModel>(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          pagingController: activitiesData.pagingController,
-          builderDelegate: PagedChildBuilderDelegate<PropertyModel>(
-              noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                title: "لا يوجد انشطة",
-                message:"اضف نشطاتك للحصول علي طلبات",
-              ),
-              itemBuilder: (context, item, index) {
-                return BuildActivityItem();
-              }),
+        child: RefreshIndicator(
+          onRefresh: ()async => activitiesData.fetchPage(0, context),
+          child: PagedListView<int, PropertyModel>(
+            padding: EdgeInsets.only(right: 15,left: 15,bottom: 50),
+            pagingController: activitiesData.pagingController,
+            builderDelegate: PagedChildBuilderDelegate<PropertyModel>(
+                noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
+                  title: "لا يوجد انشطة",
+                  message:"اضف نشطاتك للحصول علي طلبات",
+                ),
+                itemBuilder: (context, item, index) {
+                  return BuildActivityItem(model: item);
+                }),
+          ),
         ),
       ),
 

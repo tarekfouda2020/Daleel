@@ -36,17 +36,22 @@ class FirstCatScreenData{
       all[e.name]= e.name=="description"||e.name=="description_ar"||
           e.name=="name"? e.value.text : double.parse(e.value.text);
     });
-    firstSectionPrice.allDeptFields.forEach((e) {
-      first[e.name]=e.name=="description"||e.name=="description_ar"||
-          e.name=="name"? e.value.text : double.parse(e.value.text);
-    });
-    secondSectionPrice.allDeptFields.forEach((e) {
-      second[e.name]=e.name=="description"||e.name=="description_ar"||
-          e.name=="name"? e.value.text : double.parse(e.value.text);
-    });
+    if (firstSectionPrice.saved) {
+      firstSectionPrice.allDeptFields.forEach((e) {
+        first[e.name]=e.name=="description"||e.name=="description_ar"||
+            e.name=="name"? e.value.text : double.parse(e.value.text);
+      });
+    }
+    if (secondSectionPrice.saved) {
+      secondSectionPrice.allDeptFields.forEach((e) {
+        second[e.name]=e.name=="description"||e.name=="description_ar"||
+            e.name=="name"? e.value.text : double.parse(e.value.text);
+      });
+    }
+    all["name"]=addActivityData.activityModel.nameEn;
     addActivityData.activityModel.allSectionsPrice=all;
-    addActivityData.activityModel.firstSectionPrice=firstSectionPrice.saved?first:null;
-    addActivityData.activityModel.secondSectionPrice=secondSectionPrice.saved?second:null;
+    addActivityData.activityModel.firstSectionPrice=first;
+    addActivityData.activityModel.secondSectionPrice=second;
     addActivityData.goToNextPage();
   }
 

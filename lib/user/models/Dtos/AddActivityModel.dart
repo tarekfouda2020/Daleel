@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:base_flutter/user/models/CategoryModel.dart';
@@ -23,29 +24,35 @@ class AddActivityModel{
 
 
   Map<String, dynamic> toJson()=>{
-    "category":categoryModel?.id,
-    "city":city,
+    "data": json.encode(
+        {
+          "category":categoryModel?.id,
+          "city":city,
+          "name":nameEn,
+          "price": 0,
+          "capacity":allSectionsPrice?["capacity"],
+          "allSectionsPrice":allSectionsPrice,
+          "firstSectionPrice": firstSectionPrice,
+          "secondSectionPrice":secondSectionPrice,
+          "terms_and_conditions":termsEn,
+          "description": allSectionsPrice?["description"],
+          "location":location,
+          "sub_category": subCategory,
+          "occasions": occasions,
+          "options": options?.map((e) => {"id":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
+          "translation": {
+            "ar": {
+              "name": nameAr,
+              "description": allSectionsPrice?["description_ar"],
+              "terms_and_conditions": termsAr
+            }
+          },
+        }
+    ),
     "images":categoryModel?.image,
-    "name":nameEn,
-    "price": 0,
-    "capacity":allSectionsPrice?["capacity"],
-    "allSectionsPrice":allSectionsPrice,
-    "firstSectionPrice": firstSectionPrice,
-    "secondSectionPrice":secondSectionPrice,
-    "terms_and_conditions":termsEn,
-    "description": allSectionsPrice?["description"],
-    "location":location,
-    "sub_category": subCategory,
-    "occasions": occasions,
-    "options": options?.map((e) => {"id":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
-    "translation": {
-      "ar": {
-        "name": nameAr,
-        "description": allSectionsPrice?["description_ar"],
-        "terms_and_conditions": termsAr
-      }
-    },
+
   };
+
 
 
 }
