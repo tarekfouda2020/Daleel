@@ -12,5 +12,5 @@ class PackagesTypeModel {
   List<AddPackageModel> packages;
   List<AddpackagePersonModel> persons;
 
-  PackagesTypeModel({this.type = PackageType.person, this.packages=const[],this.persons=const[]});
+  PackagesTypeModel({this.type = PackageType.person, required this.packages, required this.persons});
 }

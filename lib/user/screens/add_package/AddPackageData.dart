@@ -19,7 +19,7 @@ class AddPackageData{
 
   onSavePackage(BuildContext context,PackageType type){
     if (formKey.currentState!.validate()) {
-
+      type==PackageType.person?addPerson(context):addPackage(context);
     }
   }
 

@@ -43,7 +43,7 @@ class CustomInputDecoration extends InputDecoration {
   @override
   // TODO: implement errorBorder
   InputBorder get errorBorder => OutlineInputBorder(
-      borderSide: BorderSide(color: enableColor ?? Colors.red, width: .5),
+      borderSide: BorderSide(color: Colors.red, width: .5),
       borderRadius: BorderRadius.circular(borderRaduis??10));
 
   @override

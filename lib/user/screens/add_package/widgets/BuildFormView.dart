@@ -11,6 +11,7 @@ class BuildFormView extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Form(
+        key: packageData.formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -77,6 +78,7 @@ class BuildFormView extends StatelessWidget {
             Visibility(
               visible: type==PackageType.package,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
                     title: "عدد الافراد",
@@ -95,6 +97,7 @@ class BuildFormView extends StatelessWidget {
                 ],
               ),
               replacement: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
                     title: "الحد الادني للافراد",
@@ -113,9 +116,10 @@ class BuildFormView extends StatelessWidget {
                 ],
               ),
             ),
-            Offstage(
-              offstage: type==PackageType.package,
+            Visibility(
+              visible: type!=PackageType.package,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
                     title: "الحد الاقصي للافراد",
@@ -138,6 +142,7 @@ class BuildFormView extends StatelessWidget {
             Visibility(
               visible: type==PackageType.package,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
                     title: "سعر الباكدج",
@@ -156,6 +161,7 @@ class BuildFormView extends StatelessWidget {
                 ],
               ),
               replacement: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
                     title: "السعر للفرد",

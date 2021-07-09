@@ -10,6 +10,7 @@ import 'package:base_flutter/user/models/Dtos/AddPackagePersonModel.dart';
 import 'package:base_flutter/user/models/Dtos/PackagesTypeModel.dart';
 import 'package:base_flutter/user/screens/add_activity/AddActivityImports.dart';
 import 'package:base_flutter/user/screens/add_activity/tabs/second_page/cats_screens/second_cat_screen/packages_cubit/package_cubit.dart';
+import 'package:base_flutter/user/screens/add_package/AddPackageImports.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

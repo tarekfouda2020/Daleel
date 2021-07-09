@@ -29,8 +29,8 @@ class BuildPackagesCard extends StatelessWidget {
                   );
                 },
                 child:state.model.type==PackageType.package?
-                BuildPackagesList(data: state.model.packages,):
-                BuildPersonsList(data: state.model.persons,),
+                BuildPackagesList(data: state.model.packages, screenData: screenData,):
+                BuildPersonsList(data: state.model.persons, screenData: screenData,),
               ),
             ],
           );

@@ -7,7 +7,7 @@ abstract class PackageState extends Equatable {
 }
 
 class PackageInitial extends PackageState {
-  PackageInitial() : super(PackagesTypeModel(), false);
+  PackageInitial() : super(PackagesTypeModel(packages: [],persons: []), false);
 
   @override
   List<Object> get props => [model,change];

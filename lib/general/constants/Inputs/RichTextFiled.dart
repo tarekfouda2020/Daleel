@@ -56,7 +56,7 @@ class RichTextFiled extends StatelessWidget {
           label: label,
           filledColor: fillColor,
           hint: hint,
-          enableColor: borderColor??MyColors.greyWhite
+          enableColor: borderColor??MyColors.greyWhite,
         ),
       ),
     );

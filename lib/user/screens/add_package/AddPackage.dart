@@ -44,6 +44,7 @@ class _AddPackageState extends State<AddPackage> {
               ),
             ),
             BuildAddButton(
+              type: widget.type,
               packageData: packageData,
             ),
           ],

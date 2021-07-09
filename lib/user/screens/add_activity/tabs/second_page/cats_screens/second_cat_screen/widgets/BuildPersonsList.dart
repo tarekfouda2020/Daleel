@@ -2,8 +2,9 @@ part of  'PackagesWidgetImports.dart';
 
 class BuildPersonsList extends StatelessWidget {
   final List<AddpackagePersonModel> data;
+  final SecondCatScreenData screenData;
 
-  const BuildPersonsList({required this.data});
+  const BuildPersonsList({required this.data, required this.screenData});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +20,7 @@ class BuildPersonsList extends StatelessWidget {
       child: Column(
         children: [
           ...data.map((e) => BuildPersonItem(model: e)).toList(),
-          BuildAddPackageAction(type: PackageType.person,),
+          BuildAddPackageAction(type: PackageType.person,screenData: screenData,),
         ],
       ),
     );
