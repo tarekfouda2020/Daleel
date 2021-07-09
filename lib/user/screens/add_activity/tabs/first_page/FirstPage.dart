@@ -10,13 +10,10 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
 
-  final FirstPageData pageData = new FirstPageData();
-
-
   @override
   void initState() {
     var cat = context.read<CatsCubit>().state.cats.first;
-    pageData.selectCatCubit.onUpdateData(cat.id);
+    widget.addActivityData.firstPageData.selectCatCubit.onUpdateData(cat.id);
     super.initState();
   }
 
@@ -37,27 +34,27 @@ class _FirstPageState extends State<FirstPage> {
                 padding: EdgeInsets.zero,
                 children: [
                   BuildHeaderColor(),
-                  BuildTypesView(pageData: pageData),
+                  BuildTypesView(pageData: widget.addActivityData.firstPageData),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                   ),
                   BuildImagesView(
-                    onTap: () => pageData.getNormalImages(),
+                    onTap: () => widget.addActivityData.firstPageData.getNormalImages(),
                     title: "رفع الصور",
                     subtitle: "من ٢ الي ٥ صور",
                   ),
-                  BuildNormalImages(pageData: pageData,),
+                  BuildNormalImages(pageData: widget.addActivityData.firstPageData,),
                   BuildImagesView(
                     onTap: (){},
                     title: "رفع صور ٣٦٠ درجة",
                   ),
-                  BuildFormView(pageData: pageData),
+                  BuildFormView(pageData: widget.addActivityData.firstPageData),
                 ],
               ),
             ),
             BuildActionView(
-              pageData: pageData,
+              pageData: widget.addActivityData.firstPageData,
               addActivityData: widget.addActivityData,
             ),
           ],

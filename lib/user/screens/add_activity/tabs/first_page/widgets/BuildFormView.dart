@@ -39,6 +39,7 @@ class BuildFormView extends StatelessWidget {
               margin: EdgeInsets.only(top: 15),
               validate: (CityModel value)=>value.validateDropDown(context),
               label: "المدينة",
+              selectedItem: pageData.cityModel,
               onChange: (CityModel model)=>pageData.onCityChange(model),
               finData: (value)async => await UserRepository(context).getCities(false),
             ),

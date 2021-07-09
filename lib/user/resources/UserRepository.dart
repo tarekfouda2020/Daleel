@@ -3,6 +3,7 @@ import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
+import 'package:base_flutter/user/models/SubCategoryModel.dart';
 import 'package:base_flutter/user/resources/UserHttpMethods.dart';
 import 'package:flutter/material.dart';
 
@@ -22,5 +23,11 @@ class UserRepository{
 
   Future<List<CityModel>> getCities(bool refresh)=>
       _httpMethods.getCities(refresh);
+
+  Future<List<SubCategoryModel>> getSubCategories(String catId,bool refresh)=>
+      _httpMethods.getSubCategories(catId, refresh);
+
+  Future<List<CityModel>> getLocations(bool refresh)=>
+      _httpMethods.getLocations(refresh);
 
 }

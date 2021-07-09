@@ -27,7 +27,7 @@ class RichTextFiled extends StatelessWidget {
       this.borderColor,
       this.controller,
       this.margin = const EdgeInsets.all(0),
-      this.type = TextInputType.text,
+      this.type,
       required this.max,
       required this.validate,
       this.fillColor,
@@ -43,7 +43,7 @@ class RichTextFiled extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         keyboardType: type ?? TextInputType.multiline,
-        textInputAction: action ?? TextInputAction.done,
+        textInputAction: action ?? TextInputAction.newline,
         onFieldSubmitted: submit,
         maxLines: max,
         readOnly: readOnly,

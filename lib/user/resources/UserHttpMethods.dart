@@ -4,6 +4,7 @@ import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
+import 'package:base_flutter/user/models/SubCategoryModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,11 +44,29 @@ class UserHttpMethods {
     }
   }
 
-
   Future<List<CityModel>> getCities(bool refresh) async {
     var data = await DioHelper(context: context, forceRefresh: refresh).get(url: "cities",);
     if (data!=null) {
       return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
+    }else{
+      return [];
+    }
+  }
+
+  Future<List<CityModel>> getLocations(bool refresh) async {
+    var data = await DioHelper(context: context, forceRefresh: refresh).get(url: "occasions",);
+    if (data!=null) {
+      return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
+    }else{
+      return [];
+    }
+  }
+
+  Future<List<SubCategoryModel>> getSubCategories(String catId,bool refresh) async {
+    var data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "categories/$catId/subCategories?pagination=false",);
+    if (data!=null) {
+      return List<SubCategoryModel>.from(data.map((e) => SubCategoryModel.fromMap(e)));
     }else{
       return [];
     }

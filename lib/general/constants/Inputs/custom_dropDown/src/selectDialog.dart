@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
+import 'package:base_flutter/general/constants/MyColors.dart';
+
 import './text_field_props.dart';
 import './scrollbar_props.dart';
 import 'package:flutter/gestures.dart';
@@ -110,7 +112,7 @@ class SelectDialog<T> extends StatefulWidget {
 class _SelectDialogState<T> extends State<SelectDialog<T>> {
   final FocusNode focusNode = new FocusNode();
   final StreamController<List<T>> _itemsStream =
-  StreamController<List<T>>.broadcast();
+      StreamController<List<T>>.broadcast();
   final ValueNotifier<bool> _loadingNotifier = ValueNotifier(false);
   final List<T> _items = <T>[];
   late Debouncer _debouncer;
@@ -122,7 +124,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
 
     Future.delayed(
       Duration.zero,
-          () => manageItemsByFilter(
+      () => manageItemsByFilter(
           widget.searchFieldProps?.controller?.text ??
               widget.searchBoxController?.text ??
               '',
@@ -189,7 +191,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                       thickness: widget.scrollbarProps?.thickness,
                       radius: widget.scrollbarProps?.radius,
                       notificationPredicate:
-                      widget.scrollbarProps?.notificationPredicate,
+                          widget.scrollbarProps?.notificationPredicate,
                       interactive: widget.scrollbarProps?.interactive,
                       child: ListView.builder(
                         shrinkWrap: true,
@@ -366,18 +368,37 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
           ),
         ),
         onTap:
-        widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
-            ? null
-            : () => _handleSelectItem(item),
+            widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
+                ? null
+                : () => _handleSelectItem(item),
       );
     else
-      return ListTile(
-        title: Text(_selectedItemAsString(item),style: TextStyle(fontSize: 16),),
-        selected: _manageSelectedItemVisibility(item),
+      return InkWell(
         onTap:
-        widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
-            ? null
-            : () => _handleSelectItem(item),
+            widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
+                ? null
+                : () => _handleSelectItem(item),
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: MyColors.greyWhite)
+            )
+          ),
+          child: Row(
+            children: [
+              Text(
+                _selectedItemAsString(item),
+                style: TextStyle(
+                    fontSize: 16,
+                    color: _manageSelectedItemVisibility(item)
+                        ? MyColors.grey
+                        : MyColors.black,
+                ),
+              ),
+            ],
+          ),
+        ),
       );
   }
 
@@ -416,37 +437,37 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                       hintText: widget.hintText,
                       border: const OutlineInputBorder(),
                       contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16),
+                          const EdgeInsets.symmetric(horizontal: 16),
                     ),
                 keyboardType: widget.searchFieldProps?.keyboardType,
                 textInputAction: widget.searchFieldProps?.textInputAction,
                 textCapitalization:
-                widget.searchFieldProps?.textCapitalization ??
-                    TextCapitalization.none,
+                    widget.searchFieldProps?.textCapitalization ??
+                        TextCapitalization.none,
                 strutStyle: widget.searchFieldProps?.strutStyle,
                 textAlign:
-                widget.searchFieldProps?.textAlign ?? TextAlign.start,
+                    widget.searchFieldProps?.textAlign ?? TextAlign.start,
                 textAlignVertical: widget.searchFieldProps?.textAlignVertical,
                 textDirection: widget.searchFieldProps?.textDirection,
                 readOnly: widget.searchFieldProps?.readOnly ?? false,
                 toolbarOptions: widget.searchFieldProps?.toolbarOptions,
                 showCursor: widget.searchFieldProps?.showCursor,
                 obscuringCharacter:
-                widget.searchFieldProps?.obscuringCharacter ?? '•',
+                    widget.searchFieldProps?.obscuringCharacter ?? '•',
                 obscureText: widget.searchFieldProps?.obscureText ?? false,
                 autocorrect: widget.searchFieldProps?.autocorrect ?? true,
                 smartDashesType: widget.searchFieldProps?.smartDashesType,
                 smartQuotesType: widget.searchFieldProps?.smartQuotesType,
                 enableSuggestions:
-                widget.searchFieldProps?.enableSuggestions ?? true,
+                    widget.searchFieldProps?.enableSuggestions ?? true,
                 maxLines: widget.searchFieldProps?.maxLines ?? 1,
                 minLines: widget.searchFieldProps?.minLines,
                 expands: widget.searchFieldProps?.expands ?? false,
                 maxLengthEnforcement:
-                widget.searchFieldProps?.maxLengthEnforcement,
+                    widget.searchFieldProps?.maxLengthEnforcement,
                 maxLength: widget.searchFieldProps?.maxLength,
                 onAppPrivateCommand:
-                widget.searchFieldProps?.onAppPrivateCommand,
+                    widget.searchFieldProps?.onAppPrivateCommand,
                 inputFormatters: widget.searchFieldProps?.inputFormatters,
                 enabled: widget.searchFieldProps?.enabled,
                 cursorWidth: widget.searchFieldProps?.cursorWidth ?? 2.0,
@@ -454,18 +475,18 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                 cursorRadius: widget.searchFieldProps?.cursorRadius,
                 cursorColor: widget.searchFieldProps?.cursorColor,
                 selectionHeightStyle:
-                widget.searchFieldProps?.selectionHeightStyle ??
-                    ui.BoxHeightStyle.tight,
+                    widget.searchFieldProps?.selectionHeightStyle ??
+                        ui.BoxHeightStyle.tight,
                 selectionWidthStyle:
-                widget.searchFieldProps?.selectionWidthStyle ??
-                    ui.BoxWidthStyle.tight,
+                    widget.searchFieldProps?.selectionWidthStyle ??
+                        ui.BoxWidthStyle.tight,
                 keyboardAppearance: widget.searchFieldProps?.keyboardAppearance,
                 scrollPadding: widget.searchFieldProps?.scrollPadding ??
                     const EdgeInsets.all(20.0),
                 dragStartBehavior: widget.searchFieldProps?.dragStartBehavior ??
                     DragStartBehavior.start,
                 enableInteractiveSelection:
-                widget.searchFieldProps?.enableInteractiveSelection ?? true,
+                    widget.searchFieldProps?.enableInteractiveSelection ?? true,
                 selectionControls: widget.searchFieldProps?.selectionControls,
                 onTap: widget.searchFieldProps?.onTap,
                 mouseCursor: widget.searchFieldProps?.mouseCursor,
@@ -503,19 +524,19 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
               child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment:
-                  widget.favoriteItemsAlignment ?? MainAxisAlignment.start,
+                      widget.favoriteItemsAlignment ?? MainAxisAlignment.start,
                   children: favoriteItems
                       .map(
                         (f) => InkWell(
-                      onTap: () => _handleSelectItem(f),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 4),
-                        child: widget.favoriteItemBuilder != null
-                            ? widget.favoriteItemBuilder!(context, f)
-                            : _favoriteItemDefaultWidget(f),
-                      ),
-                    ),
-                  )
+                          onTap: () => _handleSelectItem(f),
+                          child: Container(
+                            margin: EdgeInsets.only(right: 4),
+                            child: widget.favoriteItemBuilder != null
+                                ? widget.favoriteItemBuilder!(context, f)
+                                : _favoriteItemDefaultWidget(f),
+                          ),
+                        ),
+                      )
                       .toList()),
             ),
           );

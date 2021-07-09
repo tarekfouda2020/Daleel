@@ -3,8 +3,9 @@ part of 'ThirdPageWidgetsImports.dart';
 
 class BuildFormView extends StatelessWidget {
   final ThirdPageData pageData;
+  final String catId;
 
-  const BuildFormView({required this.pageData});
+  const BuildFormView({required this.pageData, required this.catId});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,49 +14,50 @@ class BuildFormView extends StatelessWidget {
         key: pageData.formKey,
         child: Column(
           children: [
-            LabelTextField(
-              controller: pageData.branch,
-              validate: (value)=>value!.validateEmpty(context),
-              label: "الفئة الفرعية",
-              type: TextInputType.name,
-              action: TextInputAction.next,
-            ),
-            InkWellTextField(
-              controller: pageData.location,
+            DropdownTextField<SubCategoryModel>(
               margin: EdgeInsets.only(top: 15),
-              validate: (value)=>value!.validateEmpty(context),
+              validate: (SubCategoryModel value)=>value.validateDropDown(context),
+              label: "الفئة الفرعية",
+              selectedItem: pageData.subCategoryModel,
+              onChange: (SubCategoryModel model)=>pageData.onSubCatChange(model),
+              finData: (value)async => await UserRepository(context).getSubCategories(catId,false),
+            ),
+
+            DropdownTextField<CityModel>(
+              margin: EdgeInsets.only(top: 15),
+              validate: (CityModel value)=>value.validateDropDown(context),
               label: "الموقع",
-              type: TextInputType.name,
-              icon: Icon(Icons.location_on,size: 20,),
-              onTab: (){},
+              selectedItem: pageData.locModel,
+              onChange: (CityModel model)=>pageData.onLocationChange(model),
+              finData: (value)async => await UserRepository(context).getLocations(false),
             ),
             RichTextFiled(
               label: "الوصف بالعربي",
               margin: EdgeInsets.only(top: 15),
               controller: pageData.descAr,
               max: 3,
-              validate: (value)=> value!.noValidate(),
+              validate: (value)=> value!.validateEmpty(context),
             ),
             RichTextFiled(
               label: "الوصف بالانجليزي",
               margin: EdgeInsets.only(top: 15),
-              controller: pageData.descAr,
+              controller: pageData.descEn,
               max: 3,
-              validate: (value)=> value!.noValidate(),
+              validate: (value)=> value!.validateEmpty(context),
             ),
             RichTextFiled(
               label: "الشروط الخاصة بالعربي",
               margin: EdgeInsets.only(top: 15),
               controller: pageData.termsAr,
               max: 3,
-              validate: (value)=> value!.noValidate(),
+              validate: (value)=> value!.validateEmpty(context),
             ),
             RichTextFiled(
               label: "الشروط الخاصة بالانجليزي",
               margin: EdgeInsets.only(top: 15),
               controller: pageData.termsEn,
               max: 3,
-              validate: (value)=> value!.noValidate(),
+              validate: (value)=> value!.validateEmpty(context),
             ),
           ],
         ),

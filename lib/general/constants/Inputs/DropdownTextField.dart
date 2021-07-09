@@ -56,9 +56,9 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
       margin: widget.margin ?? EdgeInsets.zero,
       child: DropdownSearch<DataType>(
         key: widget.dropKey,
-        mode: Mode.BOTTOM_SHEET,
+        mode: Mode.DIALOG,
         isFilteredOnline: false,
-        maxHeight: 300,
+        maxHeight: 500,
         label: widget.label,
         items: widget.data,
         onFind: widget.finData,
@@ -83,8 +83,8 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
           decoration: BoxDecoration(
             color: MyColors.primary,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
             ),
           ),
           child: Center(
@@ -96,17 +96,14 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
           ),
         ),
         popupShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.circular(15),
         ),
         dropdownSearchDecoration: CustomInputDecoration(
             lang: lang,
             enableColor: widget.borderColor,
             hint: widget.hint,
             filledColor: widget.filledColor,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12)
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)
         ),
       ),
     );

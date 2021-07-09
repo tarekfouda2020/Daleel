@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/MyText.dart';
 
@@ -108,6 +109,13 @@ class LoadingDialog {
   }
 
   static showSimpleToast(msg) {
-    BotToast.showText(text: msg);
+    BotToast.showText(
+      text: msg,
+      textStyle: GoogleFonts.cairo(
+        color: Colors.white,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    );
   }
 }

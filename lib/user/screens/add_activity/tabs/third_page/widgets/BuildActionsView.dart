@@ -21,7 +21,7 @@ class BuildActionsView extends StatelessWidget {
             title: "التالي",
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
-            onTap: ()=> addActivityData.goToNextPage(),
+            onTap: ()=> addActivityData.thirdPageData.setAddDataToModel(addActivityData),
           ),
         ],
       ),
