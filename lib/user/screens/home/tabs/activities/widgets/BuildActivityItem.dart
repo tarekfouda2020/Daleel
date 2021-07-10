@@ -78,7 +78,7 @@ class BuildActivityItem extends StatelessWidget {
                       SizedBox(width: 20),
                       BuildActivityAction(
                         title: "عرض",
-                        onTap: (){},
+                        onTap: ()=> AutoRouter.of(context).push(OffersRoute(model: model)),
                         iconData: Icons.add,
                       ),
                       Spacer(),
