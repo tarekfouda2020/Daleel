@@ -9,6 +9,8 @@ import 'package:base_flutter/user/models/PropertyModel.dart';
 import 'package:base_flutter/user/screens/add_activity/AddActivityImports.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../ActivitiesImports.dart';
+
 
 part 'BuildActivityItem.dart';
 part 'BuildActivityAction.dart';

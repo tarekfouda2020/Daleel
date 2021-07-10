@@ -182,10 +182,12 @@ class DioHelper {
 
   _getHeader() async {
     String? token = GlobalState.instance.get("token");
+    var lang = context.read<LangCubit>().state.locale.languageCode;
     var guest = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTA3NWY4ZTcwYmRhYjFjMWQ5ODY0NGYiLCJtb2JpbGUiOiIrMSIsInJvbGVzIjpbImd1ZXN0Il0sImlhdCI6MTU3NzU0MTUxOH0.zVuWocacWCwQchx2ULTsEomaAdJFvVBFMwdj83XKY54";
     return {
       'Accept': 'application/json',
       'Authorization': '${token??guest}',
+      'content-language': '$lang',
     };
   }
 

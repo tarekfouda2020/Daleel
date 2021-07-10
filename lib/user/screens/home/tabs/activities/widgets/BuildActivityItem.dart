@@ -2,8 +2,9 @@ part of 'ActivitiesWidgetImports.dart';
 
 class BuildActivityItem extends StatelessWidget {
   final PropertyModel model;
+  final ActivitiesData activityData;
 
-  const BuildActivityItem({required this.model});
+  const BuildActivityItem({required this.model, required this.activityData});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +60,7 @@ class BuildActivityItem extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: "${model.price} ريال",
+                  title: "${activityData.calculatePrice(model)} ريال",
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,

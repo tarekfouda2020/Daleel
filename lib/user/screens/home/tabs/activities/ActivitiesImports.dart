@@ -1,4 +1,5 @@
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
+import 'package:base_flutter/user/models/CategoryModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
 import 'package:base_flutter/user/resources/UserRepository.dart';
 import 'package:base_flutter/user/screens/home/tabs/activities/widgets/ActivitiesWidgetImports.dart';

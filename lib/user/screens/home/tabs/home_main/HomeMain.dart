@@ -32,22 +32,25 @@ class _HomeMainState extends State<HomeMain> {
             BuildFilterView(homeMainData: homeMainData),
             Flexible(
               child: CupertinoScrollbar(
-                child: PagedListView<int, OrderModel>(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  pagingController: homeMainData.pagingController,
-                  builderDelegate: PagedChildBuilderDelegate<OrderModel>(
-                      firstPageProgressIndicatorBuilder: (context) =>
-                          LoadingDialog.showLoadingView(),
-                      noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                            title: "لا يوجد طلبات",
-                            message: "انتظر الحصول علي طلبات قريبا",
-                          ),
-                      itemBuilder: (context, item, index) {
-                        return BuildOrderItem(
-                          model: item,
-                          mainData: homeMainData,
-                        );
-                      }),
+                child: RefreshIndicator(
+                  onRefresh: () async =>homeMainData.fetchPage(0, context),
+                  child: PagedListView<int, OrderModel>(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    pagingController: homeMainData.pagingController,
+                    builderDelegate: PagedChildBuilderDelegate<OrderModel>(
+                        firstPageProgressIndicatorBuilder: (context) =>
+                            LoadingDialog.showLoadingView(),
+                        noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
+                              title: "لا يوجد طلبات",
+                              message: "انتظر الحصول علي طلبات قريبا",
+                            ),
+                        itemBuilder: (context, item, index) {
+                          return BuildOrderItem(
+                            model: item,
+                            mainData: homeMainData,
+                          );
+                        }),
+                  ),
                 ),
               ),
             ),

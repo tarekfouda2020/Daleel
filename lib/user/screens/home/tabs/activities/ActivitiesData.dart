@@ -20,4 +20,21 @@ class ActivitiesData{
     }
   }
 
+  calculatePrice(PropertyModel model){
+    CategoriesTypes type = CategoryModel.getTypeValue(model.category.tag);
+    if (type==CategoriesTypes.firstCat) {
+      return model.allSectionsPrice?.saturdayPrice??0;
+    } else if(type==CategoriesTypes.secondCat){
+      if (model.packagePrices.length>0) {
+        return model.packagePrices.first.packagePrice;
+      }else if(model.personPrices.length>0){
+        return (model.personPrices.first.pricePerPerson)*(model.personPrices.first.maximumCount);
+      }else{
+        return model.price;
+      }
+    }else{
+      return model.price;
+    }
+  }
+
 }
