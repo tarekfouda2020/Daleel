@@ -17,8 +17,8 @@ class MultiDropDownField<T> extends StatelessWidget {
   final Function(T) onItemClick;
 
   const MultiDropDownField({
-    this.data= const[],
-    this.selectedItems= const[],
+    required this.data,
+    required this.selectedItems,
     required this.title,
     required this.label,
     required this.onConfirm,
@@ -29,7 +29,7 @@ class MultiDropDownField<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     var lang = context.watch<LangCubit>().state.locale.languageCode;
     return  MultiSelectBottomSheetField<T>(
-      initialChildSize: 0.4,
+      initialChildSize: 0.5,
       listType: MultiSelectListType.LIST,
       searchable: true,
       buttonText: Text(label,style: CustomInputTextStyle(lang: lang,textColor: MyColors.blackOpacity),),
@@ -41,6 +41,7 @@ class MultiDropDownField<T> extends StatelessWidget {
       items: data.map((e) => MultiSelectItem<T>(e, e.toString()))
           .toList(),
       onConfirm: onConfirm,
+
       initialValue: selectedItems,
       buttonIcon: Icon(Icons.arrow_drop_down,size: 25,color: MyColors.black,),
       confirmText: Text("تآكيد",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),

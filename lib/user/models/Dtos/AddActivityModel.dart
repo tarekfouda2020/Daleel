@@ -49,7 +49,7 @@ class AddActivityModel{
           "occasions": occasions,
           "packagePrices": packagePrices??[],
           "personPrices": personPrices??[],
-          "options": options?.map((e) => {"id":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
+          "options": options?.map((e) => {"option":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
           "translation": {
             "ar": {
               "name": nameAr,

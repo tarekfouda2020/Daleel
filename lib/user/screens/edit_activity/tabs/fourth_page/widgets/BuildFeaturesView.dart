@@ -11,6 +11,7 @@ class BuildFeaturesView extends StatelessWidget {
       bloc: pageData.optionsCubit,
       builder: (context, state) {
         if (state is GenericUpdateState) {
+          print("================> ${pageData.selectedOptions}");
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Form(

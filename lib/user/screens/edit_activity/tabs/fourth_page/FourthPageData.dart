@@ -18,6 +18,8 @@ class FourthPageData{
   getOptions(BuildContext context, String catId, {bool refresh = true})async{
     allOptions= await UserRepository(context).getOptions(catId, refresh);
     optionsCubit.onUpdateData(allOptions);
+    var filters = allOptions.where((e) => selectedOptions.where((x) => e.id==x.id).length>0).toList();
+    onSelectOptions(filters);
   }
 
   void onSelectOptions(List<CityModel> options){

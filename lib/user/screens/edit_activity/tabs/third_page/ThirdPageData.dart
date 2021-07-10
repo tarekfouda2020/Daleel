@@ -21,6 +21,8 @@ class ThirdPageData{
   Future<void> getSubCats(BuildContext context, String catId, {bool refresh = true})async{
     allSub= await UserRepository(context).getSubCategories(catId, refresh);
     subCubit.onUpdateData(allSub);
+    var filters = allSub.where((e) => selectedSub.where((x) => e.id==x.id).length>0).toList();
+    onSelectSubCat(filters);
   }
 
   void onSelectSubCat(List<SubCategoryModel> subs){
@@ -35,6 +37,8 @@ class ThirdPageData{
   Future<void> getLocations(BuildContext context, {bool refresh = true})async{
     allLoc= await UserRepository(context).getLocations(refresh);
     locCubit.onUpdateData(allLoc);
+    var filters = allLoc.where((e) => selectedLoc.where((x) => e.id==x.id).length>0).toList();
+    onSelectLocation(filters);
   }
 
   void onSelectLocation(List<CityModel> locations){

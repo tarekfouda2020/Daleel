@@ -23,12 +23,12 @@ class DioHelper {
     return _manager;
   }
 
-  Options _buildCacheOptions(String url, {bool subKey = true}) {
+  Options _buildCacheOptions(String url) {
     return buildCacheOptions(
-      Duration(hours: 1),
-      maxStale: Duration(days: 1),
+      Duration(days: 3),
+      maxStale: Duration(days: 7),
       forceRefresh: forceRefresh,
-      subKey: subKey ? url : "",
+      primaryKey: url,
       options: Options(extra: {}),
     );
   }

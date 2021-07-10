@@ -34,17 +34,16 @@ class EditActivityData{
     initThirdScreen(model);
     initFourthScreen(model);
     getSubCatsAndOptions(model.category.id, context);
-    await thirdPageData.getLocations(context,refresh: false);
-    await thirdPageData.getLocations(context,refresh: false);
-    thirdPageData.selectedLoc=model.occasions;
-    thirdPageData.selectedSub.add(model.subCategory);
   }
 
   getSubCatsAndOptions(String catId,BuildContext context){
     fourthPageData.getOptions(context, catId,refresh: false);
     fourthPageData.getOptions(context, catId);
-    thirdPageData.getSubCats(context, catId,refresh: false);
-    thirdPageData.getSubCats(context, catId);
+    thirdPageData.getSubCats(context,catId,refresh: false);
+    thirdPageData.getSubCats(context,catId);
+    thirdPageData.getLocations(context);
+    thirdPageData.getLocations(context,refresh: false);
+
   }
 
   initFirstPageData(PropertyModel model){
@@ -113,6 +112,8 @@ class EditActivityData{
   }
 
   initThirdScreen(PropertyModel model){
+    thirdPageData.selectedLoc=model.occasions;
+    thirdPageData.selectedSub=[model.subCategory];
     thirdPageData.descEn.text=model.description;
     thirdPageData.descAr.text=model.translation.ar.description;
     thirdPageData.termsEn.text=model.termsAndConditions;
