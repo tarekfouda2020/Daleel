@@ -11,13 +11,6 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
 
   @override
-  void initState() {
-    var cat = context.read<CatsCubit>().state.cats.first;
-    widget.addActivityData.firstPageData.selectCatCubit.onUpdateData(cat.id);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
@@ -34,7 +27,7 @@ class _FirstPageState extends State<FirstPage> {
                 padding: EdgeInsets.zero,
                 children: [
                   BuildHeaderColor(),
-                  BuildTypesView(pageData: widget.addActivityData.firstPageData),
+                  BuildTypesView(activityData: widget.addActivityData),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),

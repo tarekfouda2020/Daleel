@@ -1,9 +1,9 @@
 part of 'FirstPageWidgetImports.dart';
 
 class BuildTypesView extends StatelessWidget {
-  final FirstPageData pageData;
+  final AddActivityData activityData;
 
-  const BuildTypesView({required this.pageData});
+  const BuildTypesView({required this.activityData});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class BuildTypesView extends StatelessWidget {
           MyText(title: "اختر النوع", color: MyColors.primary, size: 10),
           SizedBox(height: 5),
           BlocBuilder<GenericBloc<String>, GenericState<String>>(
-            bloc: pageData.selectCatCubit,
+            bloc: activityData.firstPageData.selectCatCubit,
             builder: (context, state) {
               return Container(
                 height: 50,
@@ -33,7 +33,7 @@ class BuildTypesView extends StatelessWidget {
                         Radio<String>(
                           value: cats[index].id,
                           groupValue: state.data,
-                          onChanged: (value) => pageData.selectCatCubit.onUpdateData(value!),
+                          onChanged: (value) => activityData.firstPageData.onSelectCatChanged(activityData,context,value!),
                         ),
                         MyText(
                             title: cats[index].name,

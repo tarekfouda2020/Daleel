@@ -36,4 +36,9 @@ class SubCategoryModel {
     "updated_at": updatedAt.toIso8601String(),
     "__v": v,
   };
+
+  @override
+  String toString() {
+    return name;
+  }
 }

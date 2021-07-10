@@ -25,6 +25,20 @@ class AddActivityData{
   }
 
 
+  setInitialData(BuildContext context){
+    var cat = context.read<CatsCubit>().state.cats.first;
+    firstPageData.selectCatCubit.onUpdateData(cat.id);
+    getSubCatsAndOptions(cat.id, context);
+    thirdPageData.getLocations(context,refresh: false);
+    thirdPageData.getLocations(context);
+  }
+
+  getSubCatsAndOptions(String catId,BuildContext context){
+    fourthPageData.getOptions(context, catId,refresh: false);
+    fourthPageData.getOptions(context, catId);
+    thirdPageData.getSubCats(context, catId,refresh: false);
+    thirdPageData.getSubCats(context, catId);
+  }
 
 
 }

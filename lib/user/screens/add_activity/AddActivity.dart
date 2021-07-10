@@ -9,6 +9,13 @@ class _AddActivityState extends State<AddActivity> {
   final AddActivityData addActivityData = new AddActivityData();
 
   @override
+  void initState() {
+    addActivityData.setInitialData(context);
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(

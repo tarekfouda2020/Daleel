@@ -15,6 +15,11 @@ class FirstPageData{
     cityModel = model;
   }
 
+  onSelectCatChanged(AddActivityData activityData,BuildContext context,String catId){
+    activityData.getSubCatsAndOptions(catId, context);
+    selectCatCubit.onUpdateData(catId);
+  }
+
   getNormalImages()async{
     var images = await Utils.getImages();
     normalImagesCubit.state.data.addAll(images);

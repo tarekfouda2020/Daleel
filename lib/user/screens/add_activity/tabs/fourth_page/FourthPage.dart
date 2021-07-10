@@ -16,8 +16,6 @@ class _FourthPageState extends State<FourthPage>{
   @override
   void initState() {
     pageData = widget.addActivityData.fourthPageData;
-    pageData.getOptions(context, widget.addActivityData.activityModel.categoryModel!.id,refresh: false);
-    pageData.getOptions(context, widget.addActivityData.activityModel.categoryModel!.id);
     super.initState();
   }
 

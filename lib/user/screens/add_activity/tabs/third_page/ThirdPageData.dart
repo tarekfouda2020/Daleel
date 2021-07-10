@@ -9,14 +9,41 @@ class ThirdPageData{
   final TextEditingController termsAr = new TextEditingController();
   final TextEditingController termsEn = new TextEditingController();
 
-  SubCategoryModel? subCategoryModel;
-  CityModel? locModel;
+  GenericBloc<List<SubCategoryModel>> subCubit = new GenericBloc([]);
+  GenericBloc<List<CityModel>> locCubit = new GenericBloc([]);
 
-  onSubCatChange(SubCategoryModel? model){
-    subCategoryModel = model;
+
+  List<SubCategoryModel> allSub = [];
+  List<SubCategoryModel> selectedSub = [];
+  List<CityModel> allLoc = [];
+  List<CityModel> selectedLoc = [];
+
+  getSubCats(BuildContext context, String catId, {bool refresh = true})async{
+    allSub= await UserRepository(context).getSubCategories(catId, refresh);
+    subCubit.onUpdateData(allSub);
   }
-  onLocationChange(CityModel? model){
-    locModel = model;
+
+  void onSelectSubCat(List<SubCategoryModel> subs){
+    selectedSub = subs;
+  }
+
+  void onSubCatClick(SubCategoryModel option){
+    selectedSub.remove(option);
+    subCubit.onUpdateData(allSub);
+  }
+
+  getLocations(BuildContext context, {bool refresh = true})async{
+    allLoc= await UserRepository(context).getLocations(refresh);
+    locCubit.onUpdateData(allLoc);
+  }
+
+  void onSelectLocation(List<CityModel> locations){
+    selectedLoc = locations;
+  }
+
+  void onLocationClick(CityModel option){
+    selectedLoc.remove(option);
+    locCubit.onUpdateData(allLoc);
   }
 
   setAddDataToModel(AddActivityData addActivityData){
@@ -27,8 +54,8 @@ class ThirdPageData{
       addActivityData.activityModel.descEn = descEn.text;
       addActivityData.activityModel.termsEn = termsEn.text;
       addActivityData.activityModel.termsAr = termsAr.text;
-      addActivityData.activityModel.subCategory = [subCategoryModel!.id];
-      addActivityData.activityModel.occasions = [locModel!.id];
+      addActivityData.activityModel.subCategory = selectedSub.map((e) => e.id).toList();
+      addActivityData.activityModel.occasions = selectedLoc.map((e) => e.id).toList();
 
       addActivityData.goToNextPage();
     }
