@@ -21,7 +21,7 @@ class PackagePriceModel {
   String description;
   String descriptionAr;
   int numberOfPersons;
-  int packagePrice;
+  num packagePrice;
   DateTime createdAt;
   DateTime updatedAt;
   bool isAvailable;

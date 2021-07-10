@@ -1,17 +1,23 @@
-part of 'PackagesImports.dart';
+part of 'SecondCatScreenImports.dart';
 
-
-class Packages extends StatefulWidget {
+class SecondCatScreen extends StatefulWidget {
   final EditActivityData activityData;
 
-  const Packages({required this.activityData});
+  const SecondCatScreen({required this.activityData});
   @override
-  _PackagesState createState() => _PackagesState();
+  _SecondCatScreenState createState() => _SecondCatScreenState();
 }
 
-class _PackagesState extends State<Packages>{
+class _SecondCatScreenState extends State<SecondCatScreen>{
 
-   PackagesData packagesData = new PackagesData();
+  late SecondCatScreenData screenData ;
+
+
+  @override
+  void initState() {
+    super.initState();
+    screenData=widget.activityData.secondCatScreenData;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class _PackagesState extends State<Packages>{
             child: ListView(
               children: [
                 MyText(title: "السعر", color: MyColors.primary, size: 16,fontWeight: FontWeight.w600,),
-                BuildPackagesCard()
+                BuildPackagesCard(screenData: screenData)
               ],
             ),
           ),
@@ -32,5 +38,6 @@ class _PackagesState extends State<Packages>{
       ),
     );
   }
+
 }
 

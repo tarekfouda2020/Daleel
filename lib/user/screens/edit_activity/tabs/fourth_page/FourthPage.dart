@@ -1,22 +1,30 @@
 part of 'FourthPageImports.dart';
 
 class FourthPage extends StatefulWidget {
-  final EditActivityData activityData;
+  final EditActivityData addActivityData;
 
-  const FourthPage({required this.activityData});
+  const FourthPage({required this.addActivityData});
   @override
   _FourthPageState createState() => _FourthPageState();
 }
 
 class _FourthPageState extends State<FourthPage>{
 
-  final FourthPageData pageData = new FourthPageData();
+  late FourthPageData pageData;
+
+
+  @override
+  void initState() {
+    pageData = widget.addActivityData.fourthPageData;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -30,16 +38,14 @@ class _FourthPageState extends State<FourthPage>{
                 BuildHeaderColor(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: MyText(title: "المميزات او الموقع", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                  child: MyText(title: "المميزات و الموقع", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                 ),
-                BuildFeaturesView(),
+                BuildFeaturesView(pageData: pageData),
               ],
             ),
           ),
-          Flexible(
-            child: BuildMapView(pageData: pageData,),
-          ),
-          BuildActionsView(activityData: widget.activityData )
+
+          BuildActionsView(addActivityData: widget.addActivityData)
         ],
       ),
     );

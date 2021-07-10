@@ -29,15 +29,18 @@ class BuildNormalImages extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 alignment: Alignment.topLeft,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.black26,
-                    shape: BoxShape.circle
+                child: InkWell(
+                  onTap: ()=> pageData.removeImage(state.data[index]),
+                  child: Container(
+                    width: 25,
+                    height: 25,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      shape: BoxShape.circle
+                    ),
+                    child: Icon(Icons.close,size: 12,color: MyColors.white,),
                   ),
-                  child: Icon(Icons.close,size: 12,color: MyColors.white,),
                 ),
               );
             }),

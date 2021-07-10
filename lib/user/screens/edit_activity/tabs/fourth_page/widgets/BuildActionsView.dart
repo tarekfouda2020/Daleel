@@ -1,10 +1,9 @@
 part of 'FourthPageWidgetImports.dart';
 
-
 class BuildActionsView extends StatelessWidget {
-  final EditActivityData activityData;
+  final EditActivityData addActivityData;
 
-  const BuildActionsView({required this.activityData});
+  const BuildActionsView({required this.addActivityData});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,13 +15,13 @@ class BuildActionsView extends StatelessWidget {
             title: "السابق",
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
-            onTap: ()=> activityData.goToPreviousPage(),
+            onTap: ()=> addActivityData.goToPreviousPage(),
           ),
           DefaultButton(
             title: "حفظ",
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
-            onTap: ()=> AutoRouter.of(context).pop(),
+            onTap: ()=> addActivityData.fourthPageData.saveDataToModel(context, addActivityData),
           ),
         ],
       ),

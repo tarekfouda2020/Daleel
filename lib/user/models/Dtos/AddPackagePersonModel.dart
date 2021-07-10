@@ -6,8 +6,8 @@ class AddpackagePersonModel{
   int? numberOfPersons;
   int? minimumCount;
   int? maximumCount;
-  double? pricePerPerson;
-  double? packagePrice;
+  num? pricePerPerson;
+  num? packagePrice;
   int? numberOfBookingsPerDay;
 
   AddpackagePersonModel({

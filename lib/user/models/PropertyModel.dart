@@ -30,6 +30,8 @@ class PropertyModel {
     this.allSectionsPrice,
     this.firstSectionPrice,
     this.secondSectionPrice,
+    required this.translation,
+    required this.location
   });
 
   String id;
@@ -46,21 +48,24 @@ class PropertyModel {
   String user;
   List<CityModel> occasions;
   SubCategoryModel subCategory;
-  List<SubCategoryModel> options;
+  List<CityModel> options;
   String termsAndConditions;
   int capacity;
   List<dynamic> bookingDays;
+  List<double> location;
   bool isOffer;
   bool isOfferAvailable;
   DeptPriceModel? allSectionsPrice;
   DeptPriceModel? firstSectionPrice;
   DeptPriceModel? secondSectionPrice;
+  TransitionModel translation;
 
   factory PropertyModel.fromMap(Map<String, dynamic> json) => PropertyModel(
     id: json["_id"],
     price: json["price"],
     category: CategoryModel.fromMap(json["category"]),
     city: CityModel.fromMap(json["city"]),
+    translation: TransitionModel.fromMap(json["translation"]),
     rate: json["rate"],
     name: json["name"],
     images: List<String>.from(json["images"].map((x) => x)),
@@ -68,10 +73,11 @@ class PropertyModel {
     personPrices: List<PersonPriceModel>.from(json["personPrices"].map((x) => PersonPriceModel.fromMap(x))),
     description: json["description"],
     panoramicImages: List<String>.from(json["panoramic_images"].map((x) => x)),
+    location: json["location"]==null?[0.0,0.0]: List<double>.from(json["location"].map((x) => x)),
     user: json["user"],
     occasions: List<CityModel>.from(json["occasions"].map((x) => CityModel.fromMap(x))),
     subCategory: SubCategoryModel.fromMap(json["sub_category"]),
-    options: List<SubCategoryModel>.from(json["options"].map((x) => SubCategoryModel.fromMap(x))),
+    options: List<CityModel>.from(json["options"].map((x) => CityModel.fromMap(x))),
     termsAndConditions: json["terms_and_conditions"],
     capacity: json["capacity"],
     bookingDays: List<dynamic>.from(json["booking_days"].map((x) => x)),
@@ -81,30 +87,44 @@ class PropertyModel {
     firstSectionPrice: json["firstSectionPrice"]!=null?DeptPriceModel.fromMap(json["firstSectionPrice"]):null,
     secondSectionPrice: json["secondSectionPrice"]!=null?DeptPriceModel.fromMap(json["secondSectionPrice"]):null,
   );
+}
+
+class TransitionModel {
+  TransitionModel({
+    required this.ar,
+  });
+
+  Ar ar;
+
+  factory TransitionModel.fromMap(Map<String, dynamic> json) => TransitionModel(
+    ar: Ar.fromMap(json["ar"]),
+  );
 
   Map<String, dynamic> toMap() => {
-    "_id": id,
-    "price": price,
-    "category": category.toMap(),
-    "city": city.toMap(),
-    "rate": rate,
+    "ar": ar.toMap(),
+  };
+}
+
+class Ar {
+  Ar({
+    required this.name,
+    required this.description,
+    required this.termsAndConditions,
+  });
+
+  String name;
+  String description;
+  String termsAndConditions;
+
+  factory Ar.fromMap(Map<String, dynamic> json) => Ar(
+    name: json["name"],
+    description: json["description"],
+    termsAndConditions: json["terms_and_conditions"],
+  );
+
+  Map<String, dynamic> toMap() => {
     "name": name,
-    "images": List<String>.from(images.map((x) => x)),
-    "packagePrices": List<PackagePriceModel>.from(packagePrices.map((x) => x)),
-    "personPrices": List<PersonPriceModel>.from(personPrices.map((x) => x)),
     "description": description,
-    "panoramic_images": List<String>.from(panoramicImages.map((x) => x)),
-    "user": user,
-    "occasions": List<SubCategoryModel>.from(occasions.map((x) => x.toMap())),
-    "sub_category": subCategory.toMap(),
-    "options": List<SubCategoryModel>.from(options.map((x) => x.toMap())),
     "terms_and_conditions": termsAndConditions,
-    "capacity": capacity,
-    "booking_days": List<dynamic>.from(bookingDays.map((x) => x)),
-    "is_offer": isOffer,
-    "is_offer_available": isOfferAvailable,
-    "allSectionsPrice": allSectionsPrice?.toMap(),
-    "firstSectionPrice": firstSectionPrice?.toMap(),
-    "secondSectionPrice": secondSectionPrice?.toMap(),
   };
 }

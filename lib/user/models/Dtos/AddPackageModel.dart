@@ -5,7 +5,7 @@ class AddPackageModel{
   String? descEn;
   String? descAr;
   int? numberOfPersons;
-  double? packagePrice;
+  num? packagePrice;
   int? numberOfBookingsPerDay;
 
   AddPackageModel({

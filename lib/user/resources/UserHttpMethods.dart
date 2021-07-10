@@ -2,6 +2,7 @@ import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
+import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
@@ -18,7 +19,7 @@ class UserHttpMethods {
     var user = context.read<UserCubit>().state.model;
     var params = "?page=$page&limit=10&name=&pagination=true";
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
-      url: "propertyOwner/${user.id}/properties$params",
+      url: "propertyOwner/${user.id}/properties$params",lang: "all"
     );
     if (data!=null) {
       return List<PropertyModel>.from(data["properties"].map((e) => PropertyModel.fromMap(e)));
@@ -86,6 +87,13 @@ class UserHttpMethods {
   Future<bool> addActivity(AddActivityModel model) async {
     var data = await DioHelper(context: context)
         .uploadFile(url: "properties",body: model.toJson());
+    return (data!=null);
+  }
+
+
+  Future<bool> editActivity(EditActivityModel model) async {
+    var data = await DioHelper(context: context)
+        .uploadFile(url: "properties/${model.id}",body: model.toJson(),update: true);
     return (data!=null);
   }
 

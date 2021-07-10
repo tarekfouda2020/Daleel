@@ -33,8 +33,8 @@ class DioHelper {
     );
   }
 
-  Future<dynamic> get({required String url}) async {
-    _dio.options.headers = await _getHeader();
+  Future<dynamic> get({required String url,String? lang}) async {
+    _dio.options.headers = await _getHeader(langType: lang);
     try {
       var response = await _dio.get("$baseUrl$url", options: _buildCacheOptions(url));
       print("response ${response.statusCode}");
@@ -72,7 +72,7 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> uploadFile({required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
+  Future<dynamic> uploadFile({required String url, required Map<String, dynamic> body,bool showLoader = true,bool update = false}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     _printRequestBody(body);
     FormData formData = FormData.fromMap(body);
@@ -106,7 +106,12 @@ class DioHelper {
     _dio.options.headers = await _getHeader();
     //create multipart request for POST or PATCH method
     try {
-      var response = await _dio.post("$baseUrl$url", data: formData);
+      late Response response ;
+      if (update) {
+        response = await _dio.put("$baseUrl$url", data: formData);
+      } else{
+        response = await _dio.post("$baseUrl$url", data: formData);
+      }
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
       return response.data;
@@ -180,14 +185,14 @@ class DioHelper {
         "-------------------------------------------------------------------");
   }
 
-  _getHeader() async {
+  _getHeader({String? langType}) async {
     String? token = GlobalState.instance.get("token");
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var guest = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTA3NWY4ZTcwYmRhYjFjMWQ5ODY0NGYiLCJtb2JpbGUiOiIrMSIsInJvbGVzIjpbImd1ZXN0Il0sImlhdCI6MTU3NzU0MTUxOH0.zVuWocacWCwQchx2ULTsEomaAdJFvVBFMwdj83XKY54";
     return {
       'Accept': 'application/json',
       'Authorization': '${token??guest}',
-      'content-language': '$lang',
+      'content-language': langType??'$lang',
     };
   }
 

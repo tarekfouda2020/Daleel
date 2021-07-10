@@ -24,7 +24,8 @@ import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
-import 'package:base_flutter/user/models/Dtos/PackagesTypeModel.dart' as _i19;
+import 'package:base_flutter/user/models/Dtos/PackagesTypeModel.dart' as _i20;
+import 'package:base_flutter/user/models/PropertyModel.dart' as _i19;
 import 'package:base_flutter/user/screens/add_package/AddPackageImports.dart'
     as _i17;
 import 'package:base_flutter/user/screens/edit_activity/EditActivityImports.dart'
@@ -120,8 +121,9 @@ class AppRouter extends _i1.RootStackRouter {
         barrierDismissible: false),
     EditActivityRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i16.EditActivity();
+        builder: (data) {
+          final args = data.argsAs<EditActivityRouteArgs>();
+          return _i16.EditActivity(model: args.model);
         }),
     AddPackageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
@@ -275,14 +277,22 @@ class HomeRouteArgs {
   final int tab;
 }
 
-class EditActivityRoute extends _i1.PageRouteInfo {
-  const EditActivityRoute() : super(name, path: '/edit-activity');
+class EditActivityRoute extends _i1.PageRouteInfo<EditActivityRouteArgs> {
+  EditActivityRoute({required _i19.PropertyModel model})
+      : super(name,
+            path: '/edit-activity', args: EditActivityRouteArgs(model: model));
 
   static const String name = 'EditActivityRoute';
 }
 
+class EditActivityRouteArgs {
+  const EditActivityRouteArgs({required this.model});
+
+  final _i19.PropertyModel model;
+}
+
 class AddPackageRoute extends _i1.PageRouteInfo<AddPackageRouteArgs> {
-  AddPackageRoute({required _i19.PackageType type})
+  AddPackageRoute({required _i20.PackageType type})
       : super(name,
             path: '/add-package', args: AddPackageRouteArgs(type: type));
 
@@ -292,5 +302,5 @@ class AddPackageRoute extends _i1.PageRouteInfo<AddPackageRouteArgs> {
 class AddPackageRouteArgs {
   const AddPackageRouteArgs({required this.type});
 
-  final _i19.PackageType type;
+  final _i20.PackageType type;
 }

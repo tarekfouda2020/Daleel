@@ -1,6 +1,9 @@
 part of 'EditActivityImports.dart';
 
 class EditActivity extends StatefulWidget {
+  final PropertyModel model;
+
+  const EditActivity({required this.model});
   @override
   _EditActivityState createState() => _EditActivityState();
 }
@@ -10,11 +13,18 @@ class _EditActivityState extends State<EditActivity>{
   final EditActivityData activityData = new EditActivityData();
 
   @override
+  void initState() {
+    activityData.setInitialData(context,widget.model);
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "تعديل النشاط",
+          title: "تعديل نشاط",
           leading: IconButton(
             icon: Icon(
               Icons.close,
@@ -26,7 +36,6 @@ class _EditActivityState extends State<EditActivity>{
         ),
         preferredSize: Size.fromHeight(60),
       ),
-
       body: Column(
         children: [
           BuildStepperView(
@@ -39,17 +48,16 @@ class _EditActivityState extends State<EditActivity>{
                 controller: activityData.pageController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  FirstPage(activityData: activityData),
-                  Packages(activityData: activityData),
-                  ThirdPage(activityData: activityData),
-                  FourthPage(activityData: activityData),
+                  FirstPage(addActivityData: activityData,),
+                  SecondPage(addActivityData: activityData),
+                  ThirdPage(addActivityData: activityData),
+                  FourthPage(addActivityData: activityData),
                 ],
               ),
             ),
           ),
         ],
       ),
-
     );
   }
 }

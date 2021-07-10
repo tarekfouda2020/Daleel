@@ -2,8 +2,9 @@ part of 'SecondPageWidgetsImports.dart';
 
 class BuildFirstDeptCard extends StatelessWidget {
   final String title;
-
-  const BuildFirstDeptCard({required this.title});
+  final AddDeptModel  model;
+  final Function(AddDeptModel) onSave;
+  const BuildFirstDeptCard({required this.title, required this.model, required this.onSave});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,19 +36,23 @@ class BuildFirstDeptCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  BuildFormField(title: "اسم القسم"),
-                  BuildFormField(title: "سعة القسم"),
+                  BuildFormField(title: "اسم القسم",controller: model.allDeptFields[7].value,),
+                  BuildFormField(title: "سعة القسم",controller: model.allDeptFields[8].value,),
                   RichTextFiled(
+                    controller: model.allDeptFields[9].value,
                     label: "اكتب وصف مختصر بالعربي",
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
+                    action: TextInputAction.next,
                     fillColor: MyColors.white,
                     validate: (value)=> value!.noValidate(),
                   ),
                   RichTextFiled(
+                    controller: model.allDeptFields[10].value,
                     label: "اكتب وصف مختصر بالانجليزي",
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
+                    action: TextInputAction.next,
                     fillColor: MyColors.white,
                     validate: (value)=> value!.noValidate(),
                   ),
@@ -64,40 +69,40 @@ class BuildFirstDeptCard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "السبت"),
+                        child: BuildFormField(title: "السبت",controller: model.allDeptFields[0].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الاحد"),
+                        child: BuildFormField(title: "الاحد",controller: model.allDeptFields[1].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاثنين"),
+                        child: BuildFormField(title: "الاثنين",controller: model.allDeptFields[2].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الثلاثاء"),
+                        child: BuildFormField(title: "الثلاثاء",controller: model.allDeptFields[3].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاربعاء"),
+                        child: BuildFormField(title: "الاربعاء",controller: model.allDeptFields[4].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الخميس"),
+                        child: BuildFormField(title: "الخميس",controller: model.allDeptFields[5].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الجمعة"),
+                        child: BuildFormField(title: "الجمعة",controller: model.allDeptFields[6].value,),
                       ),
                     ],
                   ),
@@ -106,7 +111,7 @@ class BuildFirstDeptCard extends StatelessWidget {
                     margin: EdgeInsets.symmetric(vertical: 15),
                     color: MyColors.bg,
                     textColor: MyColors.secondary,
-                    onTap: () {},
+                    onTap: ()=>onSave(model),
                   ),
                 ],
               ),

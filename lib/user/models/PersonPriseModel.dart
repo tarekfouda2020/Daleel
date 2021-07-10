@@ -23,7 +23,7 @@ class PersonPriceModel {
   String descriptionAr;
   int minimumCount;
   int maximumCount;
-  int pricePerPerson;
+  num pricePerPerson;
   DateTime createdAt;
   DateTime updatedAt;
   bool isAvailable;

@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/general/blocks/cats_cubit/cats_cubit.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
@@ -23,7 +22,7 @@ class GeneralHttpMethods {
   GeneralHttpMethods(this.context);
 
   Future<bool> userLogin(String phone, String pass) async {
-    String _lang = context.read<LangCubit>().state.locale.languageCode;
+    
     Map<String, dynamic> body = {
       "mobile": "+966$phone",
       "type": "property_owner",
@@ -40,7 +39,6 @@ class GeneralHttpMethods {
 
   Future<bool> verifyUser(String code, String id) async {
     String? _token = await messaging.getToken();
-    String _lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "mobile_token": int.parse(code),
       "user": id,
@@ -68,8 +66,6 @@ class GeneralHttpMethods {
   }
 
   Future<List<CategoryModel>> getCategories() async {
-    String lang = context.read<LangCubit>().state.locale.languageCode;
-    Map<String, dynamic> body = {"lang": lang};
     var _data = await DioHelper(context: context,forceRefresh: false).get(url: "categories");
     if (_data != null) {
       var cats = List<CategoryModel>.from(_data.map((e) => CategoryModel.fromMap(e)));
@@ -100,9 +96,6 @@ class GeneralHttpMethods {
   }
 
   Future<String?> aboutApp() async {
-    Map<String, dynamic> body = {
-      "lang": context.read<LangCubit>().state.locale.languageCode,
-    };
     var _data =
     await DioHelper(context: context).get(url: "/api/v1/AboutApp");
     if (_data != null) {
@@ -113,9 +106,6 @@ class GeneralHttpMethods {
   }
 
   Future<String?> terms() async {
-    Map<String, dynamic> body = {
-      "lang": context.read<LangCubit>().state.locale.languageCode,
-    };
     var _data =
     await DioHelper(context: context).get(url: "/api/v1/AboutApp");
     if (_data != null) {
@@ -126,9 +116,6 @@ class GeneralHttpMethods {
   }
 
   Future<List<QuestionModel>> frequentQuestions() async {
-    Map<String, dynamic> body = {
-      "lang": context.read<LangCubit>().state.locale.languageCode,
-    };
     var _data = await DioHelper(context: context).get(url: "/api/v1/FrequentlyAskedQuestions");
     if (_data != null) {
       return List<QuestionModel>.from(
@@ -202,15 +189,11 @@ class GeneralHttpMethods {
   }
 
   Future<UserModel?> checkActive(String phone) async {
-    Map<String, dynamic> body = {
-      "phone": "$phone",
-    };
     var _data = await DioHelper(context: context).get(url: "/api/v1/CheckActive");
     print("data is $_data");
     if (_data != null) {
       final userCubit = context.read<UserCubit>().state.model;
       UserModel user = UserModel.fromMap(_data["data"]);
-      int type = _data["userData"]["type"];
       user.token = userCubit.token;
       user.lang = userCubit.lang;
       return user;

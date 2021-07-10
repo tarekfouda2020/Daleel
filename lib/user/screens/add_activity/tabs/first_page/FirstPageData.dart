@@ -26,6 +26,11 @@ class FirstPageData{
     normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
   }
 
+  removeImage(File file){
+    normalImagesCubit.state.data.remove(file);
+    normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
+  }
+
   setActivityData(AddActivityData activityData,BuildContext context){
     if (formKey.currentState!.validate()) {
       if (normalImagesCubit.state.data.length>5||normalImagesCubit.state.data.length<2) {

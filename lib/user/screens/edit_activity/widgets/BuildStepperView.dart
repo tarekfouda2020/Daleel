@@ -1,6 +1,5 @@
 part of 'AddActivityWidgetsImports.dart';
 
-
 class BuildStepperView extends StatelessWidget {
   final EditActivityData activityData;
 

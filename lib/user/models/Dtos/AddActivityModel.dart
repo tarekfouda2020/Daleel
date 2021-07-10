@@ -59,7 +59,7 @@ class AddActivityModel{
           },
         }
     ),
-    "images":categoryModel?.image,
+    "images":images,
 
   };
 

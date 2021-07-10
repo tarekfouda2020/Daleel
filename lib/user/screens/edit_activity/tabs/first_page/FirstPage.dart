@@ -1,27 +1,24 @@
 part of 'FirstPageImports.dart';
 
 class FirstPage extends StatefulWidget {
-  final EditActivityData activityData;
+  final EditActivityData addActivityData;
 
-  const FirstPage({required this.activityData});
+  const FirstPage({required this.addActivityData});
+
   @override
   _FirstPageState createState() => _FirstPageState();
 }
 
 class _FirstPageState extends State<FirstPage> {
-
-  final FirstPageData pageData = new FirstPageData();
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: MyColors.greyWhite)
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: MyColors.greyWhite)),
         child: Column(
           children: [
             Flexible(
@@ -29,26 +26,36 @@ class _FirstPageState extends State<FirstPage> {
                 padding: EdgeInsets.zero,
                 children: [
                   BuildHeaderColor(),
-                  // BuildTypesView(),
+                  // BuildTypesView(activityData: widget.addActivityData),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                    child: MyText(
+                      title: "المعلومات الاساسية",
+                      color: MyColors.primary,
+                      size: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   BuildImagesView(
-                    onTap: (){},
+                    onTap: () =>
+                        widget.addActivityData.firstPageData.getNormalImages(),
                     title: "رفع الصور",
+                    subtitle: "من ٢ الي ٥ صور",
+                  ),
+                  BuildNormalImages(
+                    pageData: widget.addActivityData.firstPageData,
                   ),
                   BuildImagesView(
-                    onTap: (){},
+                    onTap: () {},
                     title: "رفع صور ٣٦٠ درجة",
                   ),
-                  BuildFormView(pageData: pageData),
+                  BuildFormView(pageData: widget.addActivityData.firstPageData),
                 ],
               ),
             ),
             BuildActionView(
-              pageData: pageData,
-              activityData: widget.activityData,
+              pageData: widget.addActivityData.firstPageData,
+              addActivityData: widget.addActivityData,
             ),
           ],
         ),

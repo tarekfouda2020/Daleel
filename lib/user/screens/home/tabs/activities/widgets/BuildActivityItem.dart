@@ -7,6 +7,7 @@ class BuildActivityItem extends StatelessWidget {
   const BuildActivityItem({required this.model, required this.activityData});
   @override
   Widget build(BuildContext context) {
+    var lang = context.watch<LangCubit>().state.locale.languageCode=="ar";
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
@@ -31,7 +32,7 @@ class BuildActivityItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText(
-                      title: model.name,
+                      title: lang? model.translation.ar.name:model.name,
                       color: MyColors.blackOpacity,
                       size: 10,
                       fontWeight: FontWeight.w500,
@@ -71,7 +72,7 @@ class BuildActivityItem extends StatelessWidget {
                     children: [
                       BuildActivityAction(
                         title: "تعديل",
-                        onTap: ()=> AutoRouter.of(context).push(EditActivityRoute()),
+                        onTap: ()=> AutoRouter.of(context).push(EditActivityRoute(model: model)),
                         iconData: Icons.edit,
                       ),
                       SizedBox(width: 20),

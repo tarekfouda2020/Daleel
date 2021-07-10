@@ -1,27 +1,32 @@
 part of 'ThirdPageImports.dart';
 
 class ThirdPage extends StatefulWidget {
-  final EditActivityData activityData;
+  final EditActivityData addActivityData;
 
-  const ThirdPage({required this.activityData});
+  const ThirdPage({required this.addActivityData});
+
   @override
   _ThirdPageState createState() => _ThirdPageState();
 }
 
-class _ThirdPageState extends State<ThirdPage>{
+class _ThirdPageState extends State<ThirdPage> {
+  late ThirdPageData pageData;
 
-  final ThirdPageData pageData = new ThirdPageData();
+  @override
+  void initState() {
+    super.initState();
+    pageData = widget.addActivityData.thirdPageData;
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: MyColors.greyWhite)
-        ),
+            border: Border.all(color: MyColors.greyWhite)),
         child: Column(
           children: [
             Flexible(
@@ -30,19 +35,24 @@ class _ThirdPageState extends State<ThirdPage>{
                   BuildHeaderColor(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: MyText(title: "المعلومات الاضافية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                    child: MyText(
+                      title: "المعلومات الاضافية",
+                      color: MyColors.primary,
+                      size: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  BuildFormView(pageData: pageData)
-
+                  BuildFormView(
+                    pageData: pageData,
+                    catId: widget.addActivityData.activityModel.categoryModel!.id,
+                  )
                 ],
               ),
             ),
-            BuildActionsView(activityData: widget.activityData)
+            BuildActionsView(addActivityData: widget.addActivityData)
           ],
         ),
       ),
     );
   }
-
 }
-
