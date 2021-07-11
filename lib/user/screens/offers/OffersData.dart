@@ -78,7 +78,11 @@ class OffersData {
         price: double.parse(price.text),
         property: propertyModel.id
       );
-      btnKey.currentState!.animateReverse();
+      var result = await UserRepository(context).addOffer(model);
+      if (result) {
+        btnKey.currentState!.animateReverse();
+        Navigator.of(context).pop();
+      }
     }
   }
 

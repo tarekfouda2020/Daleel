@@ -47,7 +47,7 @@ class _OffersState extends State<Offers> {
                 ],
               ),
             ),
-            BuildAddAction(offersData: offersData),
+            BuildAddAction(offersData: offersData, model: widget.model),
           ],
         ),
       ),

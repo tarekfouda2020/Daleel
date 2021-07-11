@@ -7,6 +7,7 @@ import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/DropdownModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOfferModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
+import 'package:base_flutter/user/resources/UserRepository.dart';
 import 'package:base_flutter/user/screens/offers/widgets/OfferWidgetImports.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
