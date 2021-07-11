@@ -48,7 +48,7 @@ class _ActivitiesState extends State<Activities> {
           ),
         ),
       ),
-      floatingActionButton: BuildFloatAction(),
+      floatingActionButton: BuildFloatAction(activitiesData: activitiesData),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }

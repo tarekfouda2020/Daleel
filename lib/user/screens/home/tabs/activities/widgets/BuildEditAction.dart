@@ -1,40 +1,37 @@
 part of 'ActivitiesWidgetImports.dart';
 
-class BuildFloatAction extends StatelessWidget {
+class BuildEditAction extends StatelessWidget {
+  final PropertyModel model;
   final ActivitiesData activitiesData;
 
-  const BuildFloatAction({required this.activitiesData});
+  const BuildEditAction({required this.model, required this.activitiesData});
+
   @override
   Widget build(BuildContext context) {
-    return OpenContainer(
+    return OpenContainer<bool?>(
       closedColor: Colors.transparent,
       closedElevation: 0,
       openElevation: 0,
       middleColor: Colors.transparent,
       transitionType: ContainerTransitionType.fadeThrough,
       transitionDuration: Duration(milliseconds: 600),
-      onClosed: (ref){
+      onClosed: (bool? ref){
         if (ref!=null) {
           activitiesData.pagingController.refresh();
         }
       },
       closedBuilder: (BuildContext context, void Function() action) {
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          height: 40,
-          decoration: BoxDecoration(
-              color: MyColors.primary,
-              borderRadius: BorderRadius.circular(20)
-          ),
-          alignment: Alignment.center,
-          child: MyText(title: "اضف نشاطك",color: MyColors.white, size: 12,),
+        return BuildActivityAction(
+          title: "تعديل",
+          onTap: null,
+          iconData: Icons.edit,
         );
       },
       openBuilder: (_, action) {
-        return AddActivity();
+        return EditActivity(model: model);
       },
       useRootNavigator: true,
     );
   }
 }
+

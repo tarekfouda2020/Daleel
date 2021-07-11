@@ -70,11 +70,7 @@ class BuildActivityItem extends StatelessWidget {
                   margin: EdgeInsets.only(top: 5,right: 5,left: 5),
                   child: Row(
                     children: [
-                      BuildActivityAction(
-                        title: "تعديل",
-                        onTap: ()=> AutoRouter.of(context).push(EditActivityRoute(model: model)),
-                        iconData: Icons.edit,
-                      ),
+                      BuildEditAction(activitiesData: activityData,model: model),
                       SizedBox(width: 20),
                       BuildActivityAction(
                         title: "عرض",

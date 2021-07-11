@@ -36,7 +36,7 @@ class FourthPageData{
       var result = await UserRepository(context).addActivity(addActivityData.activityModel);
       if(result){
         LoadingDialog.showToastNotification("تم اضافة النشاط بنجاح");
-        AutoRouter.of(context).pop();
+        Navigator.of(context).pop(true);
       }
     }
   }
