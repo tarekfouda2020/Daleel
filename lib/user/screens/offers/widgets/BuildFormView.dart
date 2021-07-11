@@ -2,8 +2,9 @@ part of 'OfferWidgetImports.dart';
 
 class BuildFormView extends StatelessWidget {
   final OffersData offersData;
+  final PropertyModel model;
 
-  const BuildFormView({required this.offersData});
+  const BuildFormView({required this.offersData, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +51,9 @@ class BuildFormView extends StatelessWidget {
               margin: EdgeInsets.only(top: 15),
               validate: (CityModel value) => value.validateDropDown(context),
               label: "النوع",
+              showSearchBox: false,
+              showClearButton: false,
+              mode: Mode.MENU,
               selectedItem: offersData.selectedType,
               onChange: (CityModel model) => offersData.onTypeChange(model),
               data: offersData.types,
@@ -79,6 +83,20 @@ class BuildFormView extends StatelessWidget {
               },
             ),
 
+            Visibility(
+              visible: CategoryModel.getTypeValue(model.category.tag)==CategoriesTypes.secondCat,
+              child: DropdownTextField<CityModel>(
+                margin: EdgeInsets.only(top: 15),
+                validate: (CityModel value) => value.validateDropDown(context),
+                label: "نوع الباكدج",
+                showSearchBox: false,
+                showClearButton: false,
+                mode: Mode.MENU,
+                selectedItem: offersData.selectedPackage,
+                onChange: (CityModel model) => offersData.onPackageChange(model),
+                data: offersData.packages,
+              ),
+            ),
           ],
         ),
       ),

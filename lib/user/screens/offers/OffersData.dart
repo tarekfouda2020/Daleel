@@ -19,7 +19,13 @@ class OffersData {
     CityModel(id: "percent", name: "نسبة"),
   ];
 
+  var packages = [
+    CityModel(id: "package", name: "سعر الفرد"),
+    CityModel(id: "person", name: "سعر الباكدج"),
+  ];
+
   CityModel? selectedType;
+  CityModel? selectedPackage;
 
   DateTime startDate = DateTime.now();
 
@@ -54,6 +60,10 @@ class OffersData {
   onTypeChange(CityModel model){
     selectedType = model;
     typeCubit.onUpdateData(model.id);
+  }
+
+  onPackageChange(CityModel model){
+    selectedPackage = model;
   }
 
 }

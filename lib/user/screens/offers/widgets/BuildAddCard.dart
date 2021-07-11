@@ -2,8 +2,9 @@ part of 'OfferWidgetImports.dart';
 
 class BuildAddCard extends StatelessWidget {
   final OffersData offersData;
+  final PropertyModel model;
 
-  const BuildAddCard({required this.offersData});
+  const BuildAddCard({required this.offersData, required this.model});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +21,7 @@ class BuildAddCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: MyText(title: "اسم النشاط", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
           ),
-          BuildFormView(offersData: offersData),
+          BuildFormView(offersData: offersData, model: model,),
         ],
       ),
     );

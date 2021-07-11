@@ -43,7 +43,7 @@ class _OffersState extends State<Offers> {
               child: ListView(
                 padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                 children: [
-                  BuildAddCard(offersData: offersData),
+                  BuildAddCard(offersData: offersData,model: widget.model,),
                 ],
               ),
             ),

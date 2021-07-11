@@ -24,6 +24,9 @@ class DropdownTextField<DataType> extends StatefulWidget {
   final dynamic finData;
   final EdgeInsets? downIconPadding;
   final bool useName;
+  final bool showSearchBox;
+  final bool showClearButton;
+  final Mode mode;
 
   DropdownTextField(
       {this.label,
@@ -41,6 +44,9 @@ class DropdownTextField<DataType> extends StatefulWidget {
         this.dropKey,
         this.data,
         this.selectedItem,
+        this.mode = Mode.DIALOG,
+        this.showSearchBox = true,
+        this.showClearButton = true,
         this.showSelectedItem = false});
 
   @override
@@ -56,7 +62,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
       margin: widget.margin ?? EdgeInsets.zero,
       child: DropdownSearch<DataType>(
         key: widget.dropKey,
-        mode: Mode.DIALOG,
+        mode: widget.mode,
         isFilteredOnline: false,
         maxHeight: 500,
         label: widget.label,
@@ -64,9 +70,8 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         onFind: widget.finData,
         validator: widget.validate,
         onChanged: widget.onChange,
-        showSearchBox: true,
-        showClearButton: true,
-
+        showSearchBox: widget.showSearchBox,
+        showClearButton: widget.showClearButton,
         selectedItem: widget.selectedItem,
         itemAsString: (dynamic u) => widget.useName ? u.name : u,
         showSelectedItem: widget.showSelectedItem,
