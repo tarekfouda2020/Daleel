@@ -16,7 +16,7 @@ class OffersData {
 
   var types = [
     CityModel(id: "price", name: "سعر جديد"),
-    CityModel(id: "percent", name: "نسبة"),
+    CityModel(id: "percentage", name: "نسبة"),
   ];
 
   var packages = [
@@ -65,5 +65,22 @@ class OffersData {
   onPackageChange(CityModel model){
     selectedPackage = model;
   }
+
+  saveOfferData(BuildContext context, PropertyModel propertyModel)async{
+    if (formKey.currentState!.validate()) {
+      btnKey.currentState!.animateForward();
+      AddOfferModel model = AddOfferModel(
+        from: fromCubit.state.data,
+        to: fromCubit.state.data,
+        type: selectedType?.id,
+        packageType: selectedPackage?.id,
+        percentage: double.parse(percent.text),
+        price: double.parse(price.text),
+        property: propertyModel.id
+      );
+      btnKey.currentState!.animateReverse();
+    }
+  }
+
 
 }

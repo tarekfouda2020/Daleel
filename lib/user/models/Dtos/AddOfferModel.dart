@@ -1,6 +1,4 @@
 
-import 'package:base_flutter/user/models/Dtos/PackagesTypeModel.dart';
-
 enum OfferType{
   price,
   percentage
@@ -12,9 +10,18 @@ class AddOfferModel{
   double? percentage;
   double? price;
   String? property;
-  OfferType? type;
-  PackageType? packageType;
+  String? type;
+  String? packageType;
 
+
+  AddOfferModel(
+      {this.from,
+      this.to,
+      this.percentage,
+      this.price,
+      this.property,
+      this.type,
+      this.packageType});
 
   Map<String, dynamic> toJson(){
     if (packageType==null) {
@@ -23,7 +30,7 @@ class AddOfferModel{
         "to":to,
         "price":price??0,
         "percentage":percentage??0,
-        "type":type==OfferType.price?"price":"percentage",
+        "type":type,
         "property":property,
       };
     }
@@ -32,9 +39,9 @@ class AddOfferModel{
       "to":to,
       "price":price??0,
       "percentage":percentage??0,
-      "type":type==OfferType.price?"price":"percentage",
+      "type":type,
       "property":property,
-      "packageType":packageType==PackageType.person?"person":"package",
+      "packageType":packageType,
     };
   }
 
