@@ -5,11 +5,6 @@ import 'PackagePriceModel.dart';
 import 'PersonPriseModel.dart';
 import 'SubCategoryModel.dart';
 
-enum PropertyStatus{
-  pending,
-
-}
-
 class PropertyModel {
   PropertyModel({
     required this.id,
@@ -89,7 +84,7 @@ class PropertyModel {
     capacity: json["capacity"],
     bookingDays: List<dynamic>.from(json["booking_days"].map((x) => x)),
     isOffer: json["is_offer"],
-    propertyStatus: json["property_status"]==""? PropertyStatus.pending : PropertyStatus.pending,
+    propertyStatus: json["property_status"].toString().getStatusFromStr(),
     isOfferAvailable: json["is_offer_available"],
     allSectionsPrice: json["allSectionsPrice"]!=null? DeptPriceModel.fromMap(json["allSectionsPrice"]):null,
     firstSectionPrice: json["firstSectionPrice"]!=null?DeptPriceModel.fromMap(json["firstSectionPrice"]):null,
@@ -135,4 +130,23 @@ class Ar {
     "description": description,
     "terms_and_conditions": termsAndConditions,
   };
+}
+
+enum PropertyStatus{
+  pending,
+  verified,
+  rejected
+}
+
+extension PopState on String{
+  PropertyStatus getStatusFromStr(){
+    switch(this){
+      case "pending":
+        return PropertyStatus.pending;
+      case "rejected":
+        return PropertyStatus.rejected;
+      default:
+        return PropertyStatus.verified;
+    }
+  }
 }

@@ -19,7 +19,7 @@ class BuildActivityItem extends StatelessWidget {
           Container(
             height: 15,
             decoration: BoxDecoration(
-                color: MyColors.secondary,
+                color: model.propertyStatus==PropertyStatus.verified? MyColors.secondary : MyColors.redColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(8), topRight: Radius.circular(8))),
           ),
@@ -83,8 +83,8 @@ class BuildActivityItem extends StatelessWidget {
                       ),
                       Spacer(),
                       BuildActivityAction(
-                        title: "مفعل",
-                        color: MyColors.secondary,
+                        title: model.propertyStatus==PropertyStatus.verified? "مفعل" : "غير مفعل",
+                        color: model.propertyStatus==PropertyStatus.verified? MyColors.secondary : MyColors.redColor,
                         onTap: (){},
                       ),
                     ],
