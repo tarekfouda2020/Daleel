@@ -10,6 +10,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
+    var settings = context.watch<SettingCubit>().state.model;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -24,17 +25,17 @@ class _SettingsState extends State<Settings> {
           BuildSettingItem(
             title: 'العقد',
             icon: Icons.assessment_outlined,
-            page: Assignment(),
+            page: Assignment(isTerm: false),
           ),
           BuildSettingItem(
             title: 'تواصل معنا',
             icon: Icons.contact_mail_outlined,
-            page: ContactUs(),
+            onTap: ()=>Utils.launchWhatsApp("+${settings?.supportNumber??"966555873010"}"),
           ),
           BuildSettingItem(
             title: 'الشروط والاحكام',
             icon: Icons.reorder_sharp,
-            page: Assignment(),
+            page: Assignment(isTerm: true),
           ),
           BuildSettingItem(
             title: 'اللغة',

@@ -1,3 +1,4 @@
+import 'package:base_flutter/general/blocks/setting_cubit/setting_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
@@ -109,7 +110,9 @@ class UserHttpMethods {
     var data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "configurations",);
     if (data!=null) {
-      return SettingModel.fromMap(data);
+      SettingModel model = SettingModel.fromMap(data);
+      context.read<SettingCubit>().onUpdateSettings(model);
+      return model;
     }else{
       return null;
     }

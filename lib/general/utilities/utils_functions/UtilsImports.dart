@@ -4,6 +4,7 @@ import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/models/LocationModel.dart';
 import 'package:base_flutter/general/resources/GeneralRepository.dart';
+import 'package:base_flutter/user/resources/UserRepository.dart';
 import 'package:base_flutter/user/screens/location_address/LocationAddressImports.dart';
 import 'package:base_flutter/user/screens/location_address/location_cubit/location_cubit.dart';
 import 'package:file_picker/file_picker.dart';

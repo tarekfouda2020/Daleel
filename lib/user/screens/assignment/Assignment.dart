@@ -1,6 +1,9 @@
 part of 'AssignmentImports.dart';
 
 class Assignment extends StatefulWidget {
+  final bool isTerm;
+
+  const Assignment({required this.isTerm});
   @override
   _AssignmentState createState() => _AssignmentState();
 }
@@ -8,11 +11,19 @@ class Assignment extends StatefulWidget {
 class _AssignmentState extends State<Assignment> {
   AssignmentData assignmentData = new AssignmentData();
 
+
+  @override
+  void initState() {
+    assignmentData.fetchData(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var settings = context.watch<SettingCubit>().state.model;
     return Scaffold(
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "العقد"),
+        child: DefaultAppBar(title: widget.isTerm? "الشروط و الاحكام" : "العقد"),
         preferredSize: Size.fromHeight(60),
       ),
       body: ListView(
@@ -20,14 +31,7 @@ class _AssignmentState extends State<Assignment> {
         children: [
           Image.asset(Res.logo,height: 170,),
           MyText(
-            title: "هذا النص يمكن استبدالة بنص اخر هذا النص يمكن استبدالة بنص اخر" * 5,
-            color: MyColors.blackOpacity,
-            size: 12,
-            alien: TextAlign.center,
-          ),
-          SizedBox(height: 10),
-          MyText(
-            title: "هذا النص يمكن استبدالة بنص اخر هذا النص يمكن استبدالة بنص اخر" * 5,
+            title: widget.isTerm? settings?.privacyPolicy??"" : settings?.rulesOfPropertyOwners??"",
             color: MyColors.blackOpacity,
             size: 12,
             alien: TextAlign.center,

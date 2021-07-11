@@ -4,6 +4,7 @@ class Utils {
   static Future<void> manipulateSplashData(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await GeneralRepository(context).getCategories();
+    UserRepository(context).getSettings(false);
     var strUser = prefs.get("user");
     if (strUser != null) {
       UserModel data = UserModel.fromMap(json.decode("$strUser"));
@@ -61,17 +62,10 @@ class Utils {
   }
 
   static void launchWhatsApp(phone) async {
-    String message = 'مرحبا بك';
-    if (phone.startsWith("00966")) {
-      phone = phone.substring(5);
-    }
-    var _whatsAppUrl = "whatsapp://send?phone=+966$phone&text=$message";
+    String message = 'Welcome';
+    var _whatsAppUrl = "https://api.whatsapp.com/send?phone=$phone&text=$message";
     print(_whatsAppUrl);
-    if (await canLaunch(_whatsAppUrl)) {
-      await launch(_whatsAppUrl);
-    } else {
-      throw 'حدث خطأ ما';
-    }
+    await launch(_whatsAppUrl);
   }
 
   static void launchYoutube({required String url}) async {
