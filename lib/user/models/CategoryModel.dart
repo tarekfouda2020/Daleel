@@ -17,6 +17,7 @@ class CategoryModel {
     required this.createdAt,
     required this.updatedAt,
     required this.type,
+    required this.translation,
   });
 
   String id;
@@ -30,6 +31,7 @@ class CategoryModel {
   DateTime createdAt;
   DateTime updatedAt;
   CategoriesTypes type;
+  TransitionModel translation;
 
   factory CategoryModel.fromMap(Map<String, dynamic> json) => CategoryModel(
     id: json["_id"],
@@ -43,6 +45,10 @@ class CategoryModel {
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
     type: getTypeValue(json["tag"]),
+    translation: json["translation"]==null?TransitionModel(ar: Ar(name: json["name"]))
+        : TransitionModel.fromMap(json["translation"]),
+
+
   );
 
   Map<String, dynamic> toMap() => {
@@ -78,4 +84,35 @@ class CategoryModel {
 
 }
 
+class TransitionModel {
+  TransitionModel({
+    required this.ar,
+  });
+
+  Ar ar;
+
+  factory TransitionModel.fromMap(Map<String, dynamic> json) => TransitionModel(
+    ar: Ar.fromMap(json["ar"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "ar": ar.toMap(),
+  };
+}
+
+class Ar {
+  Ar({
+    required this.name,
+  });
+
+  String name;
+
+  factory Ar.fromMap(Map<String, dynamic> json) => Ar(
+    name: json["name"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "name": name,
+  };
+}
 

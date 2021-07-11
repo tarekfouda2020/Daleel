@@ -31,7 +31,7 @@ class MyText extends StatelessWidget {
       ):
       GoogleFonts.roboto(
           color: color??Colors.black,
-          fontSize: size??16,
+          fontSize: size!=null? (size!+2) :16,
           decoration: decoration??TextDecoration.none,
           fontWeight: fontWeight
       ),

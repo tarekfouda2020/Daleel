@@ -122,6 +122,7 @@ class EditActivityData{
 
   initFourthScreen(PropertyModel model){
     fourthPageData.selectedOptions=model.options;
+    fourthPageData.location.text=model.address;
     fourthPageData.lat=model.location[0].toString();
     fourthPageData.lat=model.location[1].toString();
   }

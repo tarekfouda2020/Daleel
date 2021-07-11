@@ -7,6 +7,7 @@ import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
+import 'package:base_flutter/user/models/SettingModel.dart';
 import 'package:base_flutter/user/models/SubCategoryModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,6 +105,15 @@ class UserHttpMethods {
     return (data!=null);
   }
 
+  Future<SettingModel?> getSettings(bool refresh) async {
+    var data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "configurations",);
+    if (data!=null) {
+      return SettingModel.fromMap(data);
+    }else{
+      return null;
+    }
+  }
 
 
 

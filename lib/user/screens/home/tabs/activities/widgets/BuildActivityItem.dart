@@ -49,7 +49,7 @@ class BuildActivityItem extends StatelessWidget {
                   ],
                 ),
                 MyText(
-                  title: model.category.name,
+                  title: lang? model.category.translation.ar.name : model.category.name,
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,

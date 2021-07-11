@@ -33,6 +33,8 @@ class FourthPageData{
     if (formKey.currentState!.validate()) {
       addActivityData.activityModel.location=[double.parse(lat??"0"),double.parse(lng??"0")];
       addActivityData.activityModel.options=selectedOptions;
+      addActivityData.activityModel.options=selectedOptions;
+      addActivityData.activityModel.address=location.text;
       var result = await UserRepository(context).addActivity(addActivityData.activityModel);
       if(result){
         LoadingDialog.showToastNotification("تم اضافة النشاط بنجاح");

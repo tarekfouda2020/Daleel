@@ -32,7 +32,8 @@ class PropertyModel {
     this.secondSectionPrice,
     required this.translation,
     required this.propertyStatus,
-    required this.location
+    required this.location,
+    required this.address
   });
 
   String id;
@@ -51,6 +52,7 @@ class PropertyModel {
   SubCategoryModel subCategory;
   List<CityModel> options;
   String termsAndConditions;
+  String address;
   int capacity;
   List<dynamic> bookingDays;
   List<double> location;
@@ -70,12 +72,13 @@ class PropertyModel {
     translation: TransitionModel.fromMap(json["translation"]),
     rate: json["rate"],
     name: json["name"],
+      address: json["address"]??"",
     images: List<String>.from(json["images"].map((x) => x)),
     packagePrices: List<PackagePriceModel>.from(json["packagePrices"].map((x) => PackagePriceModel.fromMap(x))),
     personPrices: List<PersonPriceModel>.from(json["personPrices"].map((x) => PersonPriceModel.fromMap(x))),
     description: json["description"],
     panoramicImages: List<String>.from(json["panoramic_images"].map((x) => x)),
-    location: json["location"]==null?[0.0,0.0]: List<double>.from(json["location"].map((x) => x)),
+    location: json["location"]==null?[0.0,0.0]: List<double>.from(json["location"].map((x) => double.parse("$x"))),
     user: json["user"],
     occasions: List<CityModel>.from(json["occasions"].map((x) => CityModel.fromMap(x))),
     subCategory: SubCategoryModel.fromMap(json["sub_category"]),

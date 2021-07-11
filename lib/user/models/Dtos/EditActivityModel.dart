@@ -22,6 +22,7 @@ class EditActivityModel{
   Map<String,dynamic>?  secondSectionPrice;
   String? termsAr;
   String? termsEn;
+  String? address;
   List<double>? location;
   List<String>? subCategory;
   List<String>? occasions;
@@ -39,6 +40,7 @@ class EditActivityModel{
           "id":id,
           "city":city,
           "name":nameEn,
+          "address":address??"",
           "price": price??0,
           "capacity": opacity??allSectionsPrice?["capacity"]??0,
           "allSectionsPrice":allSectionsPrice??{},

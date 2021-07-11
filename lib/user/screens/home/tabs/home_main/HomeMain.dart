@@ -38,8 +38,7 @@ class _HomeMainState extends State<HomeMain> {
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     pagingController: homeMainData.pagingController,
                     builderDelegate: PagedChildBuilderDelegate<OrderModel>(
-                        firstPageProgressIndicatorBuilder: (context) =>
-                            LoadingDialog.showLoadingView(),
+                        firstPageProgressIndicatorBuilder: (context) => LoadingDialog.showLoadingView(),
                         noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
                               title: "لا يوجد طلبات",
                               message: "انتظر الحصول علي طلبات قريبا",

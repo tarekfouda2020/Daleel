@@ -35,6 +35,7 @@ class _ActivitiesState extends State<Activities> {
             padding: EdgeInsets.only(right: 15, left: 15, bottom: 50),
             pagingController: activitiesData.pagingController,
             builderDelegate: PagedChildBuilderDelegate<PropertyModel>(
+                firstPageProgressIndicatorBuilder: (context) => LoadingDialog.showLoadingView(),
                 noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
                       title: "لا يوجد انشطة",
                       message: "اضف نشطاتك للحصول علي طلبات",
