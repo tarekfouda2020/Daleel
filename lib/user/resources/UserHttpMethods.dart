@@ -93,7 +93,7 @@ class UserHttpMethods {
 
   Future<bool> addOffer(AddOfferModel model) async {
     var data = await DioHelper(context: context)
-        .uploadFile(url: "offers",body: model.toJson());
+        .post(url: "offers",body: model.toJson(),showLoader: false);
     return (data!=null);
   }
 

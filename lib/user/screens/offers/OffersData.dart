@@ -36,8 +36,8 @@ class OffersData {
       onConfirm: (date){
         if (date!=null) {
           startDate = date.add(Duration(days: 1));
-          fromCubit.onUpdateData(DateFormat("dd-MM-yyyy").format(date));
-          toCubit.onUpdateData(DateFormat("dd-MM-yyyy").format(startDate));
+          fromCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
+          toCubit.onUpdateData("");
         }
       },
     );
@@ -51,7 +51,7 @@ class OffersData {
       title: "التاريخ الي",
       onConfirm: (date){
         if (date!=null) {
-          fromCubit.onUpdateData(DateFormat("dd-MM-yyyy").format(date));
+          toCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
         }
       },
     );
@@ -74,12 +74,13 @@ class OffersData {
         to: fromCubit.state.data,
         type: selectedType?.id,
         packageType: selectedPackage?.id,
-        percentage: double.parse(percent.text),
-        price: double.parse(price.text),
+        percentage: double.parse(percent.text.isEmpty?"0":percent.text),
+        price: double.parse(price.text.isEmpty?"0":price.text),
         property: propertyModel.id
       );
       var result = await UserRepository(context).addOffer(model);
       if (result) {
+        LoadingDialog.showToastNotification("تم اضافة العرض بنجاح");
         btnKey.currentState!.animateReverse();
         Navigator.of(context).pop();
       }

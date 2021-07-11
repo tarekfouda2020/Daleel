@@ -64,7 +64,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         key: widget.dropKey,
         mode: widget.mode,
         isFilteredOnline: false,
-        maxHeight: 500,
+        maxHeight: widget.mode==Mode.MENU?100 : 500,
         label: widget.label,
         items: widget.data,
         onFind: widget.finData,
@@ -84,7 +84,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
             borderRaduis: 5,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)
         ),
-        popupTitle: Container(
+        popupTitle: widget.mode==Mode.MENU? null : Container(
           height: 50,
           decoration: BoxDecoration(
             color: MyColors.primary,
@@ -102,7 +102,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
           ),
         ),
         popupShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(widget.mode==Mode.MENU?4:15),
         ),
         dropdownSearchDecoration: CustomInputDecoration(
             lang: lang,

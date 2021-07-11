@@ -5,6 +5,11 @@ import 'PackagePriceModel.dart';
 import 'PersonPriseModel.dart';
 import 'SubCategoryModel.dart';
 
+enum PropertyStatus{
+  pending,
+
+}
+
 class PropertyModel {
   PropertyModel({
     required this.id,
@@ -31,6 +36,7 @@ class PropertyModel {
     this.firstSectionPrice,
     this.secondSectionPrice,
     required this.translation,
+    required this.propertyStatus,
     required this.location
   });
 
@@ -59,6 +65,7 @@ class PropertyModel {
   DeptPriceModel? firstSectionPrice;
   DeptPriceModel? secondSectionPrice;
   TransitionModel translation;
+  PropertyStatus propertyStatus;
 
   factory PropertyModel.fromMap(Map<String, dynamic> json) => PropertyModel(
     id: json["_id"],
@@ -82,6 +89,7 @@ class PropertyModel {
     capacity: json["capacity"],
     bookingDays: List<dynamic>.from(json["booking_days"].map((x) => x)),
     isOffer: json["is_offer"],
+    propertyStatus: json["property_status"]==""? PropertyStatus.pending : PropertyStatus.pending,
     isOfferAvailable: json["is_offer_available"],
     allSectionsPrice: json["allSectionsPrice"]!=null? DeptPriceModel.fromMap(json["allSectionsPrice"]):null,
     firstSectionPrice: json["firstSectionPrice"]!=null?DeptPriceModel.fromMap(json["firstSectionPrice"]):null,

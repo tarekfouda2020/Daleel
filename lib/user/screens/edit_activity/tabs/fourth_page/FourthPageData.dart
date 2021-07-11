@@ -37,6 +37,7 @@ class FourthPageData{
       addActivityData.activityModel.options=selectedOptions;
       var result = await UserRepository(context).editActivity(addActivityData.activityModel);
       if(result){
+        LoadingDialog.showToastNotification("تم تعديل النشاط بنجاح");
         AutoRouter.of(context).pop();
       }
     }
