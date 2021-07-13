@@ -21,10 +21,10 @@ class HomeData {
   ];
 
   List<BottomTabModel> tabs = [
-    BottomTabModel(iconData: Res.reservation, title: "الحجوزات"),
-    BottomTabModel(iconData: Res.home, title: "الانشطة"),
-    BottomTabModel(iconData: Res.profile, title: "البيانات"),
-    BottomTabModel(iconData: Res.more, title: "المزيد"),
+    BottomTabModel(iconData: Res.reservation, title: "reservations"),
+    BottomTabModel(iconData: Res.home, title: "activities"),
+    BottomTabModel(iconData: Res.profile, title: "info"),
+    BottomTabModel(iconData: Res.more, title: "more"),
   ];
 
   void initBottomNavigation(TickerProvider ticker,BuildContext context) {

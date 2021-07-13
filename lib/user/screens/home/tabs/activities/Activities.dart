@@ -23,7 +23,7 @@ class _ActivitiesState extends State<Activities> {
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "الانشطة",
+          title: tr(context, "activities"),
           back: false,
         ),
         preferredSize: Size.fromHeight(60),
@@ -37,8 +37,8 @@ class _ActivitiesState extends State<Activities> {
             builderDelegate: PagedChildBuilderDelegate<PropertyModel>(
                 firstPageProgressIndicatorBuilder: (context) => LoadingDialog.showLoadingView(),
                 noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                      title: "لا يوجد انشطة",
-                      message: "اضف نشطاتك للحصول علي طلبات",
+                      title: tr(context,"noActivities"),
+                      message: tr(context, "addActivitiesToGetReservations"),
                     ),
                 itemBuilder: (context, item, index) {
                   return BuildActivityItem(

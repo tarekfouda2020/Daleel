@@ -22,7 +22,7 @@ class _HomeMainState extends State<HomeMain> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "الحجوزات", back: false),
+        child: DefaultAppBar(title: tr(context, "reservations"), back: false),
         preferredSize: Size.fromHeight(60),
       ),
       body: GestureDetector(
@@ -40,8 +40,8 @@ class _HomeMainState extends State<HomeMain> {
                     builderDelegate: PagedChildBuilderDelegate<OrderModel>(
                         firstPageProgressIndicatorBuilder: (context) => LoadingDialog.showLoadingView(),
                         noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(
-                              title: "لا يوجد طلبات",
-                              message: "انتظر الحصول علي طلبات قريبا",
+                              title: tr(context, "noOrders"),
+                              message: tr(context, "ordersSendSoon"),
                             ),
                         itemBuilder: (context, item, index) {
                           return BuildOrderItem(

@@ -22,7 +22,7 @@ class BuildEditAction extends StatelessWidget {
       },
       closedBuilder: (BuildContext context, void Function() action) {
         return BuildActivityAction(
-          title: "تعديل",
+          title: tr(context, "edit"),
           onTap: null,
           iconData: Icons.edit,
         );

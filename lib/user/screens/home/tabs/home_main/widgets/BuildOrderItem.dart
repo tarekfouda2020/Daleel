@@ -58,13 +58,13 @@ class BuildOrderItem extends StatelessWidget {
               Column(
                 children: [
                   MyText(
-                    title: "العربون  ${mainData.calculateDeposit(model.property)}",
+                    title: "${tr(context,"rent")}  ${mainData.calculateDeposit(model.property)}",
                     color: model.currentStatus=="paid"? MyColors.grey : MyColors.redColor,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
                   MyText(
-                    title: "المتبقي  ${mainData.calculateRestPrice(model.property)}",
+                    title: "${tr(context,"rest")}  ${mainData.calculateRestPrice(model.property)}",
                     color: MyColors.grey,
                     size: 10,
                     fontWeight: FontWeight.w600,
@@ -74,7 +74,7 @@ class BuildOrderItem extends StatelessWidget {
                     child: Divider(color: MyColors.grey,height: 5,),
                   ),
                   MyText(
-                    title: "السعر   ${model.property.price}",
+                    title: "${tr(context, "price")}   ${model.property.price}",
                     color: model.currentStatus=="paid"? MyColors.grey : MyColors.secondary,
                     size: 10,
                     fontWeight: FontWeight.w600,

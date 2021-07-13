@@ -11,24 +11,24 @@ class HomeMainData {
   List<FilterModel> allFilters = [
     FilterModel(
         key: "property_name",
-        name: "اسم النشاط",
+        name: "activityName",
         value: TextEditingController()),
     FilterModel(
         key: "customer_mobile",
-        name: "جوال العميل",
+        name: "customerPhone",
         value: TextEditingController()),
     FilterModel(
         key: "customer_name",
-        name: "اسم العميل",
+        name: "customerName",
         value: TextEditingController()),
     FilterModel(
         key: "to",
         key2: "form",
-        name: "التاريخ",
+        name: "Date",
         value: TextEditingController(),
         value2: TextEditingController()),
     FilterModel(
-        key: "transaction", name: "السعر", value: TextEditingController()),
+        key: "transaction", name: "price", value: TextEditingController()),
   ];
 
   Future<void> fetchPage(int pageKey, BuildContext context,
@@ -67,11 +67,11 @@ class HomeMainData {
 
   filterOrderByFilter(BuildContext context) {
     if (filterCubit.state.data == null) {
-      LoadingDialog.showSimpleToast("حد نوع البحث");
+      LoadingDialog.showSimpleToast(tr(context, "searchType"));
       return;
     }
     if (filterCubit.state.data!.value.text.isEmpty) {
-      LoadingDialog.showSimpleToast("ادخل قيمة البحث");
+      LoadingDialog.showSimpleToast(tr(context, "searchValue"));
       return;
     }
     Navigator.of(context).pop();
@@ -107,7 +107,7 @@ class HomeMainData {
   setToDate(BuildContext context) {
     AdaptivePicker.datePicker(
       context: context,
-      title: "حدد التاريخ",
+      title: tr(context, "selectDate"),
       minDate: DateTime(2000),
       onConfirm: (date){
         if (date!=null) {
@@ -121,7 +121,7 @@ class HomeMainData {
   setFromDate(BuildContext context) {
     AdaptivePicker.datePicker(
       context: context,
-      title: "حدد التاريخ",
+      title: tr(context, "selectDate"),
       minDate: DateTime(2000),
       onConfirm: (date){
         if (date!=null) {

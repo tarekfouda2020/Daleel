@@ -19,7 +19,7 @@ class BuildFilterView extends StatelessWidget {
         children: [
           Expanded(
             child: IconTextFiled(
-              hint: "ابحث برقم الحجز",
+              hint: tr(context,"searchOrderNum"),
               filledColor: Colors.transparent,
               enableColor: Colors.transparent,
               prefixIcon: Column(
@@ -52,7 +52,7 @@ class BuildFilterView extends StatelessWidget {
                     alignment: Alignment.center,
                   ),
                   SizedBox(width: 10),
-                  MyText(title: "فلتر الحجوزات", color: Colors.black54, size: 8,fontWeight: FontWeight.w600,)
+                  MyText(title: tr(context,"filterReservation"), color: Colors.black54, size: 8,fontWeight: FontWeight.w600,)
                 ],
               ),
             ),

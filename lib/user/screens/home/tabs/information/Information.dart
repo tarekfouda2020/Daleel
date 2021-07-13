@@ -14,7 +14,7 @@ class _InformationState extends State<Information>{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        child: DefaultAppBar(title: "البيانات",back: false,),
+        child: DefaultAppBar(title: tr(context, "info"),back: false,),
         preferredSize: Size.fromHeight(60),
       ),
 

@@ -15,7 +15,7 @@ class _SettingsState extends State<Settings> {
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "الاعدادات",
+          title: tr(context,"settings"),
           back: false,
         ),
         preferredSize: Size.fromHeight(60),
@@ -23,22 +23,22 @@ class _SettingsState extends State<Settings> {
       body: ListView(
         children: [
           BuildSettingItem(
-            title: 'العقد',
+            title: tr(context,"assignment"),
             icon: Icons.assessment_outlined,
             page: Assignment(isTerm: false),
           ),
           BuildSettingItem(
-            title: 'تواصل معنا',
+            title: tr(context,"contactUs"),
             icon: Icons.contact_mail_outlined,
             onTap: ()=>Utils.launchWhatsApp("+${settings?.supportNumber??"966555873010"}"),
           ),
           BuildSettingItem(
-            title: 'الشروط والاحكام',
+            title: tr(context,"terms"),
             icon: Icons.reorder_sharp,
             page: Assignment(isTerm: true),
           ),
           BuildSettingItem(
-            title: 'اللغة',
+            title: tr(context,"lang"),
             icon: Icons.language,
             page: Languages(),
           ),

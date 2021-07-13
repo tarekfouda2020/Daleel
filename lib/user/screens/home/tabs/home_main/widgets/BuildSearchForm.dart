@@ -15,7 +15,7 @@ class BuildSearchForm extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             MyText(
-                title: "فلتر الحجوزات المتقدم", color: Colors.black54, size: 10),
+                title: tr(context,"advancedFilter"), color: Colors.black54, size: 10),
             BlocBuilder<GenericBloc<FilterModel?>,
                 GenericState<FilterModel?>>(
               bloc: homeMainData.filterCubit,
@@ -40,7 +40,7 @@ class BuildSearchForm extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: MyColors.blackOpacity),
                         hint: MyText(
-                          title: "اختر نطاق البحث",
+                          title: tr(context,"selectRegionSearch"),
                           color: Colors.black45,
                           size: 10,
                           fontWeight: FontWeight.w600,
@@ -64,7 +64,7 @@ class BuildSearchForm extends StatelessWidget {
                     Visibility(
                       visible: state.data?.key==homeMainData.allFilters[0].key,
                       child: LabelTextField(
-                        hint: "ادخل اسم النشاط هنا",
+                        hint: tr(context,"enterActivityName"),
                         controller: homeMainData.allFilters[0].value,
                         validate: (value)=> value!.noValidate(),
                         type: TextInputType.name,
@@ -76,7 +76,7 @@ class BuildSearchForm extends StatelessWidget {
                     Visibility(
                       visible: state.data?.key==homeMainData.allFilters[1].key,
                       child: LabelTextField(
-                        hint: "ادخل جوال العميل هنا",
+                        hint: tr(context,"enterCustomerPhone"),
                         controller: homeMainData.allFilters[1].value,
                         validate: (value)=> value!.noValidate(),
                         type: TextInputType.number,
@@ -88,7 +88,7 @@ class BuildSearchForm extends StatelessWidget {
                     Visibility(
                       visible: state.data?.key==homeMainData.allFilters[2].key,
                       child: LabelTextField(
-                        hint: "ادخل اسم العميل هنا",
+                        hint: tr(context,"enterCustomerName"),
                         controller: homeMainData.allFilters[2].value,
                         validate: (value)=> value!.noValidate(),
                         type: TextInputType.name,
@@ -103,7 +103,7 @@ class BuildSearchForm extends StatelessWidget {
                         children: [
                           Flexible(
                             child: InkWellTextField(
-                              hint: "التاريخ من",
+                              hint: tr(context,"dateFrom"),
                               controller: homeMainData.allFilters[3].value,
                               validate: (value)=> value!.noValidate(),
                               type: TextInputType.name,
@@ -115,7 +115,7 @@ class BuildSearchForm extends StatelessWidget {
                           SizedBox(width: 10),
                           Flexible(
                             child: InkWellTextField(
-                              hint: "التاريخ الي",
+                              hint: tr(context,"dateTo"),
                               controller: homeMainData.allFilters[3].value2!,
                               validate: (value)=> value!.noValidate(),
                               type: TextInputType.name,
@@ -130,7 +130,7 @@ class BuildSearchForm extends StatelessWidget {
                     Visibility(
                       visible: state.data?.key==homeMainData.allFilters[4].key,
                       child: LabelTextField(
-                        hint: "ادخل السعر هنا",
+                        hint: tr(context,"enterPriceHere"),
                         controller: homeMainData.allFilters[4].value,
                         validate: (value)=> value!.noValidate(),
                         type: TextInputType.number,
@@ -141,7 +141,7 @@ class BuildSearchForm extends StatelessWidget {
                     ),
 
                     DefaultButton(
-                      title: "بحث",
+                      title: tr(context, "search"),
                       onTap: ()=> homeMainData.filterOrderByFilter(context),
                     ),
 

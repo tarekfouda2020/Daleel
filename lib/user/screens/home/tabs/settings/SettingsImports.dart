@@ -1,4 +1,5 @@
 import 'package:base_flutter/general/blocks/setting_cubit/setting_cubit.dart';
+import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
 import 'package:base_flutter/user/screens/assignment/AssignmentImports.dart';

@@ -28,7 +28,7 @@ class BuildFloatAction extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)
           ),
           alignment: Alignment.center,
-          child: MyText(title: "اضف نشاطك",color: MyColors.white, size: 12,),
+          child: MyText(title: tr(context,"addYourActivity"),color: MyColors.white, size: 12,),
         );
       },
       openBuilder: (_, action) {

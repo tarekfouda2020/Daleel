@@ -9,23 +9,23 @@ class BuildInfoForm extends StatelessWidget {
       child: Column(
         children: [
           BuildInfoItem(
-            title: "الاسم",
+            title: tr(context, "name"),
             value: user.name??"",
           ),
           BuildInfoItem(
-            title: "رقم الجوال",
+            title: tr(context, "phone"),
             value: user.mobile??"",
           ),
           BuildInfoItem(
-            title: "رقم الحساب البنكي",
+            title: tr(context, "accountNum"),
             value: user.accountNumber??"",
           ),
           BuildInfoItem(
-            title: "البريد الالكتروني",
+            title: tr(context, "mail"),
             value: user.email??"",
           ),
           BuildInfoItem(
-            title: "المدينة",
+            title: tr(context,"city"),
             value: user.city??"",
           ),
         ],

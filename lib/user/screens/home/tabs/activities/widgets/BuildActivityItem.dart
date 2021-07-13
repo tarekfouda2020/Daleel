@@ -40,7 +40,7 @@ class BuildActivityItem extends StatelessWidget {
                     Offstage(
                       offstage: CategoryModel.getTypeValue(model.category.tag)!=CategoriesTypes.firstCat,
                       child: MyText(
-                        title: "الاقسام : ${(model.firstSectionPrice!=null?1:0)+(model.secondSectionPrice!=null?1:0)}",
+                        title: "${tr(context,"depts")} : ${(model.firstSectionPrice!=null?1:0)+(model.secondSectionPrice!=null?1:0)}",
                         color: MyColors.blackOpacity,
                         size: 10,
                         fontWeight: FontWeight.w500,
@@ -61,7 +61,7 @@ class BuildActivityItem extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: "${activityData.calculatePrice(model)} ريال",
+                  title: "${activityData.calculatePrice(model)} ${tr(context,"sar")}",
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,
@@ -73,13 +73,13 @@ class BuildActivityItem extends StatelessWidget {
                       BuildEditAction(activitiesData: activityData,model: model),
                       SizedBox(width: 20),
                       BuildActivityAction(
-                        title: "عرض",
+                        title: tr(context,"offer"),
                         onTap: ()=> AutoRouter.of(context).push(OffersRoute(model: model)),
                         iconData: Icons.add,
                       ),
                       Spacer(),
                       BuildActivityAction(
-                        title: model.propertyStatus==PropertyStatus.verified? "مفعل" : "غير مفعل",
+                        title: model.propertyStatus==PropertyStatus.verified? tr(context,"active") : tr(context,"unActive"),
                         color: model.propertyStatus==PropertyStatus.verified? MyColors.secondary : MyColors.redColor,
                         onTap: (){},
                       ),
