@@ -11,7 +11,7 @@ class BuildActivityCard extends StatelessWidget {
       child: Column(
         children: [
           MyText(
-            title: "النشاط كاملا",
+            title: tr(context,"holeActivity"),
             color: MyColors.secondary,
             size: 16,
           ),
@@ -20,7 +20,7 @@ class BuildActivityCard extends StatelessWidget {
             child: Row(
               children: [
                 MyText(
-                  title: "الزامي",
+                  title: tr(context,"required"),
                   color: Colors.red,
                   size: 10,
                 ),
@@ -36,12 +36,12 @@ class BuildActivityCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  BuildFormField(title: "السعة الكلية",controller: model.allDeptFields[8].value,),
+                  BuildFormField(title: tr(context, "holeCapacity"),controller: model.allDeptFields[8].value,),
                   Row(
                     children: [
                       Expanded(
                         child: MyText(
-                          title: "السعر باليوم",
+                          title: tr(context,"pricePerDay"),
                           color: MyColors.secondary,
                           size: 12,
                           fontWeight: FontWeight.w600,
@@ -50,45 +50,45 @@ class BuildActivityCard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "السبت",controller: model.allDeptFields[0].value,),
+                        child: BuildFormField(title: tr(context, "saturday"),controller: model.allDeptFields[0].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الاحد",controller: model.allDeptFields[1].value,),
+                        child: BuildFormField(title: tr(context, "sunday"),controller: model.allDeptFields[1].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاثنين",controller: model.allDeptFields[2].value,),
+                        child: BuildFormField(title: tr(context, "monday"),controller: model.allDeptFields[2].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الثلاثاء",controller: model.allDeptFields[3].value,),
+                        child: BuildFormField(title: tr(context, "thursday"),controller: model.allDeptFields[3].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاربعاء",controller: model.allDeptFields[4].value,),
+                        child: BuildFormField(title: tr(context, "wenesday"),controller: model.allDeptFields[4].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الخميس",controller: model.allDeptFields[5].value,),
+                        child: BuildFormField(title: tr(context, "thursday"),controller: model.allDeptFields[5].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الجمعة",controller: model.allDeptFields[6].value,),
+                        child: BuildFormField(title: tr(context, "friday"),controller: model.allDeptFields[6].value,),
                       ),
                     ],
                   ),
                   DefaultButton(
-                    title: "حفظ",
+                    title: tr(context, "save"),
                     margin: EdgeInsets.symmetric(vertical: 15),
                     color: MyColors.bg,
                     textColor: MyColors.secondary,

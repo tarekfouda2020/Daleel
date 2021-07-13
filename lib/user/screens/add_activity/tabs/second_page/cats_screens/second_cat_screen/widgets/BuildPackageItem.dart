@@ -25,13 +25,13 @@ class BuildPackageItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "عدد الافراد : ${model.numberOfPersons} فرد",
+              title: "${tr(context,"userNum")} : ${model.numberOfPersons} ${tr(context, "individual")}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "سعر الباكدج : ${model.packagePrice} ريال",
+              title: "${tr(context,"packagePrice")} : ${model.packagePrice} ${tr(context,"sar")}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,

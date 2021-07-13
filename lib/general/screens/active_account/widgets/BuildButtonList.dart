@@ -25,7 +25,7 @@ class BuildButtonList extends StatelessWidget {
             InkWell(
               onTap: () => AutoRouter.of(context).pop(),
               child: MyText(
-                  title: "رجوع",
+                  title: tr(context,"back"),
                   size: 13,
                   color: MyColors.primary,
                   decoration: TextDecoration.underline),

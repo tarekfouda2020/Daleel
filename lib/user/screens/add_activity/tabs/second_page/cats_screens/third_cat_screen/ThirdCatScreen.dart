@@ -38,7 +38,7 @@ class _ThirdCatScreenState extends State<ThirdCatScreen>{
                 BuildHeaderColor(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: MyText(title: "السعر و السعة", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                  child: MyText(title: tr(context, "priceAndCapacity"), color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                 ),
                 BuildFormView(pageData: screenData),
               ],

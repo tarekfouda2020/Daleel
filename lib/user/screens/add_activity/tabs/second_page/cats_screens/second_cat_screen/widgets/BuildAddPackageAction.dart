@@ -34,7 +34,7 @@ class BuildAddPackageAction extends StatelessWidget {
               ),
               SizedBox(width: 10),
               MyText(
-                title: "اضافة باكدج",
+                title: tr(context,"addPackage"),
                 color: Colors.black54,
                 size: 10,
                 fontWeight: FontWeight.w600,

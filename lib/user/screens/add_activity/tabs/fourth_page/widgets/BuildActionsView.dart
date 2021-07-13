@@ -12,13 +12,13 @@ class BuildActionsView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           DefaultButton(
-            title: "السابق",
+            title: tr(context, "previous"),
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
             onTap: ()=> addActivityData.goToPreviousPage(),
           ),
           DefaultButton(
-            title: "حفظ",
+            title: tr(context, "save"),
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
             onTap: ()=> addActivityData.fourthPageData.saveDataToModel(context, addActivityData),

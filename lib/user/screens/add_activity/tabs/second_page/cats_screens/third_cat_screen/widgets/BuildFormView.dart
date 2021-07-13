@@ -15,7 +15,7 @@ class BuildFormView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MyText(
-              title: "السعر",
+              title: tr(context, "price"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -23,13 +23,13 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: pageData.price,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل سعر ",
+              hint: tr(context, "enterPrice"),
               type: TextInputType.number,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),
             ),
             MyText(
-              title: "السعة الكلية",
+              title: tr(context,"holeCapacity"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -37,7 +37,7 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: pageData.opacity,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل السعة",
+              hint: tr(context, "enterCapacity"),
               type: TextInputType.number,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),

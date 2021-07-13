@@ -8,7 +8,7 @@ class BuildActionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultButton(
-      title: "التالي",
+      title: tr(context, "next"),
       margin: EdgeInsets.only(right: 20,left: 20,bottom: 30,top: 5),
       onTap: ()=> pageData.setActivityData(addActivityData,context),
       color: MyColors.secondary,

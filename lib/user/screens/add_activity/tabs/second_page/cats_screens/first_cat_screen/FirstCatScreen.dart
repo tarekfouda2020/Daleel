@@ -30,7 +30,7 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
             child: ListView(
               children: [
                 MyText(
-                  title: "السعر",
+                  title: tr(context, "price"),
                   color: MyColors.primary,
                   size: 16,
                   fontWeight: FontWeight.w600,
@@ -40,12 +40,12 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
                   onSave: (model) =>screenData.setSaveAllPrice(model,1),
                 ),
                 BuildFirstDeptCard(
-                  title: "القسم الاول",
+                  title: tr(context, "firstDept"),
                   model: screenData.firstSectionPrice,
                   onSave: (model) =>screenData.setSaveAllPrice(model,2),
                 ),
                 BuildFirstDeptCard(
-                  title: "القسم الثاني",
+                  title: tr(context, "secondDept"),
                   model: screenData.secondSectionPrice,
                   onSave: (model) =>screenData.setSaveAllPrice(model,3),
                 ),

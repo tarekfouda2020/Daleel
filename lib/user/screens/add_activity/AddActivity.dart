@@ -20,7 +20,7 @@ class _AddActivityState extends State<AddActivity> {
     return Scaffold(
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "اضافة نشاط",
+          title: tr(context,"addActivity"),
           leading: IconButton(
             icon: Icon(
               Icons.close,

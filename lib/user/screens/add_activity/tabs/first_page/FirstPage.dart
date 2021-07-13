@@ -30,17 +30,17 @@ class _FirstPageState extends State<FirstPage> {
                   BuildTypesView(activityData: widget.addActivityData),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: MyText(title: "المعلومات الاساسية", color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
+                    child: MyText(title: tr(context, "baseInfo"), color: MyColors.primary, size: 16,fontWeight: FontWeight.w500,),
                   ),
                   BuildImagesView(
                     onTap: () => widget.addActivityData.firstPageData.getNormalImages(),
-                    title: "رفع الصور",
-                    subtitle: "من ٢ الي ٥ صور",
+                    title: tr(context, "uploadImages"),
+                    subtitle: tr(context, "from2To5"),
                   ),
                   BuildNormalImages(pageData: widget.addActivityData.firstPageData,),
                   BuildImagesView(
                     onTap: (){},
-                    title: "رفع صور ٣٦٠ درجة",
+                    title: tr(context, "360Degree"),
                   ),
                   BuildFormView(pageData: widget.addActivityData.firstPageData),
                 ],
