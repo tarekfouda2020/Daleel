@@ -5,6 +5,7 @@ class FirstPageData{
   final GlobalKey<FormState> formKey = new GlobalKey();
   final GenericBloc<String> selectCatCubit = new GenericBloc("");
   final GenericBloc<List<File>> normalImagesCubit = new GenericBloc([]);
+  final GenericBloc<List<File>> panoramaImagesCubit = new GenericBloc([]);
 
   final TextEditingController nameAr = new TextEditingController();
   final TextEditingController nameEn = new TextEditingController();
@@ -31,6 +32,17 @@ class FirstPageData{
     normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
   }
 
+  getPanoramaImages()async{
+    var images = await Utils.getImages();
+    panoramaImagesCubit.state.data.addAll(images);
+    panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
+  }
+
+  removePanoramaImage(File file){
+    panoramaImagesCubit.state.data.remove(file);
+    panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
+  }
+
   setActivityData(AddActivityData activityData,BuildContext context){
     if (formKey.currentState!.validate()) {
       if (normalImagesCubit.state.data.length>5||normalImagesCubit.state.data.length<2) {
@@ -44,6 +56,7 @@ class FirstPageData{
       activityData.activityModel.nameEn=nameEn.text;
       activityData.activityModel.city=cityModel?.id;
       activityData.activityModel.images=normalImagesCubit.state.data;
+      activityData.activityModel.panoramicImages=panoramaImagesCubit.state.data;
 
       activityData.goToNextPage();
     }

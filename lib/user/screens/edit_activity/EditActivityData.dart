@@ -52,6 +52,8 @@ class EditActivityData{
     firstPageData.cityModel= model.city;
     firstPageData.normalImagesCubit.state.data.exist=model.images;
     firstPageData.normalImagesCubit.onUpdateData(firstPageData.normalImagesCubit.state.data);
+    firstPageData.panoramaImagesCubit.state.data.exist=model.panoramicImages;
+    firstPageData.panoramaImagesCubit.onUpdateData(firstPageData.panoramaImagesCubit.state.data);
   }
 
   initFirstCatPageData(PropertyModel model){

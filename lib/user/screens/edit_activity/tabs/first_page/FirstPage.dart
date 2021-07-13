@@ -49,6 +49,9 @@ class _FirstPageState extends State<FirstPage> {
                     onTap: () {},
                     title: tr(context, "360Degree"),
                   ),
+                  BuildPanoramaImages(
+                    pageData: widget.addActivityData.firstPageData,
+                  ),
                   BuildFormView(pageData: widget.addActivityData.firstPageData),
                 ],
               ),

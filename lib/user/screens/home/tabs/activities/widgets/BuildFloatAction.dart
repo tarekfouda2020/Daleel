@@ -6,7 +6,7 @@ class BuildFloatAction extends StatelessWidget {
   const BuildFloatAction({required this.activitiesData});
   @override
   Widget build(BuildContext context) {
-    return OpenContainer(
+    return OpenContainer<bool?>(
       closedColor: Colors.transparent,
       closedElevation: 0,
       openElevation: 0,

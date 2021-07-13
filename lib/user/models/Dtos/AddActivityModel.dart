@@ -4,13 +4,13 @@ import 'dart:io';
 import 'package:base_flutter/user/models/CategoryModel.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackageModel.dart';
-import 'AddDeptModel.dart';
 import 'AddPackagePersonModel.dart';
 
 class AddActivityModel{
 
   CategoryModel? categoryModel;
   List<File>? images;
+  List<File>? panoramicImages;
   String? nameAr;
   String? nameEn;
   String? descEn;
@@ -61,6 +61,7 @@ class AddActivityModel{
           },
         }
     ),
+    "panoramic_images":panoramicImages,
     "images":images,
 
   };

@@ -11,7 +11,9 @@ class EditActivityModel{
   String? id;
   CategoryModel? categoryModel;
   List<File>? images;
+  List<File>? panoramicImages;
   List<String>? exist;
+  List<String>? existPanoramic;
   String? nameAr;
   String? nameEn;
   String? descEn;
@@ -50,6 +52,7 @@ class EditActivityModel{
           "description": descEn,
           "location":location,
           "images": exist,
+          "panoramic_images": exist,
           "sub_category": subCategory,
           "occasions": occasions,
           "packagePrices": packagePrices??[],
@@ -65,6 +68,7 @@ class EditActivityModel{
         }
     ),
     "images":images,
+    "panoramic_images":panoramicImages,
 
   };
 

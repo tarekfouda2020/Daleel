@@ -24,3 +24,4 @@ part 'BuildImagesView.dart';
 part 'BuildFormView.dart';
 part 'BuildActionView.dart';
 part 'BuildNormalImages.dart';
+part 'BuildPanoramaImages.dart';

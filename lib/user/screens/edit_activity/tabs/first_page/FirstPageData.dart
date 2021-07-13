@@ -6,6 +6,8 @@ class FirstPageData{
   final GenericBloc<String> selectCatCubit = new GenericBloc("");
   final GenericBloc<EditActivityImgModel> normalImagesCubit =
   new GenericBloc(EditActivityImgModel(images: [],exist: []));
+  final GenericBloc<EditActivityImgModel> panoramaImagesCubit =
+  new GenericBloc(EditActivityImgModel(images: [],exist: []));
 
   final TextEditingController nameAr = new TextEditingController();
   final TextEditingController nameEn = new TextEditingController();
@@ -36,6 +38,21 @@ class FirstPageData{
     normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
   }
 
+  getPanoramaImages()async{
+    var images = await Utils.getImages();
+    panoramaImagesCubit.state.data.images.addAll(images);
+    panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
+  }
+
+  removePanoramaImage(File file){
+    panoramaImagesCubit.state.data.images.remove(file);
+    panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
+  }
+  removePanoramaExistImage(String image){
+    panoramaImagesCubit.state.data.exist.remove(image);
+    panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
+  }
+
   setActivityData(EditActivityData activityData,BuildContext context){
     if (formKey.currentState!.validate()) {
       int len = normalImagesCubit.state.data.images.length+normalImagesCubit.state.data.exist.length;
@@ -51,6 +68,8 @@ class FirstPageData{
       activityData.activityModel.city=cityModel?.id;
       activityData.activityModel.images=normalImagesCubit.state.data.images;
       activityData.activityModel.exist=normalImagesCubit.state.data.exist;
+      activityData.activityModel.panoramicImages=panoramaImagesCubit.state.data.images;
+      activityData.activityModel.existPanoramic=panoramaImagesCubit.state.data.exist;
 
       activityData.goToNextPage();
     }

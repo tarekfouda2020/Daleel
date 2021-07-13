@@ -44,7 +44,7 @@ class GlobalNotification {
         print("_____________________notification:${message.notification?.title}");
         _showLocalNotification(message);
         _onMessageStreamController.add(message.data);
-        if (int.parse(message.data["type"??"0"]) == -1) {
+        if (int.parse(message.data["type"]??"0") == -1) {
           Utils.clearSavedData();
           navigatorKey.currentContext!.router.push(LoginRoute());
         }
