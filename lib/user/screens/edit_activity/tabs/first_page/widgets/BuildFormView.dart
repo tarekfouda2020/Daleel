@@ -15,7 +15,7 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: pageData.nameAr,
               validate: (value)=>value!.validateEmpty(context),
-              label: "الاسم بالعربي",
+              label: tr(context, "nameAr"),
               type: TextInputType.name,
               action: TextInputAction.next,
             ),
@@ -23,7 +23,7 @@ class BuildFormView extends StatelessWidget {
               controller: pageData.nameEn,
               margin: EdgeInsets.only(top: 15),
               validate: (value)=>value!.validateEmpty(context),
-              label: "الاسم بالانجليزي",
+              label: tr(context, "nameEn"),
               type: TextInputType.name,
               action: TextInputAction.next,
             ),
@@ -38,7 +38,7 @@ class BuildFormView extends StatelessWidget {
             DropdownTextField<CityModel>(
               margin: EdgeInsets.only(top: 15),
               validate: (CityModel value)=>value.validateDropDown(context),
-              label: "المدينة",
+              label: tr(context, "city"),
               selectedItem: pageData.cityModel,
               onChange: (CityModel model)=>pageData.onCityChange(model),
               finData: (value)async => await UserRepository(context).getCities(false),

@@ -28,8 +28,8 @@ class BuildFormView extends StatelessWidget {
               builder: (context, state) {
                 if (state is GenericUpdateState) {
                   return MultiDropDownField<SubCategoryModel>(
-                    title: "الفئة الفرعية",
-                    label: "الفئة الفرعية",
+                    title: tr(context, "subCat"),
+                    label: tr(context, "subCat"),
                     data: state.data,
                     selectedItems: pageData.selectedSub,
                     onConfirm: (List<SubCategoryModel> cats) =>
@@ -60,8 +60,8 @@ class BuildFormView extends StatelessWidget {
               builder: (context, state) {
                 if (state is GenericUpdateState) {
                   return MultiDropDownField<CityModel>(
-                    title: "الموقع",
-                    label: "الموقع",
+                    title: tr(context, "location"),
+                    label: tr(context, "location"),
                     data: state.data,
                     selectedItems: pageData.selectedLoc,
                     onConfirm: (List<CityModel> locations) =>
@@ -78,28 +78,28 @@ class BuildFormView extends StatelessWidget {
               },
             ),
             RichTextFiled(
-              label: "الوصف بالعربي",
+              label: tr(context, "descAr"),
               margin: EdgeInsets.only(top: 15),
               controller: pageData.descAr,
               max: 3,
               validate: (value) => value!.validateEmpty(context),
             ),
             RichTextFiled(
-              label: "الوصف بالانجليزي",
+              label: tr(context, "descEn"),
               margin: EdgeInsets.only(top: 15),
               controller: pageData.descEn,
               max: 3,
               validate: (value) => value!.validateEmpty(context),
             ),
             RichTextFiled(
-              label: "الشروط الخاصة بالعربي",
+              label: tr(context, "termsAr"),
               margin: EdgeInsets.only(top: 15),
               controller: pageData.termsAr,
               max: 3,
               validate: (value) => value!.validateEmpty(context),
             ),
             RichTextFiled(
-              label: "الشروط الخاصة بالانجليزي",
+              label: tr(context, "termsEn"),
               margin: EdgeInsets.only(top: 15),
               controller: pageData.termsEn,
               max: 3,

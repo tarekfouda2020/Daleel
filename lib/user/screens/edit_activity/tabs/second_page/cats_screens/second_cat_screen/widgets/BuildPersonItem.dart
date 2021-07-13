@@ -25,19 +25,19 @@ class BuildPersonItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: " الحد الادني : ${model.minimumCount}",
+              title: " ${tr(context,"min")} : ${model.minimumCount}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: " الحد الاقصي : ${model.maximumCount}",
+              title: " ${tr(context,"max")} : ${model.maximumCount}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "السعر الفرد : ${model.pricePerPerson} ريال",
+              title: "${tr(context,"packagePrice")} : ${model.pricePerPerson} ${tr(context, "sar")}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,

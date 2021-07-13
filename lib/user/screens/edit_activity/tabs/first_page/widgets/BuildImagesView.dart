@@ -46,7 +46,7 @@ class BuildImagesView extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(color: MyColors.blackOpacity)),
-              child: MyText(title: "ارفع صور", color: MyColors.black, size: 12),
+              child: MyText(title: tr(context, "uploadImages"), color: MyColors.black, size: 12),
             ),
           )
         ],

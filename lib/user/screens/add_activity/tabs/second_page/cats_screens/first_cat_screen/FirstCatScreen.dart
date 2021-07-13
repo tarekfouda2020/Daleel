@@ -37,17 +37,17 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
                 ),
                 BuildActivityCard(
                   model: screenData.allSectionsPrice,
-                  onSave: (model) =>screenData.setSaveAllPrice(model,1),
+                  onSave: (model) =>screenData.setSaveAllPrice(model,1,context),
                 ),
                 BuildFirstDeptCard(
                   title: tr(context, "firstDept"),
                   model: screenData.firstSectionPrice,
-                  onSave: (model) =>screenData.setSaveAllPrice(model,2),
+                  onSave: (model) =>screenData.setSaveAllPrice(model,2,context),
                 ),
                 BuildFirstDeptCard(
                   title: tr(context, "secondDept"),
                   model: screenData.secondSectionPrice,
-                  onSave: (model) =>screenData.setSaveAllPrice(model,3),
+                  onSave: (model) =>screenData.setSaveAllPrice(model,3,context),
                 ),
               ],
             ),

@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
 import 'package:base_flutter/general/widgets/DefaultButton.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackageModel.dart';

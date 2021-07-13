@@ -28,7 +28,7 @@ class _SecondCatScreenState extends State<SecondCatScreen>{
           Flexible(
             child: ListView(
               children: [
-                MyText(title: "السعر", color: MyColors.primary, size: 16,fontWeight: FontWeight.w600,),
+                MyText(title: tr(context, "price"), color: MyColors.primary, size: 16,fontWeight: FontWeight.w600,),
                 BuildPackagesCard(screenData: screenData)
               ],
             ),

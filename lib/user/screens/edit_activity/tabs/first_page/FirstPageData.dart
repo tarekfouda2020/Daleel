@@ -40,7 +40,7 @@ class FirstPageData{
     if (formKey.currentState!.validate()) {
       int len = normalImagesCubit.state.data.images.length+normalImagesCubit.state.data.exist.length;
       if (len>5||len<2) {
-        LoadingDialog.showSimpleToast("ادخل من من ٢ الي ه صور");
+        LoadingDialog.showSimpleToast(tr(context, "enter2To5Images"));
         return;
       }
       var selected = context.read<CatsCubit>().state.cats

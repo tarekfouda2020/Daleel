@@ -19,14 +19,14 @@ class BuildFeaturesView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "اضف المميزات",
+                    title: tr(context,"addFeatures"),
                     color: MyColors.secondary,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
                   MultiDropDownField<CityModel>(
-                    title: "المميزات",
-                    label: "المميزات",
+                    title: tr(context,"features"),
+                    label: tr(context,"features"),
                     data: state.data,
                     selectedItems: pageData.selectedOptions,
                     onConfirm: (List<CityModel> options)=>pageData.onSelectOptions(options),
@@ -34,7 +34,7 @@ class BuildFeaturesView extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   MyText(
-                    title: "الموقع غلي الخريطة",
+                    title: tr(context,"locationOnMap"),
                     color: MyColors.secondary,
                     size: 10,
                     fontWeight: FontWeight.w600,
@@ -48,7 +48,7 @@ class BuildFeaturesView extends StatelessWidget {
                     },
                     builder: (context,state){
                       return InkWellTextField(
-                        hint: "الموقع غلي الخريطة",
+                        hint: tr(context,"locationOnMap"),
                         margin: EdgeInsets.only(bottom: 15),
                         controller: pageData.location,
                         type: TextInputType.text,

@@ -24,7 +24,7 @@ class _EditActivityState extends State<EditActivity>{
     return Scaffold(
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "تعديل نشاط",
+          title: tr(context,"editActivity"),
           leading: IconButton(
             icon: Icon(
               Icons.close,

@@ -6,7 +6,7 @@ class FirstCatScreenData{
   AddDeptModel firstSectionPrice=AddDeptModel(false);
   AddDeptModel secondSectionPrice=AddDeptModel(false);
 
-  setSaveAllPrice(AddDeptModel model,int type){
+  setSaveAllPrice(AddDeptModel model,int type,BuildContext context){
     var len = model.allDeptFields
         .where((element) => element.value.text.isEmpty)
         .toList().length;
@@ -17,16 +17,16 @@ class FirstCatScreenData{
           &&!element.name.contains("name")).toList().length;
     }
     if (len>0) {
-      LoadingDialog.showSimpleToast("من فضلك قم باستكمال البيانات");
+      LoadingDialog.showSimpleToast(tr(context,"completeYourData"));
       return;
     }
     model.saved=true;
-    LoadingDialog.showToastNotification("تم حفظ البيانات بنجاح",color: MyColors.primary);
+    LoadingDialog.showToastNotification(tr(context, "dataSavedSuccessfully"),color: MyColors.primary);
   }
 
-  saveDataToModel(AddActivityData addActivityData){
+  saveDataToModel(AddActivityData addActivityData,BuildContext context){
     if (!allSectionsPrice.saved) {
-      LoadingDialog.showSimpleToast("من فضلك قم باستكمال البيانات الالزامية");
+      LoadingDialog.showSimpleToast(tr(context,"completeYourData"));
       return;
     }
     Map<String,dynamic> all={};

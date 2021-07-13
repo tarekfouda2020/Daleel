@@ -95,7 +95,10 @@
   "name": "الاسم",
   "mail": "البريد الالكتروني",
   "message": "الرسالة",
-  "orBySocial": "او عبر وسائل التواصل"
+  "orBySocial": "او عبر وسائل التواصل",
+  "editActivity": "تعديل نشاط",
+  "completeYourData": "من فضلك قم باستكمال البيانات",
+  "dataSavedSuccessfully": "تم حفظ البيانات بنجاح"
 }
 
 

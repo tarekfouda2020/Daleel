@@ -10,11 +10,11 @@ class SecondCatScreenData{
     packageCubit.onUpdateData(packageCubit.state.model);
   }
 
-  savePackagesToModel(EditActivityData activityData){
+  savePackagesToModel(EditActivityData activityData,BuildContext context){
     var packages = packageCubit.state.model.packages;
     var persons = packageCubit.state.model.persons;
     if (persons.length==0&&packages.length==0) {
-      LoadingDialog.showSimpleToast("من فضلك ادخل علي الاقل باقة واحدة");
+      LoadingDialog.showSimpleToast(tr(context, "enterOnePackage"));
       return;
     }
     activityData.activityModel.personPrices=persons;

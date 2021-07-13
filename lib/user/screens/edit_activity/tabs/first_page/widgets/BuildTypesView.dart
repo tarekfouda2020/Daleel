@@ -14,7 +14,7 @@ class BuildTypesView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MyText(title: "اختر النوع", color: MyColors.primary, size: 10),
+          MyText(title: tr(context, "selectType"), color: MyColors.primary, size: 10),
           SizedBox(height: 5),
           BlocBuilder<GenericBloc<String>, GenericState<String>>(
             bloc: activityData.firstPageData.selectCatCubit,

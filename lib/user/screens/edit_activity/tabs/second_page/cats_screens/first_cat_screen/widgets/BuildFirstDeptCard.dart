@@ -21,7 +21,7 @@ class BuildFirstDeptCard extends StatelessWidget {
             child: Row(
               children: [
                 MyText(
-                  title: "اختياري",
+                  title: tr(context, "optional"),
                   color: MyColors.blackOpacity,
                   size: 10,
                 ),
@@ -36,11 +36,11 @@ class BuildFirstDeptCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  BuildFormField(title: "اسم القسم",controller: model.allDeptFields[7].value,),
-                  BuildFormField(title: "سعة القسم",controller: model.allDeptFields[8].value,),
+                  BuildFormField(title: tr(context,"deptName"),controller: model.allDeptFields[7].value,),
+                  BuildFormField(title: tr(context,"deptCapacity"),controller: model.allDeptFields[8].value,),
                   RichTextFiled(
                     controller: model.allDeptFields[9].value,
-                    label: "اكتب وصف مختصر بالعربي",
+                    label: tr(context,"shortDescAr"),
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
                     action: TextInputAction.next,
@@ -49,7 +49,7 @@ class BuildFirstDeptCard extends StatelessWidget {
                   ),
                   RichTextFiled(
                     controller: model.allDeptFields[10].value,
-                    label: "اكتب وصف مختصر بالانجليزي",
+                    label: tr(context,"shortDescEn"),
                     margin: EdgeInsets.only(top: 15),
                     max: 3,
                     action: TextInputAction.next,
@@ -60,7 +60,7 @@ class BuildFirstDeptCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: MyText(
-                          title: "السعر باليوم",
+                          title: tr(context, "pricePerDay"),
                           color: MyColors.secondary,
                           size: 12,
                           fontWeight: FontWeight.w600,
@@ -69,45 +69,45 @@ class BuildFirstDeptCard extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "السبت",controller: model.allDeptFields[0].value,),
+                        child: BuildFormField(title: tr(context, "saturday"),controller: model.allDeptFields[0].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الاحد",controller: model.allDeptFields[1].value,),
+                        child: BuildFormField(title: tr(context, "sunday"),controller: model.allDeptFields[1].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاثنين",controller: model.allDeptFields[2].value,),
+                        child: BuildFormField(title: tr(context, "monday"),controller: model.allDeptFields[2].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الثلاثاء",controller: model.allDeptFields[3].value,),
+                        child: BuildFormField(title: tr(context, "thursday"),controller: model.allDeptFields[3].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الاربعاء",controller: model.allDeptFields[4].value,),
+                        child: BuildFormField(title: tr(context, "wenesday"),controller: model.allDeptFields[4].value,),
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: BuildFormField(title: "الخميس",controller: model.allDeptFields[5].value,),
+                        child: BuildFormField(title: tr(context, "thursday"),controller: model.allDeptFields[5].value,),
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child: BuildFormField(title: "الجمعة",controller: model.allDeptFields[6].value,),
+                        child: BuildFormField(title: tr(context, "friday"),controller: model.allDeptFields[6].value,),
                       ),
                     ],
                   ),
                   DefaultButton(
-                    title: "حفظ",
+                    title: tr(context, "save"),
                     margin: EdgeInsets.symmetric(vertical: 15),
                     color: MyColors.bg,
                     textColor: MyColors.secondary,

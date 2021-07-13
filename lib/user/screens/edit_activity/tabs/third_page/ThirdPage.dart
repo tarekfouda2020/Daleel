@@ -36,7 +36,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(
-                      title: "المعلومات الاضافية",
+                      title: tr(context, "additionalInfo"),
                       color: MyColors.primary,
                       size: 16,
                       fontWeight: FontWeight.w500,
