@@ -10,7 +10,7 @@ class BuildAddAction extends StatelessWidget {
     return LoadingButton(
       btnKey: offersData.btnKey,
       margin: EdgeInsets.all(20),
-      title: "اضافة",
+      title: tr(context, "add"),
       onTap: ()=>offersData.saveOfferData(context,model),
     );
   }

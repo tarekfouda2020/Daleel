@@ -23,7 +23,7 @@ class _OffersState extends State<Offers> {
     return Scaffold(
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "اضافة عرض",
+          title: tr(context,"addOffer"),
           leading: IconButton(
             icon: Icon(
               Icons.close,

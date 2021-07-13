@@ -4,6 +4,7 @@ import 'package:base_flutter/general/constants/Inputs/InkWellTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/custom_dropDown/CustomDropDown.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';
 import 'package:base_flutter/general/widgets/LoadingButton.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';

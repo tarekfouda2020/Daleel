@@ -29,7 +29,8 @@ class BuildAddCard extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: model.propertyStatus==PropertyStatus.verified? "مفعل" : "غير مفعل",
+                  title: model.propertyStatus==PropertyStatus.verified?
+                  tr(context, "active") : tr(context, "unActive"),
                   color: model.propertyStatus==PropertyStatus.verified? MyColors.secondary : MyColors.redColor,
                   size: 16,
                   fontWeight: FontWeight.w500,

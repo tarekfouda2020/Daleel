@@ -98,7 +98,20 @@
   "orBySocial": "او عبر وسائل التواصل",
   "editActivity": "تعديل نشاط",
   "completeYourData": "من فضلك قم باستكمال البيانات",
-  "dataSavedSuccessfully": "تم حفظ البيانات بنجاح"
+  "dataSavedSuccessfully": "تم حفظ البيانات بنجاح",
+  "saveLocation": "حفظ الموقع",
+  "add": "اضافة",
+  "active": "مفعل",
+  "unActive": "غير مفعل",
+  "dateFrom": "التاريخ من",
+  "dateTo": "التاريخ الي",
+  "type": "النوع",
+  "newPrice": "السعر الجديد",
+  "percentage": "النسبة",
+  "packageType": "نوع الباكدج",
+  "addOffer": "اضافة عرض",
+  "offerAddedSuccessfully": "تم اضافة العرض بنجاح"
+
 }
 
 

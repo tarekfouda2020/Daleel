@@ -23,7 +23,7 @@ class BuildFormView extends StatelessWidget {
               builder: (context, state) {
                 return InkWellTextField(
                   controller: offersData.from,
-                  label: "التاريخ من",
+                  label: tr(context, "dateFrom"),
                   onTab: () => offersData.setFromDate(context),
                   margin: EdgeInsets.only(top: 15),
                   validate: (value) => value!.validateEmpty(context),
@@ -39,7 +39,7 @@ class BuildFormView extends StatelessWidget {
               builder: (context, state) {
                 return InkWellTextField(
                   controller: offersData.to,
-                  label: "التاريخ الي",
+                  label: tr(context, "dateTo"),
                   onTab: () => offersData.setToDate(context),
                   margin: EdgeInsets.only(top: 15),
                   validate: (value) => value!.validateEmpty(context),
@@ -50,7 +50,7 @@ class BuildFormView extends StatelessWidget {
             DropdownTextField<CityModel>(
               margin: EdgeInsets.only(top: 15),
               validate: (CityModel value) => value.validateDropDown(context),
-              label: "النوع",
+              label: tr(context, "type"),
               showSearchBox: false,
               showClearButton: false,
               mode: Mode.MENU,
@@ -70,14 +70,14 @@ class BuildFormView extends StatelessWidget {
                     margin: EdgeInsets.only(top: 15),
                     type: TextInputType.number,
                     action: TextInputAction.next,
-                    label: "السعر الجديد",
+                    label: tr(context, "newPrice"),
                   ),
                   replacement: LabelTextField(
                     controller: offersData.percent,
                     validate: (value)=> value!.validateEmpty(context),
                     margin: EdgeInsets.only(top: 15),
                     action: TextInputAction.done,
-                    label: "النسبة",
+                    label: tr(context,"percentage"),
                   ),
                 );
               },
@@ -88,7 +88,7 @@ class BuildFormView extends StatelessWidget {
               child: DropdownTextField<CityModel>(
                 margin: EdgeInsets.only(top: 15),
                 validate: (CityModel value) => value.validateDropDown(context),
-                label: "نوع الباكدج",
+                label: tr(context, "packageType"),
                 showSearchBox: false,
                 showClearButton: false,
                 mode: Mode.MENU,

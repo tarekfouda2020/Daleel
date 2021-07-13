@@ -32,7 +32,7 @@ class OffersData {
   setFromDate(BuildContext context) {
     AdaptivePicker.datePicker(
       context: context,
-      title: "التاريخ من",
+      title: tr(context,"dateFrom"),
       onConfirm: (date){
         if (date!=null) {
           startDate = date.add(Duration(days: 1));
@@ -48,7 +48,7 @@ class OffersData {
       context: context,
       minDate: startDate,
       initial: startDate,
-      title: "التاريخ الي",
+      title: tr(context,"dateTo"),
       onConfirm: (date){
         if (date!=null) {
           toCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
@@ -80,7 +80,7 @@ class OffersData {
       );
       var result = await UserRepository(context).addOffer(model);
       if (result) {
-        LoadingDialog.showToastNotification("تم اضافة العرض بنجاح");
+        LoadingDialog.showToastNotification(tr(context, "offerAddedSuccessfully"));
         btnKey.currentState!.animateReverse();
         Navigator.of(context).pop();
       }
