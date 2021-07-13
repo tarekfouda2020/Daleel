@@ -10,7 +10,7 @@ class BuildAddButton extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 15),
       child: LoadingButton(
-        title: "اضافة الباكيدج",
+        title: tr(context, "addPackage"),
         onTap: ()=> packageData.onSavePackage(context, type),
         btnKey: packageData.btnKey,
         color: MyColors.secondary,

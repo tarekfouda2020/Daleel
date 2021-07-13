@@ -54,6 +54,7 @@
   "userNum": "عدد الافراد",
   "individual": "فرد",
   "packagePrice": "سعر الباكدج",
+  "enterPackagePrice": "ادخل سعر الباكيدج",
   "sar": "ريال",
   "min": "الحد الادني",
   "max": "الحد الاقصي",
@@ -70,8 +71,24 @@
   "termsAr": "الشروط الخاصة بالعربي",
   "termsEn": "الشروط الخاصة بالانجليزي",
   "additionalInfo": "المعلومات الاضافية",
-  "addActivity": "اضافة نشاط"
-
+  "addActivity": "اضافة نشاط",
+  "packageNameAr": "اسم الباكيدج بالعربي",
+  "enterPackageNameAr": "ادخل الاسم بالعربي",
+  "packageNameEn": "اسم الباكيدج بالانجليزي",
+  "enterPackageNameEn": "ادخل الاسم بالانجليزي",
+  "packageDesAr": "وصف الباكيدج بالعربي",
+  "enterPackageDesAr": "ادخل الوصف بالعربي",
+  "enterPackageDesEn": "ادخل الوصف بالانجليزي",
+  "packageDesEn": "وصف الباكيدج بالانجليزي",
+  "enterUserNum": "ادخل عدد الافراد",
+  "userMin": "الحد الادني للافراد",
+  "enterUserMin": "ادخل الحد الادني",
+  "userMax": "الحد الاقصي للافراد",
+  "enterUserMax": "ادخل الاقصي الادني",
+  "personPrice": "السعر للفرد",
+  "enterPersonPrice": "ادخل سعر الفرد",
+  "reservationPerDay": "عدد الحجوزات في اليوم",
+  "enterReservationPerDay": "ادخل عدد الحجوزات"
 
 }
 

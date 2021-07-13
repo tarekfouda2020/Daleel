@@ -16,7 +16,7 @@ class _AddPackageState extends State<AddPackage> {
     return Scaffold(
       appBar: PreferredSize(
         child: DefaultAppBar(
-          title: "اضافة باكدج",
+          title: tr(context,"addPackage"),
           leading: IconButton(
             icon: Icon(
               Icons.close,

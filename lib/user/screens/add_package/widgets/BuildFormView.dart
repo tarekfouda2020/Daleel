@@ -16,7 +16,7 @@ class BuildFormView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MyText(
-              title: "اسم الباكيدج بالعربي",
+              title: tr(context, "packageNameAr"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -24,14 +24,14 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: packageData.nameAr,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل الاسم بالعربي",
+              hint: tr(context, "enterPackageNameAr"),
               type: TextInputType.name,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),
             ),
             SizedBox(height: 10),
             MyText(
-              title: "اسم الباكيدج بالانجليزي",
+              title: tr(context, "packageNameEn"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -39,13 +39,13 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: packageData.nameEn,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل الاسم بالانجليزي",
+              hint: tr(context, "enterPackageNameEn"),
               type: TextInputType.name,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),
             ),
             MyText(
-              title: "وصف الباكيدج بالعربي",
+              title: tr(context, "packageDesAr"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -53,7 +53,7 @@ class BuildFormView extends StatelessWidget {
             RichTextFiled(
               controller: packageData.descAr,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل الوصف بالعربي",
+              hint: tr(context, "enterPackageDesAr"),
               type: TextInputType.name,
               fillColor: MyColors.white,
               max: 3,
@@ -61,7 +61,7 @@ class BuildFormView extends StatelessWidget {
             ),
             SizedBox(height: 10),
             MyText(
-              title: "وصف الباكيدج بالانجليزي",
+              title: tr(context,"packageDesEn"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -69,7 +69,7 @@ class BuildFormView extends StatelessWidget {
             RichTextFiled(
               controller: packageData.descEn,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل الوصف بالانجليزي",
+              hint: tr(context, "enterPackageDesEn"),
               type: TextInputType.name,
               fillColor: MyColors.white,
               max: 3,
@@ -81,7 +81,7 @@ class BuildFormView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "عدد الافراد",
+                    title: tr(context,"userNum"),
                     color: MyColors.blackOpacity,
                     size: 12,
                     fontWeight: FontWeight.w600,
@@ -89,7 +89,7 @@ class BuildFormView extends StatelessWidget {
                   LabelTextField(
                     controller: packageData.number,
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    hint: "ادخل عدد الافراد",
+                    hint: tr(context,"enterUserNum"),
                     type: TextInputType.number,
                     filledColor: MyColors.white,
                     validate: (value)=> value!.validateEmpty(context),
@@ -100,7 +100,7 @@ class BuildFormView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "الحد الادني للافراد",
+                    title: tr(context,"userMin"),
                     color: MyColors.blackOpacity,
                     size: 12,
                     fontWeight: FontWeight.w600,
@@ -108,7 +108,7 @@ class BuildFormView extends StatelessWidget {
                   LabelTextField(
                     controller: packageData.minNum,
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    hint: "ادخل الحد الادني",
+                    hint:  tr(context,"enterUserMin"),
                     type: TextInputType.number,
                     filledColor: MyColors.white,
                     validate: (value)=> value!.validateEmpty(context),
@@ -122,7 +122,7 @@ class BuildFormView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "الحد الاقصي للافراد",
+                    title: tr(context,"userMax"),
                     color: MyColors.blackOpacity,
                     size: 12,
                     fontWeight: FontWeight.w600,
@@ -130,7 +130,7 @@ class BuildFormView extends StatelessWidget {
                   LabelTextField(
                     controller: packageData.maxNum,
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    hint: "ادخل الاقصي الادني",
+                    hint: tr(context,"enterUserMax"),
                     type: TextInputType.number,
                     filledColor: MyColors.white,
                     validate: (value)=> value!.validateEmpty(context),
@@ -145,7 +145,7 @@ class BuildFormView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "سعر الباكدج",
+                    title: tr(context, "packagePrice"),
                     color: MyColors.blackOpacity,
                     size: 12,
                     fontWeight: FontWeight.w600,
@@ -153,7 +153,7 @@ class BuildFormView extends StatelessWidget {
                   LabelTextField(
                     controller: packageData.price,
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    hint: "ادخل سعر الباكيدج",
+                    hint: tr(context, "enterPackagePrice"),
                     type: TextInputType.number,
                     filledColor: MyColors.white,
                     validate: (value)=> value!.validateEmpty(context),
@@ -164,7 +164,7 @@ class BuildFormView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyText(
-                    title: "السعر للفرد",
+                    title: tr(context,"personPrice"),
                     color: MyColors.blackOpacity,
                     size: 12,
                     fontWeight: FontWeight.w600,
@@ -172,7 +172,7 @@ class BuildFormView extends StatelessWidget {
                   LabelTextField(
                     controller: packageData.pricePerPerson,
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    hint: "ادخل سعر الفرد",
+                    hint: tr(context,"enterPersonPrice"),
                     type: TextInputType.number,
                     filledColor: MyColors.white,
                     validate: (value)=> value!.validateEmpty(context),
@@ -182,7 +182,7 @@ class BuildFormView extends StatelessWidget {
             ),
 
             MyText(
-              title: "عدد الحجوزات في اليوم",
+              title: tr(context, "reservationPerDay"),
               color: MyColors.blackOpacity,
               size: 12,
               fontWeight: FontWeight.w600,
@@ -190,7 +190,7 @@ class BuildFormView extends StatelessWidget {
             LabelTextField(
               controller: packageData.numberOfReservations,
               margin: EdgeInsets.symmetric(vertical: 10),
-              hint: "ادخل عدد الحجوزات",
+              hint: tr(context, "enterReservationPerDay"),
               type: TextInputType.number,
               filledColor: MyColors.white,
               validate: (value)=> value!.validateEmpty(context),

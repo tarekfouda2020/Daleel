@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackageModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackagePersonModel.dart';
