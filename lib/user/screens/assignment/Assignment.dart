@@ -23,7 +23,7 @@ class _AssignmentState extends State<Assignment> {
     var settings = context.watch<SettingCubit>().state.model;
     return Scaffold(
       appBar: PreferredSize(
-        child: DefaultAppBar(title: widget.isTerm? "الشروط و الاحكام" : "العقد"),
+        child: DefaultAppBar(title: widget.isTerm? tr(context, "terms") : tr(context, "assignment")),
         preferredSize: Size.fromHeight(60),
       ),
       body: ListView(

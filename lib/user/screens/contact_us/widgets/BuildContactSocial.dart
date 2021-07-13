@@ -17,7 +17,7 @@ class BuildContactSocial extends StatelessWidget {
       child: Column(
         children: [
           MyText(
-              title: "او عبر وسائل التواصل",
+              title: tr(context, "orBySocial"),
               color: MyColors.blackOpacity,
               size: 10),
           BuildSocialItems(),

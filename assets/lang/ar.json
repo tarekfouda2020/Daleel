@@ -88,8 +88,14 @@
   "personPrice": "السعر للفرد",
   "enterPersonPrice": "ادخل سعر الفرد",
   "reservationPerDay": "عدد الحجوزات في اليوم",
-  "enterReservationPerDay": "ادخل عدد الحجوزات"
-
+  "enterReservationPerDay": "ادخل عدد الحجوزات",
+  "terms": "الشروط و الاحكام",
+  "assignment": "العقد",
+  "send": "ارسال",
+  "name": "الاسم",
+  "mail": "البريد الالكتروني",
+  "message": "الرسالة",
+  "orBySocial": "او عبر وسائل التواصل"
 }
 
 

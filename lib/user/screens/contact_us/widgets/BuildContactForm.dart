@@ -22,7 +22,7 @@ class BuildContactForm extends StatelessWidget {
               validate: (value) => value!.validateEmpty(context),
             ),
             LabelTextField(
-              label: "البريد الالكتروني",
+              label: tr(context, "mail"),
               margin: EdgeInsets.only(top: 15),
               controller: contactUsData.mail,
               type: TextInputType.emailAddress,
@@ -31,7 +31,7 @@ class BuildContactForm extends StatelessWidget {
               validate: (value) => value!.validateEmail(context),
             ),
             RichTextFiled(
-              label: "الرسالة",
+              label: tr(context, "message"),
               margin: EdgeInsets.only(top: 15),
               controller: contactUsData.note,
               type: TextInputType.multiline,
