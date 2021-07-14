@@ -22,10 +22,10 @@ class UserHttpMethods {
     var user = context.read<UserCubit>().state.model;
     var params = "?page=$page&limit=10&name=&pagination=true";
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
-      url: "propertyOwner/${user.id}/properties$params",lang: "all"
+      url: "propertyOwner/${user.id}/properties$params",allLang: true
     );
     if (data!=null) {
-      return List<PropertyModel>.from(data["properties"].map((e) => PropertyModel.fromMap(e)));
+      return List<PropertyModel>.from(data.map((e) => PropertyModel.fromMap(e)));
     }else{
       return [];
     }
@@ -40,10 +40,10 @@ class UserHttpMethods {
     }
     var params = "?page=$page&limit=10&name=&pagination=true$filterParam";
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
-      url: "owners/${user.id}/bookings$params",
+      url: "owners/${user.id}/bookings$params",allLang: true,
     );
     if (data!=null) {
-      return List<OrderModel>.from(data["bookings"].map((e) => OrderModel.fromMap(e)));
+      return List<OrderModel>.from(data.map((e) => OrderModel.fromMap(e)));
     }else{
       return [];
     }

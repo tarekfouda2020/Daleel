@@ -33,7 +33,8 @@ class MyText extends StatelessWidget {
           color: color??Colors.black,
           fontSize: size!=null? (size!+2) :16,
           decoration: decoration??TextDecoration.none,
-          fontWeight: fontWeight
+          fontWeight: fontWeight,
+        height: 1.4
       ),
       overflow: overflow,
     );

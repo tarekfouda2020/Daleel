@@ -8,6 +8,7 @@ class BuildOrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = context.watch<LangCubit>().state.locale.languageCode=="ar";
     return AnimationContainer(
       scale: true,
       child: Container(
@@ -40,14 +41,14 @@ class BuildOrderItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 3),
                       child: MyText(
-                        title: "${model.property.name} (${model.property.category.name})",
+                        title: "${model.property.name} (${lang? model.property.category.translation.ar.name : model.property.category.name})",
                         color: MyColors.grey,
                         size: 10,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     MyText(
-                      title: DateFormat(DateFormat.YEAR_ABBR_MONTH_WEEKDAY_DAY,'ar').format(model.date),
+                      title: DateFormat(DateFormat.YEAR_ABBR_MONTH_WEEKDAY_DAY,lang?'ar':'en').format(model.date),
                       color: MyColors.grey,
                       size: 10,
                       fontWeight: FontWeight.w600,

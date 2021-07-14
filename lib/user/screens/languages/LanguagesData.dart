@@ -11,6 +11,7 @@ class LanguagesData{
     var user = context.read<UserCubit>();
     user.state.model.lang=lang;
     user.onUpdateUserData(user.state.model);
+    Utils.saveUserData(user.state.model);
   }
 
 

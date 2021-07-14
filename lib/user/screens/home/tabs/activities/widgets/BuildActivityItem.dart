@@ -35,7 +35,7 @@ class BuildActivityItem extends StatelessWidget {
                       title: lang? model.translation.ar.name:model.name,
                       color: MyColors.blackOpacity,
                       size: 10,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w700,
                     ),
                     Offstage(
                       offstage: CategoryModel.getTypeValue(model.category.tag)!=CategoriesTypes.firstCat,
