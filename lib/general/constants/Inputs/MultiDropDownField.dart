@@ -32,6 +32,7 @@ class MultiDropDownField<T> extends StatelessWidget {
       initialChildSize: 0.5,
       listType: MultiSelectListType.LIST,
       searchable: true,
+      searchHint: tr(context, "search"),
       buttonText: Text(label,style: CustomInputTextStyle(lang: lang,textColor: MyColors.blackOpacity),),
       title: MyText(title: title, color: MyColors.black, size: 12),
       decoration: BoxDecoration(
@@ -41,7 +42,6 @@ class MultiDropDownField<T> extends StatelessWidget {
       items: data.map((e) => MultiSelectItem<T>(e, e.toString()))
           .toList(),
       onConfirm: onConfirm,
-
       initialValue: selectedItems,
       buttonIcon: Icon(Icons.arrow_drop_down,size: 25,color: MyColors.black,),
       confirmText: Text("تآكيد",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),

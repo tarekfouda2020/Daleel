@@ -74,7 +74,10 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         showSearchBox: widget.showSearchBox,
         showClearButton: widget.showClearButton,
         selectedItem: widget.selectedItem,
-        itemAsString: (dynamic u) => widget.useName ? u.name : u,
+        itemAsString: (dynamic u) => widget.useName ? u.name : u.toString(),
+        emptyBuilder: (_,str){
+          return Center(child: MyText(title: tr(context, "noData"), color: MyColors.black, size: 12));
+        },
         showSelectedItem: widget.showSelectedItem,
         style: CustomInputTextStyle(lang: lang),
         searchBoxDecoration: CustomInputDecoration(

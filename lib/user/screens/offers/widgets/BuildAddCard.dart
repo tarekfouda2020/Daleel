@@ -8,6 +8,7 @@ class BuildAddCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = context.watch<LangCubit>().state.locale.languageCode=="ar";
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -23,7 +24,7 @@ class BuildAddCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MyText(
-                  title: model.name,
+                  title: lang? model.translation.ar.name:model.name,
                   color: MyColors.primary,
                   size: 16,
                   fontWeight: FontWeight.w500,

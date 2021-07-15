@@ -24,7 +24,7 @@ class HomeMainData {
     FilterModel(
         key: "to",
         key2: "form",
-        name: "Date",
+        name: "date",
         value: TextEditingController(),
         value2: TextEditingController()),
     FilterModel(
@@ -33,6 +33,7 @@ class HomeMainData {
 
   Future<void> fetchPage(int pageKey, BuildContext context,
       {bool refresh = true}) async {
+
     List<OrderModel> _orders = await UserRepository(context)
         .getOrders(pageKey, filterCubit.state.data ?? numFilter, refresh);
     if (pageKey == 0) {

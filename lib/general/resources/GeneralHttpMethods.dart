@@ -40,7 +40,6 @@ class GeneralHttpMethods {
   }
 
   Future<bool> verifyUser(String code, String id) async {
-    String? _token = await messaging.getToken();
     Map<String, dynamic> body = {
       "mobile_token": int.parse(code),
       "user": id,

@@ -10,23 +10,26 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthScaffold(
-      child: GestureDetector(
-        onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          children: [
-            HeaderLogo(),
-            SizedBox(height: 30),
-            BuildText(),
-            BuildFormInputs(loginData: loginData),
-            // BuildForgetText(),
-            BuildLoginButton(loginData: loginData),
-            // BuildNewRegister(),
-            // BuildRegisterButton(),
-          ],
+    return WillPopScope(
+      child: AuthScaffold(
+        child: GestureDetector(
+          onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            children: [
+              HeaderLogo(),
+              SizedBox(height: 30),
+              BuildText(),
+              BuildFormInputs(loginData: loginData),
+              // BuildForgetText(),
+              BuildLoginButton(loginData: loginData),
+              // BuildNewRegister(),
+              // BuildRegisterButton(),
+            ],
+          ),
         ),
       ),
+      onWillPop: loginData.onBackPressed,
     );
   }
 }

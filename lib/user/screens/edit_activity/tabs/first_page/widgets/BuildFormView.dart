@@ -40,6 +40,7 @@ class BuildFormView extends StatelessWidget {
               validate: (CityModel value)=>value.validateDropDown(context),
               label: tr(context, "city"),
               selectedItem: pageData.cityModel,
+              useName: false,
               onChange: (CityModel model)=>pageData.onCityChange(model),
               finData: (value)async => await UserRepository(context).getCities(false),
             ),

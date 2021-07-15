@@ -49,7 +49,7 @@ class BuildSearchForm extends StatelessWidget {
                           return DropdownMenuItem<FilterModel>(
                               value: value,
                               child: MyText(
-                                  title: value.name,
+                                  title: tr(context,value.name),
                                   color: MyColors.black,
                                   size: 12,
                               ),

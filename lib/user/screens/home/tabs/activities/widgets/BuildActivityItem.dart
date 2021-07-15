@@ -55,7 +55,7 @@ class BuildActivityItem extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 MyText(
-                  title: model.city.name,
+                  title: lang? model.city.translation?.ar.name??"" : model.city.name,
                   color: MyColors.blackOpacity,
                   size: 10,
                   fontWeight: FontWeight.w500,

@@ -2,8 +2,9 @@ part of 'SecondPageWidgetsImports.dart';
 
 class BuildFormField extends StatelessWidget {
   final String title;
+  final TextInputType? type;
   final TextEditingController controller;
-  const BuildFormField({required this.title, required this.controller});
+  const BuildFormField({required this.title, this.type, required this.controller});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +39,7 @@ class BuildFormField extends StatelessWidget {
                 style: GoogleFonts.cairo(fontSize: 14,color: MyColors.black,fontWeight: FontWeight.bold),
                 autocorrect: false,
                 enableSuggestions: false,
-                keyboardType: TextInputType.number,
+                keyboardType: type??TextInputType.number,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   border: InputBorder.none,

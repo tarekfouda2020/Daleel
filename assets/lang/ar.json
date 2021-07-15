@@ -12,7 +12,7 @@
   "phoneValidation": "من فضلك ادخل رقم الجوال صحيحا",
   "confirmValidation": "ادخل تاكيد رمز المرور صحيحا",
   "activeAccount": "تاكيد الحساب",
-  "codeSendToPhone": "ادخل رقم الجوال المرسل الي هاتفك",
+  "codeSendToPhone": "ادخل كود التحقق المرسل الي هاتفك",
   "back": "رجوع",
   "next": "التالي",
   "nameAr": "الاسم بالعربي",
@@ -31,6 +31,7 @@
   "locationOnMap": "الموقع غلي الخريطة",
   "featuresAndLocation": "المميزات و الموقع",
   "activityAddSuccessfully": "تم اضافة النشاط بنجاح",
+  "activityEditSuccessfully": "تم تعديل النشاط بنجاح",
   "holeActivity": "النشاط كاملا",
   "required": "الزامي",
   "optional": "اختياري",
@@ -144,7 +145,8 @@
   "accountNum":"رقم الحساب البنكي",
   "settings": "الاعدادات",
   "contactUs": "تواصل معنا",
-  "logout": "تسجيل خروج"
+  "logout": "تسجيل خروج",
+  "noData": "لا يوجد بيانات"
 
 }
 

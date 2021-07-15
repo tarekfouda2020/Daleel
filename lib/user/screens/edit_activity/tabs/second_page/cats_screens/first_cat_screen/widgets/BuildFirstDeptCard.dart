@@ -36,8 +36,8 @@ class BuildFirstDeptCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  BuildFormField(title: tr(context,"deptName"),controller: model.allDeptFields[7].value,),
-                  BuildFormField(title: tr(context,"deptCapacity"),controller: model.allDeptFields[8].value,),
+                  BuildFormField(title: tr(context,"deptName"), type: TextInputType.text,controller: model.allDeptFields[7].value,),
+                  BuildFormField(title: tr(context,"deptCapacity"),type: TextInputType.text,controller: model.allDeptFields[8].value,),
                   RichTextFiled(
                     controller: model.allDeptFields[9].value,
                     label: tr(context,"shortDescAr"),

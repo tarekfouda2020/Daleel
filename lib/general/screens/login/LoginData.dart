@@ -19,4 +19,10 @@ class LoginData {
       btnKey.currentState!.animateReverse();
     }
   }
+
+  Future<bool> onBackPressed() async {
+    SystemNavigator.pop();
+    return true;
+  }
+
 }

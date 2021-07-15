@@ -38,12 +38,13 @@ class UserHttpMethods {
        filterParam =filter.key=="to"? "&${filter.key}=${filter.value.text}&${filter.key2}=${filter.value2?.text}"
           :"&${filter.key}=${filter.value.text}";
     }
-    var params = "?page=$page&limit=10&name=&pagination=true$filterParam";
+    var params = "?page=$page&limit=10&pagination=true$filterParam";
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
       url: "owners/${user.id}/bookings$params",allLang: true,
     );
     if (data!=null) {
-      return List<OrderModel>.from(data.map((e) => OrderModel.fromMap(e)));
+      var lst = (data is List)?data : data["bookings"];
+      return List<OrderModel>.from(lst.map((e) => OrderModel.fromMap(e)));
     }else{
       return [];
     }

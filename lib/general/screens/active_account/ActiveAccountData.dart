@@ -10,10 +10,12 @@ class ActiveAccountData {
 
 
   void onActiveAccount(BuildContext context, String userId) async {
-    if (formKey.currentState!.validate()) {
+    if (code.text.isNotEmpty) {
       btnKey.currentState!.animateForward();
       await GeneralRepository(context).verifyUser(code.text, userId);
       btnKey.currentState!.animateReverse();
+    }else{
+      LoadingDialog.showSimpleToast("من فضلك ادخل كود التحقق");
     }
   }
 

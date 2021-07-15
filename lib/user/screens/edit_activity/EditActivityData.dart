@@ -27,6 +27,8 @@ class EditActivityData{
   setInitialData(BuildContext context,PropertyModel model)async{
     firstPageData.selectCatCubit.onUpdateData(model.category.id);
     activityModel.id=model.id;
+    model.city.lang = context.read<LangCubit>().state.locale.languageCode;
+    print("================> ${model.city.toMap()}");
     initFirstPageData(model);
     initFirstCatPageData(model);
     initSecondCatPageData(model);

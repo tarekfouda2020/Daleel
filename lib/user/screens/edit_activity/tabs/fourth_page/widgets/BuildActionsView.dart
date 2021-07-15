@@ -18,7 +18,7 @@ class BuildActionsView extends StatelessWidget {
             onTap: ()=> addActivityData.goToPreviousPage(),
           ),
           DefaultButton(
-            title: tr(context, "save"),
+            title: tr(context, "edit"),
             width: MediaQuery.of(context).size.width*.4,
             color: MyColors.secondary,
             onTap: ()=> addActivityData.fourthPageData.saveDataToModel(context, addActivityData),
