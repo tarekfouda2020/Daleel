@@ -6,6 +6,7 @@ import 'package:base_flutter/user/screens/assignment/AssignmentImports.dart';
 import 'package:base_flutter/user/screens/contact_us/ContactUsImports.dart';
 import 'package:base_flutter/user/screens/languages/LanguagesImports.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'widgets/SettingWidgetImports.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

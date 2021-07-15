@@ -143,7 +143,9 @@
   "date": "Date",
   "accountNum":"Bank account",
   "settings": "Settings",
-  "contactUs": "Contact us"
+  "contactUs": "Contact us",
+  "logout": "Logout"
+
 
 }
 

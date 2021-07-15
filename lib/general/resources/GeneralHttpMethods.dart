@@ -3,6 +3,7 @@ import 'package:base_flutter/general/blocks/cats_cubit/cats_cubit.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/GlobalState.dart';
+import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
@@ -30,6 +31,7 @@ class GeneralHttpMethods {
     var _data = await DioHelper(context: context).post(url: "login",body: body,showLoader: false);
 
     if (_data != null) {
+      LoadingDialog.showToastNotification("$_data");
       AutoRouter.of(context).push(ActiveAccountRoute(userId: _data["id"]));
       return true;
     } else {

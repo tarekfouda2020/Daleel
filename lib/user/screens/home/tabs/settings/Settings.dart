@@ -42,6 +42,12 @@ class _SettingsState extends State<Settings> {
             icon: Icons.language,
             page: Languages(),
           ),
+
+          BuildSettingItem(
+            title: tr(context,"logout"),
+            icon: Icons.logout,
+            onTap: () => settingsData.logout(context),
+          ),
         ],
       ),
     );
