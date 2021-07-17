@@ -37,7 +37,7 @@ class DioHelper {
     var lang = allLang?"all":context.read<LangCubit>().state.locale.languageCode;
     _dio.options.headers = await _getHeader(langType: lang);
     try {
-      var response = await _dio.get("$baseUrl$url${"?"+lang}", options: _buildCacheOptions(url+lang));
+      var response = await _dio.get("$baseUrl$url", options: _buildCacheOptions(url+lang));
       print("response ${response.statusCode}");
       var data = response.data;
       return data;

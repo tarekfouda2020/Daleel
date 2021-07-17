@@ -31,7 +31,7 @@ class GeneralHttpMethods {
     var _data = await DioHelper(context: context).post(url: "login",body: body,showLoader: false);
 
     if (_data != null) {
-      LoadingDialog.showToastNotification("$_data");
+      // LoadingDialog.showToastNotification("$_data");
       AutoRouter.of(context).push(ActiveAccountRoute(userId: _data["id"]));
       return true;
     } else {
