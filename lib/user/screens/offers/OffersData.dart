@@ -1,7 +1,6 @@
 part of 'OffersImports.dart';
 
 class OffersData {
-
   final GlobalKey<FormState> formKey = new GlobalKey();
   final GlobalKey<CustomButtonState> btnKey = new GlobalKey();
 
@@ -14,15 +13,22 @@ class OffersData {
   TextEditingController price = new TextEditingController();
   TextEditingController percent = new TextEditingController();
 
-  var types = [
-    CityModel(id: "price", name: "سعر جديد"),
-    CityModel(id: "percentage", name: "نسبة"),
-  ];
+  late List<CityModel> types;
 
-  var packages = [
-    CityModel(id: "package", name: "سعر الفرد"),
-    CityModel(id: "person", name: "سعر الباكدج"),
-  ];
+  late List<CityModel> packages;
+
+  initData(BuildContext context) {
+    bool lang = context.read<LangCubit>().state.locale.languageCode == "ar";
+    types = [
+      CityModel(id: "price", name: lang ? "سعر جديد" : "New price"),
+      CityModel(id: "percentage", name: lang ? "نسبة" : "Percentage"),
+    ];
+    packages = [
+      CityModel(id: "package", name: lang ? "سعر الباكدج" : "Package price"),
+      CityModel(id: "person", name: lang ? "سعر الفرد" : "Price per person"),
+    ];
+    selectedType = types[0];
+  }
 
   CityModel? selectedType;
   CityModel? selectedPackage;
@@ -32,9 +38,9 @@ class OffersData {
   setFromDate(BuildContext context) {
     AdaptivePicker.datePicker(
       context: context,
-      title: tr(context,"dateFrom"),
-      onConfirm: (date){
-        if (date!=null) {
+      title: tr(context, "dateFrom"),
+      onConfirm: (date) {
+        if (date != null) {
           startDate = date.add(Duration(days: 1));
           fromCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
           toCubit.onUpdateData("");
@@ -48,44 +54,42 @@ class OffersData {
       context: context,
       minDate: startDate,
       initial: startDate,
-      title: tr(context,"dateTo"),
-      onConfirm: (date){
-        if (date!=null) {
+      title: tr(context, "dateTo"),
+      onConfirm: (date) {
+        if (date != null) {
           toCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
         }
       },
     );
   }
 
-  onTypeChange(CityModel model){
+  onTypeChange(CityModel model) {
     selectedType = model;
     typeCubit.onUpdateData(model.id);
   }
 
-  onPackageChange(CityModel model){
+  onPackageChange(CityModel model) {
     selectedPackage = model;
   }
 
-  saveOfferData(BuildContext context, PropertyModel propertyModel)async{
+  saveOfferData(BuildContext context, PropertyModel propertyModel) async {
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
       AddOfferModel model = AddOfferModel(
-        from: fromCubit.state.data,
-        to: fromCubit.state.data,
-        type: selectedType?.id,
-        packageType: selectedPackage?.id,
-        percentage: double.parse(percent.text.isEmpty?"0":percent.text),
-        price: double.parse(price.text.isEmpty?"0":price.text),
-        property: propertyModel.id
-      );
+          from: fromCubit.state.data,
+          to: fromCubit.state.data,
+          type: selectedType?.id,
+          packageType: selectedPackage?.id,
+          percentage: double.parse(percent.text.isEmpty ? "0" : percent.text),
+          price: double.parse(price.text.isEmpty ? "0" : price.text),
+          property: propertyModel.id);
       var result = await UserRepository(context).addOffer(model);
       if (result) {
-        LoadingDialog.showToastNotification(tr(context, "offerAddedSuccessfully"));
+        LoadingDialog.showToastNotification(
+            tr(context, "offerAddedSuccessfully"));
         btnKey.currentState!.animateReverse();
         Navigator.of(context).pop();
       }
     }
   }
-
-
 }

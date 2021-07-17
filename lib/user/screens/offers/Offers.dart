@@ -14,7 +14,7 @@ class _OffersState extends State<Offers> {
 
   @override
   void initState() {
-    offersData.selectedType = offersData.types[0];
+    offersData.initData(context);
     super.initState();
   }
 

@@ -44,8 +44,8 @@ class MultiDropDownField<T> extends StatelessWidget {
       onConfirm: onConfirm,
       initialValue: selectedItems,
       buttonIcon: Icon(Icons.arrow_drop_down,size: 25,color: MyColors.black,),
-      confirmText: Text("تآكيد",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
-      cancelText: Text("الغاء",style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
+      confirmText: Text(tr(context, "save"),style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
+      cancelText: Text(tr(context, "cancel"),style: CustomInputTextStyle(lang: lang,textColor: MyColors.primary),),
       chipDisplay: MultiSelectChipDisplay(
         alignment: lang=="ar"? Alignment.topRight : Alignment.topLeft ,
         onTap: onItemClick,

@@ -37,7 +37,7 @@ class BuildPersonItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             MyText(
-              title: "${tr(context,"packagePrice")} : ${model.pricePerPerson} ${tr(context, "sar")}",
+              title: "${tr(context,"personPrice")} : ${model.pricePerPerson} ${tr(context, "sar")}",
               color: Colors.black54,
               size: 10,
               fontWeight: FontWeight.w600,

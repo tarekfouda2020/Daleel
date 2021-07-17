@@ -1,4 +1,5 @@
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
@@ -13,6 +14,7 @@ import 'package:base_flutter/user/resources/UserRepository.dart';
 import 'package:base_flutter/user/screens/offers/widgets/OfferWidgetImports.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'Offers.dart';
 part 'OffersData.dart';

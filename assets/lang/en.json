@@ -146,7 +146,9 @@
   "settings": "Settings",
   "contactUs": "Contact us",
   "logout": "Logout",
-  "noData": "No data found"
+  "noData": "No data found",
+  "cancel": "Cancel"
+
 
 
 
