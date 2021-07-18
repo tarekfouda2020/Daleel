@@ -17,3 +17,4 @@ part 'BuildActivityCard.dart';
 part 'BuildFormField.dart';
 part 'BuildFirstDeptCard.dart';
 part 'BuildActionsView.dart';
+part 'BuildAddNewCat.dart';

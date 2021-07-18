@@ -6,6 +6,24 @@ class FirstCatScreenData{
   AddDeptModel firstSectionPrice=AddDeptModel(false);
   AddDeptModel secondSectionPrice=AddDeptModel(false);
 
+  final GenericBloc<int> catsCountCubit = new GenericBloc(0);
+
+
+  setAddDept(){
+    int count = catsCountCubit.state.data+1;
+    catsCountCubit.onUpdateData(count);
+  }
+
+  setRemoveDept(int type){
+    if (type==1&&catsCountCubit.state.data==2) {
+      LoadingDialog.showSimpleToast("من فضلك احذف القسم الثاني اولا");
+      return;
+    }
+    int count = catsCountCubit.state.data-1;
+    catsCountCubit.onUpdateData(count);
+  }
+
+
   setSaveAllPrice(AddDeptModel model,int type,BuildContext context){
     var len = model.allDeptFields
         .where((element) => element.value.text.isEmpty)
@@ -21,13 +39,15 @@ class FirstCatScreenData{
       return;
     }
     model.saved=true;
-    LoadingDialog.showToastNotification(tr(context, "dataSavedSuccessfully"),color: MyColors.primary);
   }
 
   saveDataToModel(EditActivityData addActivityData,BuildContext context){
-    if (!allSectionsPrice.saved) {
-      LoadingDialog.showSimpleToast(tr(context,"completeYourData"));
-      return;
+    setSaveAllPrice(addActivityData.firstCatScreenData.allSectionsPrice,1,context);
+    if (catsCountCubit.state.data==1) {
+      setSaveAllPrice(addActivityData.firstCatScreenData.firstSectionPrice,2,context);
+    }
+    if (catsCountCubit.state.data==2) {
+      setSaveAllPrice(addActivityData.firstCatScreenData.firstSectionPrice,3,context);
     }
     Map<String,dynamic> all={};
     Map<String,dynamic> first={};

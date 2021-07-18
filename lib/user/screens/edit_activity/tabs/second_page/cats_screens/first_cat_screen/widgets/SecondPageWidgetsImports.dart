@@ -9,9 +9,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../FirstCatScreenImports.dart';
 import '../../../../../EditActivityImports.dart';
 
 part 'BuildActivityCard.dart';
 part 'BuildFormField.dart';
 part 'BuildFirstDeptCard.dart';
 part 'BuildActionsView.dart';
+part 'BuildAddNewCat.dart';

@@ -6,6 +6,7 @@ class EditActivityData{
 
   final GenericBloc<int> stepperCubit = new GenericBloc(0);
 
+
   final FirstPageData firstPageData =new FirstPageData();
   final FirstCatScreenData firstCatScreenData =new FirstCatScreenData();
   final SecondCatScreenData secondCatScreenData = new SecondCatScreenData();
@@ -28,7 +29,6 @@ class EditActivityData{
     firstPageData.selectCatCubit.onUpdateData(model.category.id);
     activityModel.id=model.id;
     model.city.lang = context.read<LangCubit>().state.locale.languageCode;
-    print("================> ${model.city.toMap()}");
     initFirstPageData(model);
     initFirstCatPageData(model);
     initSecondCatPageData(model);
@@ -63,9 +63,11 @@ class EditActivityData{
       firstCatScreenData.allSectionsPrice= mapDeptData(model.allSectionsPrice);
     }
     if (model.firstSectionPrice!=null) {
+      firstCatScreenData.catsCountCubit.onUpdateData(1);
       firstCatScreenData.firstSectionPrice= mapDeptData(model.firstSectionPrice);
     }
     if (model.secondSectionPrice!=null) {
+      firstCatScreenData.catsCountCubit.onUpdateData(2);
       firstCatScreenData.secondSectionPrice= mapDeptData(model.secondSectionPrice);
     }
   }

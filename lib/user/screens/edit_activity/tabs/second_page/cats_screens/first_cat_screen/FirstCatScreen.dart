@@ -17,7 +17,7 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
   void initState() {
     super.initState();
     screenData = widget.addActivityData.firstCatScreenData;
-    screenData.allSectionsPrice.allDeptFields[7].value.text=widget.addActivityData.activityModel.nameEn!;
+    screenData.allSectionsPrice.allDeptFields[7].value.text=widget.addActivityData.activityModel.nameEn??"";
   }
 
   @override
@@ -39,15 +39,32 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
                   model: screenData.allSectionsPrice,
                   onSave: (model) =>screenData.setSaveAllPrice(model,1,context),
                 ),
-                BuildFirstDeptCard(
-                  title: tr(context, "firstDept"),
-                  model: screenData.firstSectionPrice,
-                  onSave: (model) =>screenData.setSaveAllPrice(model,2,context),
-                ),
-                BuildFirstDeptCard(
-                  title: tr(context, "secondDept"),
-                  model: screenData.secondSectionPrice,
-                  onSave: (model) =>screenData.setSaveAllPrice(model,3,context),
+                BlocBuilder<GenericBloc, GenericState>(
+                  bloc: screenData.catsCountCubit,
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        BuildAddNewCat(
+                          state: state.data,
+                          screenData: screenData,
+                        ),
+                        BuildFirstDeptCard(
+                          title: tr(context, "firstDept"),
+                          model: screenData.firstSectionPrice,
+                          screenData: screenData,
+                          state: state.data,
+                          type: 1,
+                        ),
+                        BuildFirstDeptCard(
+                          title: tr(context, "secondDept"),
+                          model: screenData.secondSectionPrice,
+                          screenData: screenData,
+                          state: state.data,
+                          type: 2,
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),

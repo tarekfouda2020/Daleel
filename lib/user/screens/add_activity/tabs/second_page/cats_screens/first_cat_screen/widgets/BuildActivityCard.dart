@@ -87,13 +87,6 @@ class BuildActivityCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  DefaultButton(
-                    title: tr(context, "save"),
-                    margin: EdgeInsets.symmetric(vertical: 15),
-                    color: MyColors.bg,
-                    textColor: MyColors.secondary,
-                    onTap: ()=>onSave(model),
-                  ),
                 ],
               ),
             ),
