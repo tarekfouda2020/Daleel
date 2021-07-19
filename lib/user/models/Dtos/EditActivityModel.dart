@@ -40,6 +40,7 @@ class EditActivityModel{
         {
           "category":categoryModel?.id,
           "id":id,
+          "location":location,
           "city":city,
           "name":nameEn,
           "address":address??"",
@@ -50,7 +51,6 @@ class EditActivityModel{
           "secondSectionPrice":secondSectionPrice??{},
           "terms_and_conditions":termsEn,
           "description": descEn,
-          "location":location,
           "images": exist,
           "panoramic_images": existPanoramic,
           "sub_category": subCategory,

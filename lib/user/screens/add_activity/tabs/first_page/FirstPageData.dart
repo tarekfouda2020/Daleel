@@ -45,8 +45,8 @@ class FirstPageData{
 
   setActivityData(AddActivityData activityData,BuildContext context){
     if (formKey.currentState!.validate()) {
-      if (normalImagesCubit.state.data.length>5||normalImagesCubit.state.data.length<2) {
-        LoadingDialog.showSimpleToast(tr(context, "enter2To5Images"));
+      if (normalImagesCubit.state.data.length<5) {
+        LoadingDialog.showSimpleToast("من فضلك ادخل علي الاقل 5 صور");
         return;
       }
       var selected = context.read<CatsCubit>().state.cats

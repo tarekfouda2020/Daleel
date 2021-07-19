@@ -77,17 +77,17 @@ class OffersData {
       btnKey.currentState!.animateForward();
       AddOfferModel model = AddOfferModel(
           from: fromCubit.state.data,
-          to: fromCubit.state.data,
+          to: toCubit.state.data,
           type: selectedType?.id,
           packageType: selectedPackage?.id,
           percentage: double.parse(percent.text.isEmpty ? "0" : percent.text),
           price: double.parse(price.text.isEmpty ? "0" : price.text),
           property: propertyModel.id);
       var result = await UserRepository(context).addOffer(model);
+      btnKey.currentState!.animateReverse();
       if (result) {
         LoadingDialog.showToastNotification(
             tr(context, "offerAddedSuccessfully"));
-        btnKey.currentState!.animateReverse();
         Navigator.of(context).pop();
       }
     }

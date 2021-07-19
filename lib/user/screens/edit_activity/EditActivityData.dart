@@ -130,7 +130,8 @@ class EditActivityData{
     fourthPageData.selectedOptions=model.options;
     fourthPageData.location.text=model.address;
     fourthPageData.lat=model.location[0].toString();
-    fourthPageData.lat=model.location[1].toString();
+    fourthPageData.lng=model.location[1].toString();
+    fourthPageData.locCubit.onLocationUpdated(LocationModel(model.location[0].toString(),model.location[1].toString(),model.address));
   }
 
 

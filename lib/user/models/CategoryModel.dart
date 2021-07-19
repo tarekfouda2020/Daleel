@@ -70,16 +70,16 @@ class CategoryModel {
     switch(value){
       case "قاعات_افراح":
         return CategoriesTypes.firstCat;
-      case "اجنحة_عرسان":
-        return CategoriesTypes.secondCat;
       case "استراحات":
         return CategoriesTypes.firstCat;
       case "شاليهات":
         return CategoriesTypes.firstCat;
-      case "ضيافة":
+      case "اجنحة_عرسان":
         return CategoriesTypes.thirdCat;
+      case "ضيافة":
+        return CategoriesTypes.secondCat;
     }
-    return CategoriesTypes.thirdCat;
+    return CategoriesTypes.secondCat;
   }
 
 }
