@@ -1,4 +1,5 @@
 
+import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOfferModel.dart';
@@ -48,4 +49,7 @@ class UserRepository{
 
   Future<SettingModel?> getSettings(bool refresh)=>
       _httpMethods.getSettings(refresh);
+
+  Future<UserModel> getUserData(bool refresh)=>
+      _httpMethods.getUserData(refresh);
 }

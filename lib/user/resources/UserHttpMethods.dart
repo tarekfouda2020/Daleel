@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/blocks/setting_cubit/setting_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
+import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
@@ -55,6 +56,19 @@ class UserHttpMethods {
       return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
     }else{
       return [];
+    }
+  }
+
+  Future<UserModel> getUserData(bool refresh) async {
+    var user = context.read<UserCubit>();
+    var data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "users/${user.state.model.id}",);
+    if (data!=null) {
+      var model = UserModel.fromMap(data);
+      user.onUpdateUserData(model);
+      return model;
+    }else{
+      return user.state.model;
     }
   }
 

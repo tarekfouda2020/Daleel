@@ -38,7 +38,7 @@ class FourthPageData{
       addActivityData.activityModel.address=location.text;
       var result = await UserRepository(context).editActivity(addActivityData.activityModel);
       if(result){
-        LoadingDialog.showToastNotification(tr(context, "activityAddSuccessfully"));
+        LoadingDialog.showToastNotification(tr(context, "activityEditSuccessfully"));
         Navigator.of(context).pop(true);
       }
     }

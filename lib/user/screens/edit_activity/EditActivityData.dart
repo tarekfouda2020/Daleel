@@ -74,17 +74,17 @@ class EditActivityData{
 
   AddDeptModel mapDeptData(DeptPriceModel? model){
     AddDeptModel deptModel = AddDeptModel(true);
-    deptModel.allDeptFields[0].value.text=model?.saturdayPrice.toString()??"";
-    deptModel.allDeptFields[1].value.text=model?.sundayPrice.toString()??"";
-    deptModel.allDeptFields[2].value.text=model?.mondayPrice.toString()??"";
-    deptModel.allDeptFields[3].value.text=model?.thursdayPrice.toString()??"";
-    deptModel.allDeptFields[4].value.text=model?.wednesPrice.toString()??"";
-    deptModel.allDeptFields[5].value.text=model?.tuesdayPrice.toString()??"";
-    deptModel.allDeptFields[6].value.text=model?.fridayPrice.toString()??"";
-    deptModel.allDeptFields[7].value.text=model?.name.toString()??"";
-    deptModel.allDeptFields[8].value.text=model?.capacity.toString()??"";
-    deptModel.allDeptFields[9].value.text=model?.description.toString()??"";
-    deptModel.allDeptFields[10].value.text=model?.descriptionAr.toString()??"";
+    deptModel.allDeptFields[0].value.text=model?.saturdayPrice==null?"":model?.saturdayPrice.toString()??"";
+    deptModel.allDeptFields[1].value.text=model?.sundayPrice==null?"":model?.sundayPrice.toString()??"";
+    deptModel.allDeptFields[2].value.text=model?.mondayPrice==null?"":model?.mondayPrice.toString()??"";
+    deptModel.allDeptFields[3].value.text=model?.thursdayPrice==null?"":model?.thursdayPrice.toString()??"";
+    deptModel.allDeptFields[4].value.text=model?.wednesPrice==null?"":model?.wednesPrice.toString()??"";
+    deptModel.allDeptFields[5].value.text=model?.tuesdayPrice==null?"":model?.tuesdayPrice.toString()??"";
+    deptModel.allDeptFields[6].value.text=model?.fridayPrice==null?"":model?.fridayPrice.toString()??"";
+    deptModel.allDeptFields[7].value.text=model?.name==null?"":model?.name.toString()??"";
+    deptModel.allDeptFields[8].value.text=model?.capacity==null?"":model?.capacity.toString()??"";
+    deptModel.allDeptFields[9].value.text=model?.description==null?"":model?.description.toString()??"";
+    deptModel.allDeptFields[10].value.text=model?.descriptionAr==null?"":model?.descriptionAr.toString()??"";
     return deptModel;
   }
 

@@ -52,7 +52,7 @@ class EditActivityModel{
           "description": descEn,
           "location":location,
           "images": exist,
-          "panoramic_images": exist,
+          "panoramic_images": existPanoramic,
           "sub_category": subCategory,
           "occasions": occasions,
           "packagePrices": packagePrices??[],

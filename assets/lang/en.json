@@ -147,7 +147,9 @@
   "contactUs": "Contact us",
   "logout": "Logout",
   "noData": "No data found",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "PersonRegister": "Register as person",
+  "PackageRegister": "Register as package"
 
 
 

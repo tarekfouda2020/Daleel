@@ -5,23 +5,39 @@ class Information extends StatefulWidget {
   _InformationState createState() => _InformationState();
 }
 
-class _InformationState extends State<Information>{
+class _InformationState extends State<Information> {
 
-   InformationData informationData = new InformationData();
+  final InformationData informationData = new InformationData();
+
+
+  @override
+  void initState() {
+    informationData.fetchData(context, refresh: false);
+    informationData.fetchData(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        child: DefaultAppBar(title: tr(context, "info"),back: false,),
+        child: DefaultAppBar(title: tr(context, "info"), back: false,),
         preferredSize: Size.fromHeight(60),
       ),
 
-      body: ListView(
-        children: [
-          BuildInfoForm()
-        ],
+      body: BlocBuilder<GenericBloc<UserModel?>, GenericState<UserModel?>>(
+        bloc: informationData.userCubit,
+        builder: (context, state) {
+          if (state is GenericUpdateState) {
+            return ListView(
+              children: [
+                BuildInfoForm(model: state.data!,)
+              ],
+            );
+          }
+          return LoadingDialog.showLoadingView();
+        },
       ),
 
     );

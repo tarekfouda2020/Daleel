@@ -51,14 +51,14 @@ class _FirstCatScreenState extends State<FirstCatScreen> {
                         BuildFirstDeptCard(
                           title: tr(context, "firstDept"),
                           model: screenData.firstSectionPrice,
-                          screenData: screenData,
+                          addActivityData: widget.addActivityData,
                           state: state.data,
                           type: 1,
                         ),
                         BuildFirstDeptCard(
                           title: tr(context, "secondDept"),
                           model: screenData.secondSectionPrice,
-                          screenData: screenData,
+                          addActivityData: widget.addActivityData,
                           state: state.data,
                           type: 2,
                         ),

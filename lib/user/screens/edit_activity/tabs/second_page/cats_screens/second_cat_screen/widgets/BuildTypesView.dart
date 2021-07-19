@@ -15,14 +15,14 @@ class BuildTypesView extends StatelessWidget {
             child: BuildTypeAction(
               selected: type==PackageType.person,
               onTap: () => screenData.setChangeType(PackageType.person),
-              title: tr(context,"pricePerPerson"),
+              title: tr(context,"PersonRegister"),
             ),
           ),
           Expanded(
             child: BuildTypeAction(
               selected: type==PackageType.package,
               onTap: () => screenData.setChangeType(PackageType.package),
-              title: tr(context,"pricePerPackage"),
+              title: tr(context,"PackageRegister"),
             ),
           ),
         ],

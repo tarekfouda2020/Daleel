@@ -3,7 +3,7 @@ part of 'SecondPageWidgetsImports.dart';
 class BuildFirstDeptCard extends StatelessWidget {
   final String title;
   final AddDeptModel model;
-  final FirstCatScreenData screenData;
+  final EditActivityData addActivityData;
   final int state;
   final int type;
 
@@ -12,7 +12,7 @@ class BuildFirstDeptCard extends StatelessWidget {
     required this.model,
     required this.state,
     required this.type,
-    required this.screenData,
+    required this.addActivityData,
   });
 
   @override
@@ -32,7 +32,7 @@ class BuildFirstDeptCard extends StatelessWidget {
                   size: 16,
                 ),
                 IconButton(
-                  onPressed: ()=> screenData.setRemoveDept(type),
+                  onPressed: ()=> addActivityData.firstCatScreenData.setRemoveDept(type,addActivityData),
                   icon: Icon(Icons.remove_circle,size: 25,color: MyColors.redColor,),
                 ),
               ],

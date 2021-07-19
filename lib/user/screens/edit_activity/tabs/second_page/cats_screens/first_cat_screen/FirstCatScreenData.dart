@@ -14,17 +14,23 @@ class FirstCatScreenData{
     catsCountCubit.onUpdateData(count);
   }
 
-  setRemoveDept(int type){
+  setRemoveDept(int type,EditActivityData addActivityData){
     if (type==1&&catsCountCubit.state.data==2) {
       LoadingDialog.showSimpleToast("من فضلك احذف القسم الثاني اولا");
       return;
     }
     int count = catsCountCubit.state.data-1;
     catsCountCubit.onUpdateData(count);
+    if(type==1){
+      addActivityData.firstCatScreenData.firstSectionPrice=AddDeptModel(false);
+    }else{
+      addActivityData.firstCatScreenData.secondSectionPrice=AddDeptModel(false);
+    }
   }
 
 
   setSaveAllPrice(AddDeptModel model,int type,BuildContext context){
+    model.saved=false;
     var len = model.allDeptFields
         .where((element) => element.value.text.isEmpty)
         .toList().length;
@@ -47,7 +53,7 @@ class FirstCatScreenData{
       setSaveAllPrice(addActivityData.firstCatScreenData.firstSectionPrice,2,context);
     }
     if (catsCountCubit.state.data==2) {
-      setSaveAllPrice(addActivityData.firstCatScreenData.firstSectionPrice,3,context);
+      setSaveAllPrice(addActivityData.firstCatScreenData.secondSectionPrice,3,context);
     }
     Map<String,dynamic> all={};
     Map<String,dynamic> first={};
@@ -72,6 +78,7 @@ class FirstCatScreenData{
     addActivityData.activityModel.allSectionsPrice=all;
     addActivityData.activityModel.firstSectionPrice=first;
     addActivityData.activityModel.secondSectionPrice=second;
+    print(addActivityData.activityModel.toJson());
     addActivityData.goToNextPage();
   }
 

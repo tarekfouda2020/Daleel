@@ -1,9 +1,7 @@
-// To parse this JSON data, do
-//
-//     final userModel = userModelFromMap(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
+
+import 'package:base_flutter/user/models/CityModel.dart';
 
 UserModel userModelFromMap(String str) => UserModel.fromMap(json.decode(str));
 
@@ -22,6 +20,7 @@ class UserModel {
      this.isVerified,
      this.city,
      this.lang,
+     this.cityData,
   });
 
   String? id;
@@ -35,6 +34,7 @@ class UserModel {
   bool? isVerified;
   String? city;
   String? lang;
+  CityModel? cityData;
 
   factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
     id: json["_id"],
@@ -47,6 +47,7 @@ class UserModel {
     accountNumber: json["account_number"],
     isVerified: json["is_verified"],
     city: json["city"],
+    cityData: json["cityData"]==null?json["cityData"]: CityModel.fromMap(json["cityData"]),
   );
 
   Map<String, dynamic> toMap() => {
@@ -60,5 +61,6 @@ class UserModel {
     "account_number": accountNumber,
     "is_verified": isVerified,
     "city": city,
+    "cityData": cityData?.toMap(),
   };
 }

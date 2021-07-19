@@ -20,17 +20,17 @@ class DeptPriceModel {
   });
 
   String id;
-  String name;
-  int capacity;
-  String description;
-  String descriptionAr;
-  int saturdayPrice;
-  int sundayPrice;
-  int mondayPrice;
-  int tuesdayPrice;
-  int wednesPrice;
-  int thursdayPrice;
-  int fridayPrice;
+  String? name;
+  int? capacity;
+  String? description;
+  String? descriptionAr;
+  int? saturdayPrice;
+  int? sundayPrice;
+  int? mondayPrice;
+  int? tuesdayPrice;
+  int? wednesPrice;
+  int? thursdayPrice;
+  int? fridayPrice;
   DateTime createdAt;
   DateTime updatedAt;
   bool isAvailable;

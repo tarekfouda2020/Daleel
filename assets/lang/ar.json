@@ -23,7 +23,7 @@
   "baseInfo": "المعلومات الاساسية",
   "from2To5": "من ٢ الي ٥ صور",
   "360Degree": "رفع صور ٣٦٠ درجة",
-  "enter2To5Images": "ادخل من من ٢ الي ه صور",
+  "enter2To5Images": "ادخل من ٢ الي ه صور",
   "previous": "السابق",
   "save": "حفظ",
   "addFeatures": "اضف المميزات",
@@ -51,7 +51,7 @@
   "price": "السعر",
   "firstDept": "القسم الاول",
   "secondDept": "القسم الثاني",
-  "addPackage": "اضافة باكدج",
+  "addPackage": "اضافة باقة",
   "userNum": "عدد الافراد",
   "individual": "فرد",
   "packagePrice": "سعر الباكدج",
@@ -147,7 +147,10 @@
   "contactUs": "تواصل معنا",
   "logout": "تسجيل خروج",
   "noData": "لا يوجد بيانات",
-  "cancel": "الغاء"
+  "cancel": "الغاء",
+  "PersonRegister": "التسجيل بالفرد",
+  "PackageRegister": "التسجيل بالكدج"
+
 
 }
 

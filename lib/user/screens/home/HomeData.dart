@@ -14,15 +14,15 @@ class HomeData {
   late CurvedAnimation curve;
 
   List<Widget> tabsView=[
-    HomeMain(),
     Activities(),
+    HomeMain(),
     Information(),
     Settings(),
   ];
 
   List<BottomTabModel> tabs = [
-    BottomTabModel(iconData: Res.reservation, title: "reservations"),
     BottomTabModel(iconData: Res.home, title: "activities"),
+    BottomTabModel(iconData: Res.reservation, title: "reservations"),
     BottomTabModel(iconData: Res.profile, title: "info"),
     BottomTabModel(iconData: Res.more, title: "more"),
   ];
