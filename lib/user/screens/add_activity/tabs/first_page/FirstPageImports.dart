@@ -9,9 +9,11 @@ import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../AddActivityImports.dart';
 import 'widgets/FirstPageWidgetImports.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 part 'FirstPage.dart';
 part 'FirstPageData.dart';

@@ -63,12 +63,17 @@ class EditActivityData{
       firstCatScreenData.allSectionsPrice= mapDeptData(model.allSectionsPrice);
     }
     if (model.firstSectionPrice!=null) {
-      firstCatScreenData.catsCountCubit.onUpdateData(1);
-      firstCatScreenData.firstSectionPrice= mapDeptData(model.firstSectionPrice);
+      if (model.firstSectionPrice?.saturdayPrice!=null) {
+        firstCatScreenData.catsCountCubit.onUpdateData(1);
+        firstCatScreenData.firstSectionPrice= mapDeptData(model.firstSectionPrice);
+      }
     }
     if (model.secondSectionPrice!=null) {
-      firstCatScreenData.catsCountCubit.onUpdateData(2);
-      firstCatScreenData.secondSectionPrice= mapDeptData(model.secondSectionPrice);
+      if (model.secondSectionPrice?.saturdayPrice!=null) {
+        firstCatScreenData.catsCountCubit.onUpdateData(2);
+        firstCatScreenData.secondSectionPrice= mapDeptData(model.secondSectionPrice);
+      }
+
     }
   }
 

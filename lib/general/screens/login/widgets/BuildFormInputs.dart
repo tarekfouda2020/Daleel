@@ -18,7 +18,7 @@ class BuildFormInputs extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 30),
             action: TextInputAction.next,
             type: TextInputType.number,
-            suffixIcon: Column(
+            prefixIcon: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [

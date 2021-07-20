@@ -25,7 +25,8 @@ class FirstPageData{
 
   getNormalImages()async{
     var images = await Utils.getImages();
-    normalImagesCubit.state.data.images.addAll(images);
+    var compressed = await compressAndGetFile(images);
+    normalImagesCubit.state.data.images.addAll(compressed);
     normalImagesCubit.onUpdateData(normalImagesCubit.state.data);
   }
 
@@ -40,7 +41,8 @@ class FirstPageData{
 
   getPanoramaImages()async{
     var images = await Utils.getImages();
-    panoramaImagesCubit.state.data.images.addAll(images);
+    var compressed = await compressAndGetFile(images);
+    panoramaImagesCubit.state.data.images.addAll(compressed);
     panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
   }
 
@@ -52,6 +54,22 @@ class FirstPageData{
     panoramaImagesCubit.state.data.exist.remove(image);
     panoramaImagesCubit.onUpdateData(panoramaImagesCubit.state.data);
   }
+
+  Future<List<File>> compressAndGetFile(List<File> images) async {
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    List<File> results = [];
+    for(int i =0; i<images.length;i++){
+      File? result = await FlutterImageCompress.compressAndGetFile(
+          images[i].absolute.path, "$dir/${DateTime.now().toIso8601String()}.jpg",
+          quality: 50,
+          rotate: 360,
+          autoCorrectionAngle: true
+      );
+      if(result!=null) results.add(result);
+    }
+    return results;
+  }
+
 
   setActivityData(EditActivityData activityData,BuildContext context){
     if (formKey.currentState!.validate()) {
