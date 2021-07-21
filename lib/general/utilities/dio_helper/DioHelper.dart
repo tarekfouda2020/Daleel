@@ -51,13 +51,17 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> post({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
+  Future<dynamic> post({required String url,required Map<String, dynamic> body,bool showLoader = true,bool update = false}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
     try {
-      var response =
-          await _dio.post("$baseUrl$url", data: body);
+      late Response response ;
+      if (update) {
+        response = await _dio.put("$baseUrl$url", data: body);
+      }else{
+        response = await _dio.post("$baseUrl$url", data: body);
+      }
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
        return response.data;

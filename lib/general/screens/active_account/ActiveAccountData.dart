@@ -12,7 +12,8 @@ class ActiveAccountData {
   void onActiveAccount(BuildContext context, String userId) async {
     if (code.text.isNotEmpty) {
       btnKey.currentState!.animateForward();
-      await GeneralRepository(context).verifyUser(code.text, userId);
+      String codeStr = Utils.convertDigitsToLatin(code.text);
+      await GeneralRepository(context).verifyUser(codeStr, userId);
       btnKey.currentState!.animateReverse();
     }else{
       LoadingDialog.showSimpleToast("من فضلك ادخل كود التحقق");

@@ -5,6 +5,7 @@ import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOfferModel.dart';
 import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
+import 'package:base_flutter/user/models/Dtos/UpdateUserModel.dart';
 import 'package:base_flutter/user/models/OrderModel.dart';
 import 'package:base_flutter/user/models/PropertyModel.dart';
 import 'package:base_flutter/user/models/SettingModel.dart';
@@ -52,4 +53,7 @@ class UserRepository{
 
   Future<UserModel> getUserData(bool refresh)=>
       _httpMethods.getUserData(refresh);
+
+  Future<UserModel> updateUserData(UpdateUserModel model)=>
+      _httpMethods.updateUserData(model);
 }

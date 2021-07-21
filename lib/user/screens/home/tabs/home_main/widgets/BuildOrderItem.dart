@@ -42,7 +42,7 @@ class BuildOrderItem extends StatelessWidget {
                           decoration: model.currentStatus!="paid"? TextDecoration.none : TextDecoration.lineThrough,
                         ),
                         MyText(
-                          title: "-${model.user.name}",
+                          title: " - ${model.user.name}",
                           color: MyColors.grey,
                           size: 10,
                           fontWeight: FontWeight.w600,
