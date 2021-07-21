@@ -48,8 +48,10 @@ class PropertyOrderModel {
     isOffer: json["is_offer"],
     location: OrderLocationModel.fromMap(json["location"]),
     category: CategoryModel.fromMap(json["category"]),
-    packagePrices: List<OrderPackageModel>.from(json["packagePrices"].map((x) => OrderPackageModel.fromMap(x))),
-    personPrices: List<OrderPersonPriceModel>.from(json["personPrices"].map((x) => OrderPersonPriceModel.fromMap(x))),
+    packagePrices: json["packagePrices"]!=null?
+    List<OrderPackageModel>.from(json["packagePrices"].map((x) => OrderPackageModel.fromMap(x))):[],
+    personPrices: json["personPrices"]!=null?
+    List<OrderPersonPriceModel>.from(json["personPrices"].map((x) => OrderPersonPriceModel.fromMap(x))):[],
     city: CityModel.fromMap(json["city"]),
     ownerMobile: json["ownerMobile"],
   );

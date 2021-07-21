@@ -17,7 +17,7 @@ class BuildOrderItem extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: MyColors.grey, width: .5),
-            color: model.currentStatus=="paid"? MyColors.secondary : MyColors.redColor,
+            color: model.currentStatus!="paid"? MyColors.secondary : MyColors.redColor,
         ),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
@@ -32,11 +32,22 @@ class BuildOrderItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MyText(
-                      title: "${model.bookingNumber}# -${model.user.name}",
-                      color: MyColors.grey,
-                      size: 10,
-                      fontWeight: FontWeight.w600,
+                    Row(
+                      children: [
+                        MyText(
+                          title: "${model.bookingNumber}#",
+                          color: model.currentStatus!="paid"? MyColors.grey : MyColors.redColor,
+                          size: 10,
+                          fontWeight: FontWeight.w600,
+                          decoration: model.currentStatus!="paid"? TextDecoration.none : TextDecoration.lineThrough,
+                        ),
+                        MyText(
+                          title: "-${model.user.name}",
+                          color: MyColors.grey,
+                          size: 10,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 3),
@@ -60,7 +71,7 @@ class BuildOrderItem extends StatelessWidget {
                 children: [
                   MyText(
                     title: "${tr(context,"rent")}  ${mainData.calculateDeposit(model.property)}",
-                    color: model.currentStatus=="paid"? MyColors.grey : MyColors.redColor,
+                    color: model.currentStatus!="paid"? MyColors.secondary : MyColors.redColor,
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),

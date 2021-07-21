@@ -1,5 +1,6 @@
 
 import 'OrderUserModel.dart';
+import 'PackageDataModel.dart';
 import 'PropertyOrderModel.dart';
 import 'StatusModel.dart';
 
@@ -34,15 +35,15 @@ class OrderModel {
   DateTime date;
   DateTime dateString;
   List<StatusModel> status;
-  int transaction;
-  int customerMoney;
+  num transaction;
+  num customerMoney;
   PropertyOrderModel property;
   OrderUserModel user;
   String package;
-  String packageData;
+  PackageDataModel packageData;
   String packageType;
   String tag;
-  int appMoney;
+  num appMoney;
   DateTime createdAt;
   DateTime updatedAt;
   String bookingNumber;
@@ -54,14 +55,14 @@ class OrderModel {
     currentStatus: json["current_status"],
     bookCountForThisUser: json["book_count_for_this_user"],
     date: DateTime.parse(json["date"]),
-    dateString: DateTime.parse(json["date_string"]),
+    dateString: DateTime.parse(json["date_string"]??DateTime.now().toIso8601String()),
     status: List<StatusModel>.from(json["status"].map((x) => StatusModel.fromMap(x))),
     transaction: json["transaction"],
     customerMoney: json["customer_money"],
     property: PropertyOrderModel.fromMap(json["property"]),
     user: OrderUserModel.fromMap(json["user"]),
     package: json["package"],
-    packageData: json["package_data"],
+    packageData: json["package_data"]!=null?PackageDataModel.fromMap(json["package_data"]): json["package_data"],
     packageType: json["package_type"],
     tag: json["tag"],
     appMoney: json["app_money"],
@@ -84,7 +85,7 @@ class OrderModel {
     "property": property.toMap(),
     "user": user.toMap(),
     "package": package,
-    "package_data": packageData,
+    "package_data": packageData.toMap(),
     "package_type": packageType,
     "tag": tag,
     "app_money": appMoney,
