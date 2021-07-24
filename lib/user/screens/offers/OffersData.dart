@@ -24,7 +24,7 @@ class OffersData {
       CityModel(id: "percentage", name: lang ? "نسبة" : "Percentage"),
     ];
     packages = [
-      CityModel(id: "package", name: lang ? "سعر الباكدج" : "Package price"),
+      CityModel(id: "package", name: lang ? "سعر الباقة" : "Package price"),
       CityModel(id: "person", name: lang ? "سعر الفرد" : "Price per person"),
     ];
     selectedType = types[0];
@@ -41,9 +41,9 @@ class OffersData {
       title: tr(context, "dateFrom"),
       onConfirm: (date) {
         if (date != null) {
-          startDate = date.add(Duration(days: 1));
+          startDate = date;
           fromCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
-          toCubit.onUpdateData("");
+          toCubit.onUpdateData(DateFormat("yyyy-MM-dd").format(date));
         }
       },
     );

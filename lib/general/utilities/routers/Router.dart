@@ -41,6 +41,12 @@ part of 'RouterImports.dart';
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
     ),
+    CustomRoute(
+      page: EditPackage,
+      transitionsBuilder: TransitionsBuilders.zoomIn,
+      durationInMilliseconds: 500,
+      reverseDurationInMilliseconds: 500,
+    ),
   ],
 )
 class $AppRouter {}

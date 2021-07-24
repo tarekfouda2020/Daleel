@@ -10,6 +10,16 @@ class SecondCatScreenData{
     packageCubit.onUpdateData(packageCubit.state.model);
   }
 
+  removePackage(AddPackageModel model){
+    packageCubit.state.model.packages.remove(model);
+    packageCubit.onUpdateData(packageCubit.state.model);
+  }
+
+  removePerson(AddpackagePersonModel model){
+    packageCubit.state.model.persons.remove(model);
+    packageCubit.onUpdateData(packageCubit.state.model);
+  }
+
   savePackagesToModel(AddActivityData activityData,BuildContext context){
     var packages = packageCubit.state.model.packages;
     var persons = packageCubit.state.model.persons;

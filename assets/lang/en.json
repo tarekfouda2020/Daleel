@@ -149,11 +149,8 @@
   "noData": "No data found",
   "cancel": "Cancel",
   "PersonRegister": "Register as person",
-  "PackageRegister": "Register as package"
-
-
-
-
+  "PackageRegister": "Register as package",
+  "editPackage": "Edit package"
 }
 
 
