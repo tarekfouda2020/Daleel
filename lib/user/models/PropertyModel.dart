@@ -2,6 +2,7 @@ import 'package:base_flutter/user/models/CategoryModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOptionModel.dart';
 import 'CityModel.dart';
 import 'DeptPriceModel.dart';
+import 'OptionDataModel.dart';
 import 'PackagePriceModel.dart';
 import 'PersonPriseModel.dart';
 import 'SubCategoryModel.dart';
@@ -34,7 +35,8 @@ class PropertyModel {
     required this.translation,
     required this.propertyStatus,
     required this.location,
-    required this.address
+    required this.address,
+    required this.optionsData
   });
 
   String id;
@@ -64,6 +66,7 @@ class PropertyModel {
   DeptPriceModel? secondSectionPrice;
   TransitionModel translation;
   PropertyStatus propertyStatus;
+  List<OptionDataModel> optionsData;
 
   factory PropertyModel.fromMap(Map<String, dynamic> json) => PropertyModel(
     id: json["_id"],
@@ -84,6 +87,7 @@ class PropertyModel {
     occasions: List<CityModel>.from(json["occasions"].map((x) => CityModel.fromMap(x))),
     subCategory: SubCategoryModel.fromMap(json["sub_category"]),
     options: List<AddOptionModel>.from(json["options"].map((x) => AddOptionModel.fromMap(x))),
+    optionsData: List<OptionDataModel>.from(json["options_data"].map((x) => OptionDataModel.fromMap(x))),
     termsAndConditions: json["terms_and_conditions"],
     capacity: json["capacity"],
     bookingDays: List<dynamic>.from(json["booking_days"].map((x) => x)),

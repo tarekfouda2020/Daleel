@@ -33,7 +33,7 @@ class FourthPageData{
 
   saveDataToModel(BuildContext context, AddActivityData addActivityData)async{
     if (formKey.currentState!.validate()) {
-      addActivityData.activityModel.location=[double.parse(lat??"0"),double.parse(lng??"0")];
+      addActivityData.activityModel.location=[double.parse(lng??"0"),double.parse(lat??"0")];
       addActivityData.activityModel.options=selectedOptions;
       addActivityData.activityModel.address=location.text;
       print(addActivityData.activityModel.toJson());

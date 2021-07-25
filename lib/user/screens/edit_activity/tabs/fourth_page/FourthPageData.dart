@@ -11,6 +11,7 @@ class FourthPageData{
 
   List<AddOptionModel> allOptions = [];
   List<AddOptionModel> selectedOptions = [];
+  List<OptionDataModel> optionsData = [];
 
   String? lat;
   String? lng;
@@ -20,7 +21,15 @@ class FourthPageData{
     allOptions= await UserRepository(context).getOptions(catId, refresh);
     optionsCubit.onUpdateData(allOptions);
     var filters = allOptions.where((e) => selectedOptions.where((x) => e.id==x.id).length>0).toList();
-    onSelectOptions(filters);
+    List<AddOptionModel> options =  filters.map((element) {
+      var exist = optionsData.where((e) => e.option==element.id).toList();
+      if (exist.length>0) {
+        element.descEn.text=exist.first.value;
+        element.descAr.text=exist.first.translation.ar.name;
+      }
+      return element;
+    }).toList();
+    onSelectOptions(options);
   }
   void onSelectOptions(List<AddOptionModel> options){
     selectedOptions = options;
@@ -34,7 +43,7 @@ class FourthPageData{
 
   saveDataToModel(BuildContext context, EditActivityData addActivityData)async{
     if (formKey.currentState!.validate()) {
-      addActivityData.activityModel.location=[double.parse(lat??"0"),double.parse(lng??"0")];
+      addActivityData.activityModel.location=[double.parse(lng??"0"),double.parse(lat??"0")];
       addActivityData.activityModel.options=selectedOptions;
       addActivityData.activityModel.address=location.text;
       var result = await UserRepository(context).editActivity(addActivityData.activityModel);

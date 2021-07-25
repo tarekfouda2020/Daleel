@@ -7,6 +7,7 @@ import 'package:base_flutter/general/utilities/localization/LocalizationMethods.
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
 import 'package:base_flutter/user/models/DeptPriceModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddDeptModel.dart';
+import 'package:base_flutter/user/models/Dtos/AddOptionModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackageModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackagePersonModel.dart';
 import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
