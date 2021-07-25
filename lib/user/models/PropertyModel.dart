@@ -1,4 +1,5 @@
 import 'package:base_flutter/user/models/CategoryModel.dart';
+import 'package:base_flutter/user/models/Dtos/AddOptionModel.dart';
 import 'CityModel.dart';
 import 'DeptPriceModel.dart';
 import 'PackagePriceModel.dart';
@@ -50,7 +51,7 @@ class PropertyModel {
   String user;
   List<CityModel> occasions;
   SubCategoryModel subCategory;
-  List<CityModel> options;
+  List<AddOptionModel> options;
   String termsAndConditions;
   String address;
   int capacity;
@@ -82,7 +83,7 @@ class PropertyModel {
     user: json["user"],
     occasions: List<CityModel>.from(json["occasions"].map((x) => CityModel.fromMap(x))),
     subCategory: SubCategoryModel.fromMap(json["sub_category"]),
-    options: List<CityModel>.from(json["options"].map((x) => CityModel.fromMap(x))),
+    options: List<AddOptionModel>.from(json["options"].map((x) => AddOptionModel.fromMap(x))),
     termsAndConditions: json["terms_and_conditions"],
     capacity: json["capacity"],
     bookingDays: List<dynamic>.from(json["booking_days"].map((x) => x)),

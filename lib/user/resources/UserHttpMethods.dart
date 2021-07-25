@@ -6,6 +6,7 @@ import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOfferModel.dart';
+import 'package:base_flutter/user/models/Dtos/AddOptionModel.dart';
 import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/Dtos/UpdateUserModel.dart';
@@ -110,12 +111,12 @@ class UserHttpMethods {
     }
   }
 
-  Future<List<CityModel>> getOptions(String catId, bool refresh) async {
+  Future<List<AddOptionModel>> getOptions(String catId, bool refresh) async {
     var data = await DioHelper(context: context, forceRefresh: refresh).get(
       url: "categories/$catId/options?pagination=false",
     );
     if (data != null) {
-      return List<CityModel>.from(data.map((e) => CityModel.fromMap(e)));
+      return List<AddOptionModel>.from(data.map((e) => AddOptionModel.fromMap(e)));
     } else {
       return [];
     }

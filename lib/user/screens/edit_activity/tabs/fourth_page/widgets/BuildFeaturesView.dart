@@ -7,7 +7,7 @@ class BuildFeaturesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GenericBloc<List<CityModel>>, GenericState<List<CityModel>>>(
+    return BlocBuilder<GenericBloc<List<AddOptionModel>>, GenericState<List<AddOptionModel>>>(
       bloc: pageData.optionsCubit,
       builder: (context, state) {
         if (state is GenericUpdateState) {
@@ -24,15 +24,57 @@ class BuildFeaturesView extends StatelessWidget {
                     size: 10,
                     fontWeight: FontWeight.w600,
                   ),
-                  MultiDropDownField<CityModel>(
-                    title: tr(context,"features"),
-                    label: tr(context,"features"),
-                    data: state.data,
-                    selectedItems: pageData.selectedOptions,
-                    onConfirm: (List<CityModel> options)=>pageData.onSelectOptions(options),
-                    onItemClick: (CityModel model)=> pageData.onOptionClick(model),
+                  BlocBuilder<GenericBloc<List<AddOptionModel>>,
+                      GenericState<List<AddOptionModel>>>(
+                    bloc: pageData.currentCubit,
+                    builder: (context, optionState) {
+                      return MultiDropDownField<AddOptionModel>(
+                        title: tr(context, "features"),
+                        label: tr(context, "features"),
+                        data: state.data,
+                        selectedItems: optionState.data,
+                        onConfirm: (List<AddOptionModel> options) =>
+                            pageData.onSelectOptions(options),
+                        onItemClick: (AddOptionModel model) =>
+                            pageData.onOptionClick(model),
+                      );
+                    },
                   ),
                   SizedBox(height: 20),
+                  BlocBuilder<GenericBloc<List<AddOptionModel>>,
+                      GenericState<List<AddOptionModel>>>(
+                    bloc: pageData.currentCubit,
+                    builder: (context, optionState) {
+                      return Column(
+                        children:
+                        List.generate(optionState.data.length, (index) {
+                          return Column(
+                            children: [
+                              RichTextFiled(
+                                controller: optionState.data[index].descAr,
+                                margin: EdgeInsets.only(top: 10),
+                                label:
+                                "وصف ${optionState.data[index].name} بالعربي ",
+                                max: 3,
+                                validate: (value) =>
+                                    value!.validateEmpty(context),
+                              ),
+                              RichTextFiled(
+                                controller: optionState.data[index].descEn,
+                                margin: EdgeInsets.only(top: 10),
+                                label:
+                                "وصف ${optionState.data[index]
+                                    .name} بالانجليزي ",
+                                max: 3,
+                                validate: (value) =>
+                                    value!.validateEmpty(context),
+                              ),
+                            ],
+                          );
+                        }),
+                      );
+                    },
+                  ),
                   MyText(
                     title: tr(context,"locationOnMap"),
                     color: MyColors.secondary,

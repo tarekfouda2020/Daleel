@@ -3,6 +3,7 @@ import 'package:base_flutter/general/models/UserModel.dart';
 import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddOfferModel.dart';
+import 'package:base_flutter/user/models/Dtos/AddOptionModel.dart';
 import 'package:base_flutter/user/models/Dtos/EditActivityModel.dart';
 import 'package:base_flutter/user/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/user/models/Dtos/UpdateUserModel.dart';
@@ -36,7 +37,7 @@ class UserRepository{
   Future<List<CityModel>> getLocations(bool refresh)=>
       _httpMethods.getLocations(refresh);
 
-  Future<List<CityModel>> getOptions(String catId,bool refresh)=>
+  Future<List<AddOptionModel>> getOptions(String catId,bool refresh)=>
       _httpMethods.getOptions(catId, refresh);
 
   Future<bool> addOffer(AddOfferModel model)=>

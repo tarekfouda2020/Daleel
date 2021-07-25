@@ -5,11 +5,12 @@ class FourthPageData{
 
   final Completer<GoogleMapController> controller = Completer();
   TextEditingController location = new TextEditingController();
-  GenericBloc<List<CityModel>> optionsCubit = new GenericBloc([]);
+  final GenericBloc<List<AddOptionModel>> optionsCubit = new GenericBloc([]);
+  final GenericBloc<List<AddOptionModel>> currentCubit = new GenericBloc([]);
   final LocationCubit locCubit = new LocationCubit();
 
-  List<CityModel> allOptions = [];
-  List<CityModel> selectedOptions = [];
+  List<AddOptionModel> allOptions = [];
+  List<AddOptionModel> selectedOptions = [];
 
   String? lat;
   String? lng;
@@ -21,12 +22,12 @@ class FourthPageData{
     var filters = allOptions.where((e) => selectedOptions.where((x) => e.id==x.id).length>0).toList();
     onSelectOptions(filters);
   }
-
-  void onSelectOptions(List<CityModel> options){
+  void onSelectOptions(List<AddOptionModel> options){
     selectedOptions = options;
+    currentCubit.onUpdateData(options);
   }
 
-  void onOptionClick(CityModel option){
+  void onOptionClick(AddOptionModel option){
     selectedOptions.remove(option);
     optionsCubit.onUpdateData(allOptions);
   }

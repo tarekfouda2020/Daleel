@@ -25,26 +25,28 @@ class _FourthPageState extends State<FourthPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: MyColors.greyWhite)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BuildHeaderColor(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: MyText(
-                    title: tr(context, "featuresAndLocation"),
-                    color: MyColors.primary,
-                    size: 16,
-                    fontWeight: FontWeight.w500,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: MyColors.greyWhite)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BuildHeaderColor(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: MyText(
+                      title: tr(context, "featuresAndLocation"),
+                      color: MyColors.primary,
+                      size: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                BuildFeaturesView(pageData: pageData),
-              ],
+                  Expanded(child: BuildFeaturesView(pageData: pageData)),
+                ],
+              ),
             ),
           ),
           BuildActionsView(addActivityData: widget.addActivityData)

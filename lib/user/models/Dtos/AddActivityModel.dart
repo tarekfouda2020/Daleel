@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:base_flutter/user/models/CategoryModel.dart';
-import 'package:base_flutter/user/models/CityModel.dart';
 import 'package:base_flutter/user/models/Dtos/AddPackageModel.dart';
+import 'AddOptionModel.dart';
 import 'AddPackagePersonModel.dart';
 
 class AddActivityModel{
@@ -25,7 +25,7 @@ class AddActivityModel{
   List<double>? location;
   List<String>? subCategory;
   List<String>? occasions;
-  List<CityModel>? options;
+  List<AddOptionModel>? options;
   double? price;
   int? opacity;
   List<AddPackageModel>? packagePrices;
@@ -51,7 +51,7 @@ class AddActivityModel{
           "occasions": occasions,
           "packagePrices": packagePrices??[],
           "personPrices": personPrices??[],
-          "options": options?.map((e) => {"option":e.id,"value":e.name,"translation":{"ar":{"value":e.name}}}).toList(),
+          "options": options?.map((e) => e.toMap()).toList(),
           "translation": {
             "ar": {
               "name": nameAr,
