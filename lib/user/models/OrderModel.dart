@@ -18,7 +18,7 @@ class OrderModel {
     required this.property,
     required this.user,
     required this.package,
-    required this.packageData,
+    // required this.packageData,
     required this.packageType,
     required this.tag,
     required this.appMoney,
@@ -40,7 +40,7 @@ class OrderModel {
   PropertyOrderModel property;
   OrderUserModel user;
   String package;
-  PackageDataModel packageData;
+  // PackageDataModel packageData;
   String packageType;
   String tag;
   num appMoney;
@@ -62,7 +62,7 @@ class OrderModel {
     property: PropertyOrderModel.fromMap(json["property"]),
     user: OrderUserModel.fromMap(json["user"]),
     package: json["package"],
-    packageData: json["package_data"]!=null?PackageDataModel.fromMap(json["package_data"]): json["package_data"],
+    // packageData: json["package_data"]!=null?PackageDataModel.fromMap(json["package_data"]): json["package_data"],
     packageType: json["package_type"],
     tag: json["tag"],
     appMoney: json["app_money"],
@@ -85,7 +85,7 @@ class OrderModel {
     "property": property.toMap(),
     "user": user.toMap(),
     "package": package,
-    "package_data": packageData.toMap(),
+    // "package_data": packageData.toMap(),
     "package_type": packageType,
     "tag": tag,
     "app_money": appMoney,

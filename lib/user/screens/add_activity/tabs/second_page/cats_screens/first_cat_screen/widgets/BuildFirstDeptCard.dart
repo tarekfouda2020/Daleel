@@ -64,7 +64,7 @@ class BuildFirstDeptCard extends StatelessWidget {
                     ),
                     BuildFormField(
                       title: tr(context, "deptCapacity"),
-                      type: TextInputType.text,
+                      type: TextInputType.number,
                       controller: model.allDeptFields[8].value,
                     ),
                     RichTextFiled(

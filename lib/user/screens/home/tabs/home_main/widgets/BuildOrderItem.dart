@@ -52,7 +52,7 @@ class BuildOrderItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 3),
                       child: MyText(
-                        title: "${model.property.name} (${lang? model.property.category.translation.ar.name : model.property.category.name})",
+                        title: "${lang? model.property.translation.ar.name : model.property.name} (${lang? model.property.category.translation.ar.name : model.property.category.name})",
                         color: MyColors.grey,
                         size: 10,
                         fontWeight: FontWeight.w600,

@@ -22,6 +22,8 @@ class PropertyOrderModel {
     required this.city,
     required this.ownerMobile,
     required this.offerPrice,
+    required this.translation,
+
   });
 
   String id;
@@ -37,6 +39,8 @@ class PropertyOrderModel {
   List<OrderPersonPriceModel> personPrices;
   CityModel city;
   String ownerMobile;
+  TransitionModel translation;
+
 
   factory PropertyOrderModel.fromMap(Map<String, dynamic> json) => PropertyOrderModel(
     id: json["_id"],
@@ -54,6 +58,7 @@ class PropertyOrderModel {
     List<OrderPersonPriceModel>.from(json["personPrices"].map((x) => OrderPersonPriceModel.fromMap(x))):[],
     city: CityModel.fromMap(json["city"]),
     ownerMobile: json["ownerMobile"],
+    translation: TransitionModel.fromMap(json["translation"]),
   );
 
   Map<String, dynamic> toMap() => {
@@ -69,5 +74,47 @@ class PropertyOrderModel {
     "personPrices": List<dynamic>.from(personPrices.map((x) => x.toMap())),
     "city": city.toMap(),
     "ownerMobile": ownerMobile,
+  };
+}
+
+
+
+class TransitionModel {
+  TransitionModel({
+    required this.ar,
+  });
+
+  Ar ar;
+
+  factory TransitionModel.fromMap(Map<String, dynamic> json) => TransitionModel(
+    ar: Ar.fromMap(json["ar"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "ar": ar.toMap(),
+  };
+}
+
+class Ar {
+  Ar({
+    required this.name,
+    required this.description,
+    required this.termsAndConditions,
+  });
+
+  String name;
+  String description;
+  String termsAndConditions;
+
+  factory Ar.fromMap(Map<String, dynamic> json) => Ar(
+    name: json["name"],
+    description: json["description"],
+    termsAndConditions: json["terms_and_conditions"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "name": name,
+    "description": description,
+    "terms_and_conditions": termsAndConditions,
   };
 }
